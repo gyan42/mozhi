@@ -1,0 +1,4 @@
+[developement]
+    [developement.preprocessor]
+        [developement.preprocessor.NaiveSentencePreprocessor]
+        [developement.preprocessor.HFTokenizer]

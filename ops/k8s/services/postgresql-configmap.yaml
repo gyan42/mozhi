@@ -1,0 +1,13 @@
+# PostgreSQL StatefulSet ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mozhi-postgres-db-config
+  labels:
+    app: mozhi-postgresql-db
+    org: mozhi
+data:
+  POSTGRES_DB: mozhidb
+  POSTGRES_USER: mozhi
+  POSTGRES_PASSWORD: mozhi
+  PGDATA: /data/pgdata

@@ -1,0 +1,58 @@
+# Ref: https://github.com/testdrivenio/flask-vue-kubernetes
+apiVersion: v1
+kind: Service
+metadata:
+  name: mozhi-ui-cpu-svc
+  labels:
+    org: mozhi
+spec:
+  selector:
+    app: mozhi-ui-cpu
+    tier: frontend
+  ports:
+  - protocol: TCP
+    port: 8080 # The port on which the Service is available to other Pods
+    targetPort: 80 # The port on which the traffic is sent to on the Pod
+  type: LoadBalancer
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mozhi-ui-cpu
+  labels:
+    org: mozhi
+spec:
+  progressDeadlineSeconds: 2147483647
+  selector:
+    matchLabels:
+      app: mozhi-ui-cpu
+      tier: frontend
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: mozhi-ui-cpu
+        tier: frontend
+        org: mozhi
+    spec:
+      containers:
+        - name: mozhi-ui-cpu
+          imagePullPolicy: Always
+          image: "mageswaran1989/mozhi-ui-cpu:0.4"
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          ports:
+            - containerPort: 80
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+---
+
+

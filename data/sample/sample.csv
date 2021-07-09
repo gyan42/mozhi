@@ -1,0 +1,17 @@
+text
+Annotated Corpus for Named Entity Recognition: Corpus for entity classification with enhanced and popular features by Natural Language Processing applied to the data set.
+i2b2 Challenges: By the Informatics for Integrating Biology & the Bedside (i2b2) center these clinical datasets were created for named entity recognition.
+CoNLL 2003: Dataset that contains 1393 English news articles with annotated entities LOC (location) ORG (organization) PER (person) and MISC (miscellaneous).
+NLPBA 2004: Medical data tagged with protein/DNA/RNA/cell line/cell type (2404 MEDLINE abstracts).
+Resume Entities for NER: Document annotation dataset to be used to perform NER on resumes from indeed.com.
+Enron Emails: Over 500000 email messages tagged with names dates and times.
+MIT Movie Corpus: A semantically tagged training and test corpus in BIO format. The eng corpus are simple queries and the trivia10k13 corpus are more complex queries.
+Annotated GMB Corpus: An annotated corpus using GMB (Groningen Meaning Bank) corpus for entity classification with enhanced and popular features by Natural Language Processing applied to the data set.
+Best Buy E-Commerce NER Dataset: A dataset containing Best Buy search queries labeled with entities such as Brand Model name Category Name and etc.
+WNUT 17 Emerging Entities Dataset: Text from YouTube Stack Overflow Twitter and Reddit comments filtered to prefer text that is likely to contain named entities.
+OntoNotes 5.0: Dataset made up of 1745k English 900k Chinese and 300k Arabic text data from a range of sources: telephone conversations newswire broadcast news broadcast conversation and web-blogs. Entities are annotated with categories such as PERSON ORGANIZATION and LOCATION.
+Europeana Newspapers: Named Entity Recognition corpora for Dutch French German containing news articles alongside related metadata and named entities.
+LeNER-Br: A dataset for named entity recognition in Brazilian Portuguese composed entirely of legal documents. In addition to tags for persons locations time entities and organizations as well as tags for law and legal cases entities.
+Swedish NER corpus: Bootstrapped and manually annotated NER Swedish web news from 2012. ~8000 sentences annotated for Swedish NER (PER LOC ORG MISC).
+120 Million Word Spanish Corpus: Composed of 57 text files in XML format this dataset contains multiple Wikipedia articles in each text file. The text of each article is tagged with metadata about the article as well as each article’s title.
+Chinese Treebank: This Chinese language dataset includes around 1.5 million words from Chinese news government documents magazine articles and online blogs. The text has been annotated and parsed.

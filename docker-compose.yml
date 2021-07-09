@@ -1,0 +1,134 @@
+version: "3"
+
+services:
+  # https://towardsdatascience.com/how-to-run-postgresql-using-docker-15bf87b452d4
+  vf-db:
+    container_name: vf-db-server
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: mozhi
+      POSTGRES_PASSWORD: mozhi
+      POSTGRES_DB: mozhidb
+    ports:
+      - 4321:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+    networks:
+      - vf_docker_network
+
+  pgadmin:
+    container_name: vf-db-pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - 5050:80
+    networks:
+      - vf_docker_network
+
+  # https://raw.githubusercontent.com/minio/minio/master/docs/orchestration/docker-compose/docker-compose.yaml
+  minio:
+    container_name: vf-storage-server
+    image: minio/minio:RELEASE.2021-06-09T18-51-39Z
+    hostname: minio
+    volumes:
+      - minio-data:/data
+    ports:
+      - 9000:9000
+    expose:
+      - "9000"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: password
+    command: server /data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    networks:
+      - vf_docker_network
+
+  api:
+    image: mageswaran1989/mozhi-api-cpu:0.2
+    container_name: vf-api-cpu
+    restart: always
+    ports:
+      - 8088:8088
+    depends_on:
+      - minio
+      - vf-db
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    networks:
+      - vf_docker_network
+    env_file:
+      - api/.env
+    volumes:
+      - ./data:/data
+    secrets:
+      - defaults
+
+  web-ui:
+    image: mageswaran1989/mozhi-ui-cpu:0.3
+    container_name: vf-ui-cpu
+    restart: always
+    depends_on:
+      - api
+    ports:
+      - 8080:80
+    networks:
+      - vf_docker_network
+    volumes:
+      - ./data:/data
+
+
+  torchserve:
+    image: mageswaran1989/mozhi-api-cpu:0.1
+    container_name: vf-model-serve-torch
+    entrypoint: [ "/bin/bash" ]
+    command: -c "torchserve --start --model-store /home/model-server/model-store --models all --ts-config configs/torch_serve_config.properties --foreground"
+    restart: always
+    network_mode: host
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    env_file:
+      - api/.env
+    tty: true
+    stdin_open: true
+
+
+#  nginx:
+#    image: nginx:1.19.2-alpine
+#    container_name: vf-minio-nginx
+#    hostname: nginx
+#    volumes:
+#      - ./minio-nginx.conf:/etc/nginx/nginx.conf:ro
+#    ports:
+#      - "9000:9000"
+#    depends_on:
+#      - minio
+
+
+networks:
+  vf_docker_network:
+    driver: bridge
+
+volumes:
+  data:
+    name: data
+  pg_data:
+  minio-data:
+
+secrets:
+  defaults:
+    file: configs/secrets/defaults.json

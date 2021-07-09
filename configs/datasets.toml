@@ -1,0 +1,16 @@
+[developement]
+    [developement.datasets]
+        [developement.datasets.GLUEDataModule]
+            model_name_or_path="albert-base-v2"
+            max_seq_length=128
+            train_batch_size=32
+            eval_batch_size=32
+        [developement.datasets.CoNLL2003DatasetV0]
+            train_file_path="~/.mozhi/data/ner/conll/2003/train.txt"
+            val_file_path="~/.mozhi/data/ner/conll/2003/valid.txt"
+            test_file_path="~/.mozhi/data/ner/conll/2003/test.txt"
+            unknown_word='unk'
+            text_col=0
+            ner_tag_col=3
+            delete_cache=true
+        [developement.datasets.HFConll2003Dataset]

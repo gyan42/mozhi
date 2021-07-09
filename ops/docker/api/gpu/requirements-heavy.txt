@@ -1,0 +1,6 @@
+torch==1.8.1
+torchvision==0.9.1
+torchcrf==1.1.0
+pytorch-crf==0.7.2
+tensorflow-gpu==2.4.1
+tensorflow_addons==0.12.1

@@ -1,0 +1,8 @@
+[developement]
+    [developement.models]
+        [developement.models.BiLSTMCRF]
+             word_embeddings_size=64
+             checkpoint_dir="~/.mozhi/models/tf/ner/bilstmcrf/"
+        [developement.models.LSTMTAGGER]
+        [developement.models.BiLSTMCRFTorch]
+

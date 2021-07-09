@@ -1,0 +1,55 @@
+# mozhi devlopement requiremetns
+# ------------ Must have's ------------
+numpy==1.19.5
+opencv-python==4.5.2.54
+# ------------ Backend ------------
+uvicorn==0.13.4
+python-multipart==0.0.5
+fastapi==0.63.0
+# ------------ DL ------------
+torch==1.8.1
+torchvision==0.8.2
+torchserve==0.4.0
+torch-model-archiver==0.4.0
+torchcrf==1.1.0
+pytorch-crf==0.7.2
+tensorflow-gpu==2.3.3
+tensorflow_addons==0.12.1
+tensorflow_transform==0.24.1
+tensorflow_text==2.5.0
+# ------------ Word vectors ------------
+# pymagnitude
+# ------------ Metrics ------------
+seqeval==1.2.2
+sklearn_crfsuite==0.3.6
+# ------------ OCR ------------
+pytesseract==0.3.7
+# craft-text-detector==0.3.4
+# calamari-ocr==2.0.2
+# sqlalchemy
+psycopg2-binary==2.8.6
+psycopg2==2.8.6
+# ------------ NLP ------------
+Cython==0.29.23
+nltk==3.6.2
+spacy==3.0.6
+# ------------ DL-NLP ------------
+transformers==4.5.1
+# ------------ DL-Frameworks ------------
+pytorch_lightning==1.3.3
+torchmetrics==0.3.2
+# ------------ datasets ------------
+pyconll==3.0.4
+datasets==1.6.2
+# ------------ configuration management ------------
+dynaconf==3.1.4
+# ------------ Progressbar ------------
+fastprogress==1.0.0
+tqdm==4.49.0
+# ------------ Storage ------------
+minio==7.0.3
+# ------------ Cloud ------------
+boto3==1.17.1
+# ------------ Model Explain ------------
+captum==0.3.1
+# ----------- Dev Only Pakcages ----------

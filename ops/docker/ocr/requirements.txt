@@ -1,0 +1,7 @@
+numpy==1.19.5
+opencv-python==4.5.2.54
+uvicorn==0.13.4
+python-multipart==0.0.5
+fastapi==0.63.0
+pytesseract==0.3.7
+starlette==0.15.0

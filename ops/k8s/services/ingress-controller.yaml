@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mozhi-api-ingress
+  labels:
+    org: mozhi
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+#    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+spec:
+  rules:
+  - host: mozhi.ai
+    http:
+      paths:
+      - path: /api/v1/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: mozhi-api-cpu-svc
+            port:
+              number: 8088
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: mozhi-ui-cpu-svc
+            port:
+              number: 8080

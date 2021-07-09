@@ -1,0 +1,10 @@
+<template>
+  <section class="hero is-dark">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title"> Welcome to Mozhi!</h1>
+        <h2 class="subtitle">A platform to do end-to-end custom entity recognition projects</h2>
+      </div>
+    </div>
+  </section>
+</template>

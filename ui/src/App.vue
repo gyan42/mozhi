@@ -1,0 +1,153 @@
+<template >
+  <link rel="favicon.ico" type="image/png" href="src/assets/faviconlogo.png"/>
+  <div id="app">
+    <div
+        id="sidebardiv"
+        :class="[{'collapsed' : collapsed}, {'onmobile' : isOnMobile}]">
+
+      <img alt="mozhi" src="./assets/mozhi-logo.png">
+
+      <!--          :theme="white-theme"-->
+      <!--          :show-one-child="true"-->
+      <!--          @update:collapsed="onToggleCollapse"-->
+      <!--          @item-click="onItemClick"/-->
+
+      <sidebar-menu
+          collapsed=true
+          :menu="menu"/>
+      <router-view/>
+
+      <div
+          v-if="isOnMobile && !collapsed"
+          class="sidebar-overlay"
+          @click="collapsed = true"
+      />
+    </div>
+  </div>
+</template>
+
+<script>
+import "./assets/styles.scss";
+import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+
+export default {
+  name: 'App',
+  watch: {
+    '$route' (to, from) { // eslint-disable-line no-unused-vars
+      document.title = to.meta.title || 'mozhi'
+    }
+  },
+  data() {
+    return {
+      collapsed: false,
+      isOnMobile: false,
+      menu: [
+        {
+          header: 'Getting Started',
+          hiddenOnCollapse: true,
+        },
+        {
+          href: '/',
+          title: 'Home',
+          icon: 'fas fa-home'
+        },
+        {
+          href: '/annotator/',
+          title: 'Annotator',
+          icon: 'fas fa-draw-polygon',
+          child : [
+            {
+              href: '/annotator/dbdetails',
+              title: 'Database',
+              icon: 'fas fa-database'
+            },
+            {
+              href: '/annotator/imagehome',
+              title: 'TextImage',
+              icon: 'fas fa-image'
+            },
+            {
+              href: '/annotator/textfile',
+              title: 'TextFile',
+              icon: 'fas fa-file-alt',
+            },
+            {
+              href: '/annotator/dffile',
+              title: 'DataFrame',
+              icon: 'fas fa-table'
+
+            },
+          ]
+        },
+        {
+          href: '/ocr/',
+          title: 'OCR',
+          icon: 'fas fa-file-alt',
+          child : [
+            {
+              href: '/ocr/tesseract',
+              title: 'Tesseract',
+              icon: 'fas fa-cube'
+            },
+            {
+              href: '/ocr/calamari',
+              title: 'Calamari',
+              icon: 'fas fa-cubes'
+            },
+          ]
+        },
+        {
+          href: '/ner',
+          title: 'NER',
+          icon: 'fas fa-glasses'
+        },
+      ],
+      mounted () {
+        this.onResize()
+        window.addEventListener('resize', this.onResize)
+      },
+      methods: {
+        onToggleCollapse () {
+          console.log('onToggleCollapse')
+        },
+        onItemClick () {
+          console.log('onItemClick')
+          // console.log(event)
+          // console.log(item)
+        },
+        onResize () {
+          if (window.innerWidth <= 767) {
+            this.isOnMobile = true
+            this.collapsed = true
+          } else {
+            this.isOnMobile = false
+            this.collapsed = false
+          }
+        }
+      },
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+#sidebardiv {
+  padding-left: 70px;
+  transition: 0.3s ease;
+}
+#sidebardiv.collapsed {
+  padding-left: 65px;
+}
+#sidebardiv.onmobile {
+  padding-left: 65px;
+}
+</style>
