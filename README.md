@@ -41,10 +41,16 @@
 - **Build and run Docker containers:** 
 
 ```
-export DOCKER_BUILDKIT=1
-docker-compose build
-docker-compose up
+minikube start
+minikube addons enable ingress
+kubectl apply -f ops/k8s/services/
+echo "$(kubectl get ingress | grep mozhi-api-ingress | cut -d' ' -f10) mozhi.ai"
+
+# copy above line and add at top 
+sudo vi /etc/hosts 
 ```
+
+[Mozhi UI](mozhi.ai)
 
 - **Training Models** (GPU is a must! Skip this part if you don't have a GPU and use prebuild models)
   - **[Hugging Face Transformers Models](docs/source/setup/hf_model_training.md)**

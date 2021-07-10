@@ -144,7 +144,7 @@ export default {
     getInputText() {
       console.log("getInputText")
       axios
-          .post("/vf/db/text/table/" + this.currentId, this.formData, {timeout: 50000})
+          .post(process.env.VUE_APP_API_DB_TEXT_TABLE + this.currentId, this.formData, {timeout: 50000})
           .then((res) => {
             console.log(res)
             this.setCurrentText(res.data["text"]);
@@ -167,7 +167,7 @@ export default {
       }
       else {
         axios
-            .post("/vf/nlp/tokenize", {"text" : this.currentText}, {timeout: 50000}) //TODO why "text" is needed ?
+            .post(process.env.VUE_APP_API_TOKENIZE, {"text" : this.currentText}, {timeout: 50000}) //TODO why "text" is needed ?
             .then((res) => {
               this.tm = new TokenManager(res.data.tokens);
             })
@@ -257,7 +257,7 @@ export default {
         console.log(tokensTags.join(" "))
         // console.log("saveTags", JSON.stringify(tokens))
         axios
-            .post("/vf/db/insert/annotations",
+            .post(process.env.VUE_APP_API_DB_TEXT_ANNOTATIONS,
                 {"id": this.currentId,
                   "tokens": tokensTags[0].join(" "),
                   "labels": tokensTags[1].join(" "),

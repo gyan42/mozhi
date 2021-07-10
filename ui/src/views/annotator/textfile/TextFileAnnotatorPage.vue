@@ -99,7 +99,7 @@ export default {
       }
       this.currentSentence = this.inputSentences[this.currentIndex];
       axios
-        .post("/vf/nlp/tokenize", this.currentSentence)
+        .post(process.env.VUE_APP_API_TOKENIZE, this.currentSentence)
         .then((res) => {
           this.tm = new TokenManager(res.data.tokens);
         })
@@ -148,7 +148,7 @@ export default {
     },
     saveTags() {
       axios
-        .post("/vf/ner/detokenize", { tokens: this.tm.words })
+        .post(process.env.VUE_APP_API_DETOKENIZE, { tokens: this.tm.words })
         .then((res) => {
           this.$store.commit("addAnnotation", [
             res.data.text,

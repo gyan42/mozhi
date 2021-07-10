@@ -413,7 +413,7 @@ export default {
       console.log("tryCacheOrLoad")
       console.log(this.experimentName, this.dbServerInfo, this.storageServer)
       axios
-          .post("/vf/db/image/get/bboxjson", {'experiment_name': this.experimentName, 'prefix':this.getFileCurrentPrefix()})
+          .post(process.env.VUE_APP_API_DB_IMAGE_BBOX_GET, {'experiment_name': this.experimentName, 'prefix':this.getFileCurrentPrefix()})
           .then((res) => {
             console.log(res.data['ocr_text'])
             this.ocrText = res.data['ocr_text']
@@ -444,7 +444,7 @@ export default {
         console.log("Found previous annotated data...")
         this.loadFabricJson()
         // Reload the image to resize the canvas accordingly TODO better way?
-        new fabric.Image.fromURL(axios.defaults.baseURL+'/vf/storage/minio/get/image?'+ params.toString(),
+        new fabric.Image.fromURL(axios.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
             function (img) {
               fabricCanvas.setWidth(img.width)
               fabricCanvas.setHeight(img.height)
@@ -460,7 +460,7 @@ export default {
         console.log("Found no previous annotated data...")
         // console.log(this.getFileCurrentPrefix())
         // imgData = "data:" + res.headers["content-type"] + ";base64," + this.utf8_to_b64(res.data).toString('base64')
-        new fabric.Image.fromURL(axios.defaults.baseURL+'/vf/storage/minio/get/image?'+ params.toString(),
+        new fabric.Image.fromURL(axios.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
             function (img) {
               fabricCanvas.setWidth(img.width)
               fabricCanvas.setHeight(img.height)
@@ -473,7 +473,7 @@ export default {
         );
         axios.defaults.timeout = 30000;
         axios
-            .get("/vf/storage/minio/get/text/", {params: params})
+            .get(process.env.VUE_APP_API_MINIO_GET_TEXT, {params: params})
             .then(res => {
               this.ocrText = res["data"]['text']
               // console.info(res);
@@ -481,7 +481,7 @@ export default {
             .catch((err) => alert(err));
 
         axios
-            .get("/vf/storage/minio/get/textinfo/", {params: params})
+            .get(process.env.VUE_APP_API_MINIO_GET_TEXTINFO, {params: params})
             .then(res => {
               // this.ocrText = res["data"]['text']
               console.info(res);
@@ -526,7 +526,7 @@ export default {
         "prefix": this.getFileCurrentPrefix(),
         "ocr_text": this.ocrText}
       axios
-          .post("/vf/db/image/insert/bboxjson",
+          .post(process.env.VUE_APP_API_DB_IMAGE_BBOX_GET,
               bboxdata, {timeout: 30000})
           .catch((err) => alert(err))
     },

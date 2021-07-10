@@ -164,7 +164,7 @@ export default {
       // Get the total rows count from backend to update progress bar
       let totalRows = 0
       axios
-          .post("/vf/db/text/get/counts", this.formData, headers)
+          .post(process.env.VUE_APP_API_DB_TEXT_COUNT, this.formData, headers)
           .then((res) => {
             console.log(res)
             totalRows = parseInt(res.data["count"])
@@ -177,7 +177,7 @@ export default {
       // Get all tags to setup the NER labels
       let tags = []
       axios
-          .post("vf/db/text/get/tags", this.formData, headers)
+          .post(process.env.VUE_APP_API_DB_GET_TAGS, this.formData, headers)
           .then((res) => {
             console.log(res)
             tags = res.data["tags"]
@@ -196,7 +196,7 @@ export default {
 
       let data = ""
       axios
-          .post("/vf/db/text/table/" + this.formData.start_id, this.formData, headers)
+          .post(process.env.VUE_APP_API_DB_TEXT_TABLE + this.formData.start_id, this.formData, headers)
           .then((res) => {
             console.log("get features", res)
             data = res.data["features"]

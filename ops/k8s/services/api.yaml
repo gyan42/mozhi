@@ -40,7 +40,7 @@ spec:
       containers:
         - name: mozhi-api-cpu
           imagePullPolicy: Always
-          image: "mageswaran1989/mozhi-api-cpu:0.4"
+          image: mageswaran1989/mozhi-api-cpu:latest
           ports:
             - name: http
               containerPort: 8088

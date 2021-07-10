@@ -237,7 +237,7 @@ export default {
       // Get the total rows count from backend to update progress bar
       let files = ''
       axios
-          .post("/vf/storage/minio/list", this.storageServer, headers)
+          .post(process.env.VUE_APP_API_MINIO_LIST, this.storageServer, headers)
           .then((res) => {
             console.log(res)
             files = res.data
@@ -251,7 +251,7 @@ export default {
 
       // Create the imag table to hold image annotations
       axios
-          .post("/vf/db/image/create", {"db_server": this.dbServerInfo, "experiment_name": this.experimentName}, headers)
+          .post(process.env.VUE_APP_API_DB_IMAGE_CREATE, {"db_server": this.dbServerInfo, "experiment_name": this.experimentName}, headers)
           .then((res) => {
             console.log(res)
           })

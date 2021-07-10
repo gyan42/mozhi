@@ -25,7 +25,12 @@ curl --location --request OPTIONS 'http://0.0.0.0:8088' \
 curl --location --request OPTIONS 'http://0.0.0.0:8088/vf/ner/model/spacy' --header 'Origin: http://mozhi.ai'
 
 
-curl mozhi.ai/api/
+curl mozhi.ai/api/v1/
+
+curl --header "Content-Type: application/json" --request POST --data '{"text":"Mozhi can solve NER problems"}' http://localhost:8088/vf/ner/model/spacy
+
+kubectl exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: application/json" --request POST --data '{"text":"Mozhi can solve NER problems"}' http://mozhi.ai/vf/ner/model/spacy
+
 ```
 
 ## Docker
@@ -34,7 +39,7 @@ curl mozhi.ai/api/
 
 **With CPU only**
 
-`export VERSION=0.3`
+`export VERSION=0.4`
 
 - [Dockerfile](../../../ops/docker/api/cpu/multistage/Dockerfile)
 - Build  

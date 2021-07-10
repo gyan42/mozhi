@@ -72,7 +72,7 @@ export default {
         timeout: 5000
       }
       axios
-          .post("/vf/ocr/engine/pytesseract/file", formData, headers)
+          .post(process.env.VUE_APP_API_OCR_TESSERACT, formData, headers)
           .then(res => {
             this.text = res["data"]['text']
             console.info(res);

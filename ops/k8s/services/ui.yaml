@@ -41,7 +41,7 @@ spec:
       containers:
         - name: mozhi-ui-cpu
           imagePullPolicy: Always
-          image: "mageswaran1989/mozhi-ui-cpu:0.4"
+          image: mageswaran1989/mozhi-ui-cpu:latest
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           ports:

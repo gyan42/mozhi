@@ -166,7 +166,7 @@ export default {
       this.setClasses(classes)
     },
     spacy() {
-      let api = "/vf/ner/model/spacy" //+ this.modelName
+      let api = process.env.VUE_APP_API_NER_SPACY //+ this.modelName
       console.info("full url", axios.defaults.baseURL)
       console.info("api", api)
 
@@ -224,7 +224,7 @@ export default {
         timeout: 5000
       }
       axios
-          .post("/vf/ocr/engine/pytesseract/file", formData, headers)
+          .post(process.env.VUE_APP_API_OCR_TESSERACT, formData, headers)
           .then(res => {
             this.inTextData = res["data"]['text']
             console.info(res);

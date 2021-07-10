@@ -48,7 +48,7 @@ spec:
       containers:
         - name: mozhi-api-torchserve
           imagePullPolicy: Always
-          image: "mageswaran1989/mozhi-api-cpu:0.1"
+          image: "mageswaran1989/mozhi-api-cpu:0.4"
           command: [ "/bin/bash" ]
           args: [ "-c", "torchserve --start --model-store /home/model-server/model-store --models all --ts-config configs/torch_serve_config.properties --foreground" ]
           ports:

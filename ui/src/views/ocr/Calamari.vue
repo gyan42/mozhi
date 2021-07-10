@@ -70,7 +70,7 @@ export default {
         timeout: 30000
       }
       axios
-          .post("/vf/ocr/engine/calamari", formData, headers)
+          .post(process.env.VUE_APP_API_OCR_CALAMARI, formData, headers)
           .then(res => {
             this.text = res["data"]['text']
             console.info(res);
