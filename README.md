@@ -1,4 +1,4 @@
-# Mozhi - A complete software stack for Named Entity Recognition tasks
+# Mozhi - A full stack for Named Entity Recognition tasks
 
 ![](docs/drawio/mozhi_software_stack.png)
 

@@ -25,7 +25,7 @@ spec:
             - name: mozhi-postgresql-db-disk
               mountPath: /data
           # Config from ConfigMap
-          enmozhirom:
+          envFrom:
             - configMapRef:
                 name: mozhi-postgres-db-config
   # Volume Claim
