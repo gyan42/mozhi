@@ -1,15 +1,15 @@
 : '
 Use this script to build docker images and push it to default dockerhub repo
 1) Frontend
-./scripts/k8s-helper.sh -f frontend -v 0.4
+./scripts/d2d-helper.sh -f frontend -v 0.6
 2) Backend
-./scripts/k8s-helper.sh -f backend -v 0.4
+./scripts/d2d-helper.sh -f backend -v 0.6
 3) All
-./scripts/k8s-helper.sh -f all -v 0.4
+./scripts/d2d-helper.sh -f all -v 0.6
 4) Delete and reapply K8s objects
-./scripts/k8s-helper.sh -f killnrestart
+./scripts/d2d-helper.sh -f killnrestart
 5) Update existing K8s objects
-./scripts/k8s-helper.sh -f update
+./scripts/d2d-helper.sh -f update
 '
 while getopts f:v: flag
 do
@@ -37,15 +37,15 @@ api_image() {
   docker push mageswaran1989/mozhi-api-cpu:latest
 }
 
-apply_mozhi_k8s() {
-  kubectl apply -f ops/k8s/services/ --v=0
+apply_mozhi_d2d() {
+  kubectl apply -f ops/d2d/services/ --v=0
   kubectl get all
 }
 
 kill_and_restart() {
-  # Deletes all K8s objects with label "mozhi"
+  # Deletes all d2d objects with label "mozhi"
   kubectl delete pods,services,deployments,ingress -l org=mozhi --v=0
-  apply_mozhi_k8s
+  apply_mozhi_d2d
 }
 
 start_minikube() {
@@ -58,13 +58,13 @@ then
   ui_image
 elif [ "$FLAG" == "backend" ]; then
   api_images
-elif [ "$FLAG" == "aall" ]; then
+elif [ "$FLAG" == "all" ]; then
   ui_image
   api_image
 elif [ "$FLAG" == "killandrestart" ]; then
   kill_and_restart
 elif [ "$FLAG" == "update" ]; then
-  apply_mozhi_k8s
+  apply_mozhi_d2d
 else
   echo "Invalid choice"
 fi

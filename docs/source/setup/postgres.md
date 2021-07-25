@@ -66,17 +66,37 @@ print(data)
 
 **2. Docker**
 
+[Reference](https://towardsdatascience.com/local-development-set-up-of-postgresql-with-docker-c022632f13ea)
+
+```bash
+# Postgresql Environment variables
+# https://github.com/docker-library/docs/blob/master/postgres/README.md
+    POSTGRES_PASSWORD
+    POSTGRES_USER
+    PGDATA
+    POSTGRES_DB
+    POSTGRES_INITDB_ARGS
+```
+
 ```
 docker pull postgres
-mkdir ${HOME}/.mozhi/postgres-data/
+mkdir -p ${HOME}/.mozhi/postgres-data/
 
 docker run -d \
-	--name mozhi-db-server \
+	--name mozhi-db-server-test \
+	-e POSTGRES_USER=mozhi \
 	-e POSTGRES_PASSWORD=mozhi \
 	-v ${HOME}/postgres-data/:/var/lib/postgresql/data \
-    -p 5432:5432
+    -p 5432:5432 \
     postgres
-        
+
+psql -h localhost -U mozhi # pass: mozhi     
+
+psql -h mypostgres -U postgres # pass: mozhi     
+
+
+# clear docker volume data if needed
+sudo rm -rf ${HOME}/postgres-data/ 
 ```
 
 **3. Kubernetes**
@@ -85,7 +105,23 @@ docker run -d \
 cd /path/to/mozhi/
 kubectl apply -f ops/k8s/services/postgresql-configmap.yaml
 kubectl apply -f ops/k8s/services/postgresql.yaml
-kubectl port-forward service/vf-postgresql-db-lb 5432
+
+kubectl apply -f ops/k8s/services/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/reactive-tech/kubegres/v1.7/kubegres.yaml
+kubectl apply -f ops/k8s/postgres/mozhi-postgres-secret.yaml 
+kubectl apply -f ops/k8s/postgres/mozhi-postgres.yaml
+kubectl get pod,statefulset,svc,configmap -o wide -n mozhi
+ 
+# test the service
+kubectl exec -it service/mozhi-postgres-db -n mozhi -- bash
+ >> psql -U postgres
+ >> mozhi
+ 
+ 
+kubectl -n mozhi port-forward service/mozhi-postgres-db 4321:5432
+
+psql -h localhost -U postgres
+>>mozhi
 ```
 
 

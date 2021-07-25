@@ -26,6 +26,9 @@ kubectl get all -n kube-system
 minikube addons enable ingress
 
 minikube dashboard
+
+kubectl delete all --all
+
 ```
 
 **Change owner and group**  

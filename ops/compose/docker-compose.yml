@@ -29,6 +29,15 @@ services:
     networks:
       - vf_docker_network
 
+#  - [PGAdmin](http://localhost:5050/)
+#      - `user: admin@admin.com  pass: root`
+#      - Create a new connection `user: Mozhi pass Mozhi`
+#      - Test from postgresql Command line
+#        ```
+#          psql --host=localhost --dbname=mozhidb --username=mozhi
+#        ```
+#
+
   # https://raw.githubusercontent.com/minio/minio/master/docs/orchestration/docker-compose/docker-compose.yaml
   minio:
     container_name: vf-storage-server

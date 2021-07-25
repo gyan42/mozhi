@@ -1,4 +1,4 @@
-# Load and Prepare Data for UI
+# Load and Prepare Demo Data for UI
 
 - [MinIO](https://min.io/) is used as self hosted object store that is similar to S3.
 
@@ -7,13 +7,14 @@ demo data to MinIO server.
 
 **Important**: Create alias for MinIO server, refer [here](minio.md)
 ```#create alias to MinIO server, if not done already
-mcli alias set myminio http://192.168.0.142:9000 admin password
+mcli alias set mozhiminio http://localhost:9000 mozhi mozhi123
 ```
 
-- [Postgresql](Postgres.md) is used as DB store.
+- [Postgresql](postgres.md) is used as DB store.
 
+------------------------------------------------------------------------------------------------------------------------
 
-1. Text Data : ConLL 2003 dataset is loaded into Possgresql Database server to demonstrate the tagger 
+1. Text Data : ConLL 2003 dataset is loaded into Postgresql Database server to experience the tagger 
 ```bash
 cd /path/to/mozhi/
 
@@ -29,39 +30,37 @@ python mozhi/bin/db/upload.py \
 --experiment_name conll2003 \
 --is_delete true \
 --is_conll true \
---dir_root data/ner/conll/2003/
+--dir_root data/conll/2003/
 ```
-
-
 
 2. Images
 
 ```bash
 #create bucket and copy data
-mcli mb myminio/mozhi/
-mcli policy set download myminio/mozhi/
+mcli mb mozhiminio/mozhi/
+mcli policy set download mozhiminio/mozhi/
 # copy receipts
-mcli mb myminio/mozhi/data/receipts/
-mcli cp data/receipts/* myminio/mozhi/data/receipts/
+mcli mb mozhiminio/mozhi/data/receipts/
+mcli cp data/receipts/* mozhiminio/mozhi/data/receipts/
 
-mcli ls myminio/mozhi/data/receipts/
+mcli ls mozhiminio/mozhi/data/receipts/
 ```
 
 3. Model files, to build model refer [here](hf_model_training.md)
 
 ```bash
 # create bucket folders
-mcli mb myminio/mozhi/model-store/
+mcli mb mozhiminio/mozhi/model-store/
 
 # copy from local build model, if trained
-mcli cp ${HOME}/.mozhi/model_store/bertv1.mar myminio/mozhi/model-store/
+mcli cp ${HOME}/.mozhi/model_store/bertv1.mar mozhiminio/mozhi/model-store/
 
 # or use prebuild image from Git repo (preferred for demo purpose)
 cd /path/to/mozhi/data
 git clone https://github.com/gyan42/model-store
-mcli cp model-store/hugging_face/bertv1.mar myminio/mozhi/model-store/
+mcli cp model-store/hugging_face/bertv1.mar mozhiminio/mozhi/model-store/
 # important make the file downloadable
-mcli policy set public myminio/mozhi/model-store/bertv1.mar
+mcli policy set public mozhiminio/mozhi/model-store/bertv1.mar
 ```
 
 4. Register the model on Torch Serve 

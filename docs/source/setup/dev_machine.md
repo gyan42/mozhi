@@ -1,6 +1,6 @@
 # Setting up Developer Machine
 
-# Installations
+## Installations
 ### 1. Ubuntu System Setup
 
 [Cuda 11.1 Ubuntu 20.4](https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=deblocal)
@@ -57,6 +57,8 @@ MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password minio server /opt/minio/data/
 mc alias set myminio http://192.168.0.142:9000 admin password
 ```
 
+## [API Developement](api.md)
+## [UI Develoepment](ui.md)
 
 ## Folder Structure
 
@@ -71,5 +73,3 @@ mozhi/
        ... # mozhi DL framework source code 
 ```
 
-## [API](api.md)
-## [UI](ui.md)

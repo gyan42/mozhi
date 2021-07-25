@@ -51,6 +51,7 @@ app.add_middleware(
 def read_root(request: Request):
     return {"message": "Hello, Welcome to Mozhi API.", "root_path": request.scope.get("root_path")}
 
+
 @app.get("/hw")
 def read_main(request: Request):
     return {"message": "Hello World! Mozhi backend responds as expected.", "root_path": request.scope.get("root_path")}
@@ -64,8 +65,9 @@ def check_routes(request: Request):
         for route in request.app.routes
         if "rest_of_path" not in route.path
     ]
-    if request.url.path not in url_list:
-        return JSONResponse({"detail": "Not Found"}, status.HTTP_404_NOT_FOUND)
+    # Dump fix for /mozhi/db/text/table/
+    if request.url.path not in url_list and '/mozhi/db/text/table/' not in request.url.path:
+        return JSONResponse({"detail": request.url.path + " Not Found"}, status.HTTP_404_NOT_FOUND)
 
 
 # Handle CORS preflight requests

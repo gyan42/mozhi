@@ -1,0 +1,21 @@
+apiVersion: kubegres.reactive-tech.io/v1
+kind: Kubegres
+metadata:
+  name: mozhi-postgres-db
+  namespace: mozhi
+spec:
+   replicas: 3
+   image: postgres:13.2
+   database:
+      size: 200Mi
+   env:
+      - name: POSTGRES_PASSWORD
+        valueFrom:
+           secretKeyRef:
+              name: mozhi-postgre-secret
+              key: superUserPassword
+      - name: POSTGRES_REPLICATION_PASSWORD
+        valueFrom:
+           secretKeyRef:
+              name: mozhi-postgre-secret
+              key: replicationUserPassword

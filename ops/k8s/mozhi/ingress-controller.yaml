@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mozhi-api-ingress
+  namespace: mozhi
   labels:
     org: mozhi
   annotations:

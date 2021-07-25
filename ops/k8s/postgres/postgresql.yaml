@@ -1,0 +1,62 @@
+## PostgreSQL StatefulSet
+## Ref: https://www.bmc.com/blogs/kubernetes-postgresql/
+#apiVersion: apps/v1
+#kind: StatefulSet
+#metadata:
+#  name: mozhi-postgresql-db
+#  namespace: mozhi
+#  labels:
+#    app: mozhi-postgresql-db
+#    org: mozhi
+#spec:
+#  serviceName: mozhi-postgresql-db-svc
+#  selector:
+#    matchLabels:
+#      app: mozhi-postgresql-db
+#  replicas: 1
+#  template:
+#    metadata:
+#      namespace: mozhi
+#      labels:
+#        app: mozhi-postgresql-db
+#        org: mozhi
+#    spec:
+#      containers:
+#        - name: mozhi-postgresql-db
+#          image: postgres:latest
+#          volumeMounts:
+#            - name: mozhi-postgresql-db-disk
+#              mountPath: /var/lib/postgresql/data
+#          # Config from ConfigMap
+#          envFrom:
+#            - configMapRef:
+#                name: mozhi-postgres-db-config
+#  # Volume Claim
+#  volumeClaimTemplates:
+#    - metadata:
+#        namespace: mozhi
+#        name: mozhi-postgresql-db-disk
+#        labels:
+#          org: mozhi
+#      spec:
+#        accessModes: ["ReadWriteOnce"]
+#        resources:
+#          requests:
+#            storage: 2Gi
+#
+#---
+## PostgreSQL StatefulSet Service
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  namespace: mozhi
+#  name: mozhi-postgresql-db-svc
+#  labels:
+#    org: mozhi
+#spec:
+#  selector:
+#    app: mozhi-postgresql-db
+#  type: LoadBalancer
+#  ports:
+#    - port: 5432
+#      targetPort: 5432

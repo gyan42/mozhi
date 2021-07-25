@@ -39,7 +39,9 @@ kubectl exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: applicati
 
 **With CPU only**
 
-`export VERSION=0.4`
+`
+export VERSION=0.5
+`
 
 - [Dockerfile](../../../ops/docker/api/cpu/multistage/Dockerfile)
 - Build  
@@ -47,9 +49,10 @@ kubectl exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: applicati
 docker build -t mozhi-api-cpu:latest -f ops/docker/api/cpu/multistage/Dockerfile .
 `
 - Debug  
-`
-docker container run -p 8088:80 -it mozhi-api-cpu bash
-`
+```
+docker container run -p 8088:8088 -it mozhi-api-cpu bash
+docker container run -p 8088:8088 -it mageswaran1989/mozhi-api-cpu:latest bash
+```
 - Run Local Image  
 `
 docker container run -p 8088:8088 -it mozhi-api-cpu
@@ -63,7 +66,7 @@ docker container run -p 8088:8088 -it mageswaran1989/mozhi-api-cpu:$VERSION
 docker tag mozhi-api-cpu:latest mageswaran1989/mozhi-api-cpu:$VERSION
 docker push mageswaran1989/mozhi-api-cpu:$VERSION
 
-docker tag mozhi-ui-cpu:latest mageswaran1989/mozhi-api-cpu:latest
+docker tag mozhi-api-cpu:latest mageswaran1989/mozhi-api-cpu:latest
 docker push mageswaran1989/mozhi-api-cpu:latest
 ```
 
@@ -90,7 +93,7 @@ docker container run --gpus all -p 8088:8088 -it mageswaran1989/mozhi-api-gpu:0.
 docker tag mozhi-api-gpu:latest mageswaran1989/mozhi-api-gpu:$VERSION
 docker push mageswaran1989/mozhi-api-gpu:$VERSION
 
-docker tag mozhi-ui-cpu:latest mageswaran1989/mozhi-api-gpu:latest
+docker tag mozhi-api-gpu:latest mageswaran1989/mozhi-api-gpu:latest
 docker push mageswaran1989/mozhi-api-gpu:latest
 ```
 
@@ -101,7 +104,7 @@ docker push mageswaran1989/mozhi-api-gpu:latest
 
 - Start  
 `
-kubectl apply -f ops/k8s/services/
+kubectl apply -f ops/k8s/mozhi/api.yaml
 `
 - Debug
 `

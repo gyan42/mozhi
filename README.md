@@ -35,43 +35,20 @@
 ![](docs/images/mozhi_ner_playground.png)
 
 
-## [How to run?](how)
+## [How to run the demo?](how)
 
-- **Configs used are placed [here](configs)**
-- **Build and run Docker containers:** 
-
-```
-minikube start
-minikube addons enable ingress
-kubectl apply -f ops/k8s/services/
-echo "$(kubectl get ingress | grep mozhi-api-ingress | cut -d' ' -f10) mozhi.ai"
-
-# copy above line and add at top 
-sudo vi /etc/hosts 
-```
-
-[Mozhi UI](mozhi.ai)
-
-- **Training Models** (GPU is a must! Skip this part if you don't have a GPU and use prebuild models)
-  - **[Hugging Face Transformers Models](docs/source/setup/hf_model_training.md)**
-  - **[Pytorch Models](docs/source/setup/pt_model_training.md)** (Work In Progress)
-  - **[Tensorflow Models](docs/source/setup/tf_model_training.md)** (Work In Progress)
-
-- Follow the steps **[here to load and prepare the data for UI](docs/source/setup/prepare_data.md)** that are been used by the demo.
-
+- [Set up local Kubernets cluster using Minikube](docs/source/setup/on_minikune.md)
+- Training Models (GPU is a must! Skip this part if you don't have a GPU and use prebuild models)
+  - [Hugging Face Transformers Models](docs/source/setup/hf_model_training.md)
+  - [Pytorch Models](docs/source/setup/pt_model_training.md) (Work In Progress)
+  - [Tensorflow Models](docs/source/setup/tf_model_training.md) (Work In Progress)
+- Load demo data by following the steps [here](docs/source/setup/prepare_data.md)
 - Reference demo links
-  - [Mozhi UI](https://localhost:8080)
+  - [Mozhi UI](mozhi.ai)
   - [Mozhi API](https://localhost:8088)
   - [MinIO](http://localhost:9000)
-      - user: `admin`
-      - password: `password`
-  - [PGAdmin](http://localhost:5050/)
-      - `user: admin@admin.com  pass: root`
-      - Create a new connection `user: Mozhi pass Mozhi`
-      - Test from postgresql Command line
-        ```
-          psql --host=localhost --dbname=Mozhidb --username=Mozhi
-        ```
+      - user: `mozhi`
+      - password: `mozhi123`
 
 ## [Testing](#testing)
 
@@ -103,7 +80,7 @@ make Mozhi
 - Port errors
 ```bash
 # command to check port usage
-export PORTNO=8080
+export PORTNO=8088
 sudo lsof -i -P -n | grep LISTEN | grep $PORTNO
 
 #command to kill all running docker instances
