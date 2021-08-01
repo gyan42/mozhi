@@ -46,4 +46,4 @@ class HFConll2003Dataset(IDataset):
 if __name__ == "__main__":
     # train_data = get_conll_data("train")
     # print(train_data)
-    train_data = Conll2003Dataset()
+    train_data = HFConll2003Dataset()

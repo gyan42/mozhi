@@ -21,8 +21,23 @@ RUN --mount=type=cache,target=/var/cache/apt \
     libgl1-mesa-glx &&\
     apt clean && rm -rf /var/lib/apt/lists/*
 
+RUN pip3 install -U pip setuptools
 RUN pip3 install calamari-ocr
 COPY ops/docker/ocr/requirements.txt /
 RUN --mount=type=cache,target=/root/.cache/pip3 pip3 install --no-cache-dir -r /requirements.txt
 RUN ln -s /usr/local/cuda-11.1/targets/x86_64-linux/lib/libcusolver.so.11 /usr/local/cuda-11.1/targets/x86_64-linux/lib/libcusolver.so.10
-ENV export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64/:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64/:$LD_LIBRARY_PATH
+
+RUN mkdir -p /home/model-server/model-store
+RUN mkdir /mozhi
+RUN mkdir /services
+COPY mozhi /mozhi
+COPY api /api
+COPY configs /configs
+COPY data/SROIE2019/model-output /home/model-server/model-store
+EXPOSE 8089
+
+RUN chmod 777 api/start_calamari.sh
+ENV PYTHONPATH "${PYTHONPATH}:/"
+ENV PYTHONPATH "${PYTHONPATH}:/api"
+CMD api/start_calamari.sh

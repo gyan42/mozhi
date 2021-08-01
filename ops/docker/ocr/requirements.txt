@@ -4,4 +4,5 @@ uvicorn==0.13.4
 python-multipart==0.0.5
 fastapi==0.63.0
 pytesseract==0.3.7
-starlette==0.15.0
+craft-text-detector==0.3.4
+# starlette==0.15.0

@@ -30,18 +30,18 @@ run --network host \
 mozhi-ocr-gpu:latest bash 
 ```
 
-Prepare data
+Prepare data on Machine:
 
 ```
 cd /path/to/mozhi/
 export PYTHONPATH=$PYTHONPATH:$(pwd)/mozhi/
 python mozhi/ocr/text_cropping/cropping.py --input_dir=data/SROIE2019/0325updated.task1train\(626p\)/ \
 --file_ext=.jpg \
---out_dir=/tmp/vf/cropper/ \
+--out_dir=data/SROIE2019/cropped/ \
 --num_threads=8
 ```
 
-Calamari Training
+Calamari Training on Docker:
 
 ```
 ls /data/0325updated.task1train\(626p\)/
@@ -50,11 +50,9 @@ calamari-train \
 --device.gpus 0 \
 --trainer.gen SplitTrain \
 --trainer.gen.validation_split_ratio=0.2  \
---trainer.output_dir /data/model_output \
+--trainer.output_dir /data/model-output/ \
 --trainer.epochs 25 \
 --early_stopping.frequency=1 \
 --early_stopping.n_to_go=3 \
---train.images /data/*.jpg
-
-0325updated.task1train\(626p\)/*.jpg
+--train.images /data/cropped/*.jpg
 ```

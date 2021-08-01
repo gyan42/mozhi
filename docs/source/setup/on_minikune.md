@@ -1,7 +1,12 @@
-# A local cluster using Minikube
+# Minikube
 
-The demo is local minikube, hence tunneling and port forwardinga re used to access kubernetes service.
+The demo is on local cluster using minikube, hence tunneling and port forwarding 
+are used to access kubernetes service.
 
+Required software packages:
+- [Kubernetes command line tool](https://kubernetes.io/docs/tasks/tools/) : `kubectl`
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+  
 - **Configs used are placed [here](configs)**
 
 - Start minikube
@@ -34,7 +39,7 @@ minikube tunnel
 - Get ingress address and add it to host machine for URL access
 ```
 echo "$(kubectl get ingress -n mozhi | grep mozhi-api-ingress | cut -d' ' -f10) mozhi.ai"
-# copy above line and add at top 
+# copy above line and add at the top of  /etc/hosts file
 sudo vi /etc/hosts 
 ```
 - Create required postgres user credentials and DB
@@ -57,6 +62,7 @@ kubectl  port-forward service/mozhi-postgres-db 4321:5432 -n mozhi
 # https://localhost:9000/
 kubectl port-forward service/minio 9000:80 -n mozhi
 ```
+Create alias : `mcli alias set mozhiminio http://localhost:9000 mozhi mozhi123`
 
 ```
 # https://localhost:9090/
@@ -64,16 +70,12 @@ kubectl port-forward service/minio 9000:80 -n mozhi
 kubectl port-forward service/minio-console 9090:9443 -n mozhi
 ```  
 
-Create alias : `mcli alias set mozhiminio http://localhost:9000 mozhi mozhi123`
-
 - Misc commands
 ```
 kubectl get all -n default
 kubectl get all -n mozhi
 kubectl get all -n kubegres-system
-```
 
-```
 # to delete all objects in namespaces (be careful! it might delete your other objects)
 kubectl delete all --all -n mozhi
 kubectl delete all --all -n kubegres-system

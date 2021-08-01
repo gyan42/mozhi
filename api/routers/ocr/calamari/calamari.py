@@ -12,13 +12,34 @@ from PIL import Image
 
 from starlette.responses import Response
 
-from mozhi.ocr.text_detection import craft
+# import Craft class
+from craft_text_detector import Craft
+
+
+# from mozhi.ocr.text_detection import craft
 from mozhi.ocr.text_extraction import calamari
 from mozhi.ocr.text_stiching import combine_text_files
 
 
 router = APIRouter()
-STORE_PATH = '/tmp/mozhi/data'
+STORE_PATH = '/tmp/mozhi/'
+
+craft_text_detection_craft = Craft(crop_type="poly", cuda=False)
+
+
+def do_ocr(input_image_path, intermediate_path, file_name):
+    # craft.text_detection_craft(input_image_path=input_image_path,
+    #                            output_dir=intermediate_path)
+
+    craft_text_detection_craft.output_dir = intermediate_path
+    # apply craft text detection and export detected regions to output directory
+    prediction_result = craft_text_detection_craft.detect_text(input_image_path)
+
+    sentences = calamari.handle_craft_intermediate_files(source_dir=intermediate_path + '/' + file_name.split(".")[0] + "_crops/")
+
+    text = "\n".join(sentences)
+
+    return text
 
 
 # https://github.com/fcakyon/craft-text-detector
@@ -28,35 +49,35 @@ def calamri_engine(file: UploadFile = File(...)):
     file_bytes = file.file.read()
     image = Image.open(io.BytesIO(file_bytes))
     new_file_name = f"{str(uuid.uuid4())}_{file.filename}"
+
     if os.path.exists(STORE_PATH):
-        name = f"{STORE_PATH}/{new_file_name}"
+        input_image_path = f"{STORE_PATH}/data/{new_file_name}"
     else:
         os.makedirs(f'{STORE_PATH}/', exist_ok=True)
-        name = f"{STORE_PATH}/{new_file_name}"
+        input_image_path = f"{STORE_PATH}/data/{new_file_name}"
 
-    image.save(name)
+    image.save(input_image_path)
 
-    input_image_path = name
-    intermediate_path = f"/tmp/vf/craft/{new_file_name}/"
-    text_out_path = f"/tmp/vf/output/{new_file_name}"
-    out_text_file_path = f"/tmp/vf/output/text/"
+    intermediate_path = f'{STORE_PATH}/craft/{new_file_name}/'
 
-    if not os.path.exists(out_text_file_path):
-        os.makedirs(out_text_file_path)
-
-    out_text_file_path = f"{out_text_file_path}/{new_file_name}.txt"
-
-    craft.text_detection_craft(input_image_path=input_image_path,
-                               output_dir=intermediate_path)
-
-    calamari.handle_files(source_dir=intermediate_path,
-                          destination_dir=text_out_path)
-
-    # TODO file name with multiple `.` may go for toss
-    combine_text_files.handle_file(input_txt_files_dir=text_out_path+f'/{new_file_name.split(".")[0]}_crops/',
-                                   out_file_path=out_text_file_path)
-
-    text = "".join(open(out_text_file_path, "r").readlines())
-
+    text = do_ocr(input_image_path=input_image_path,
+                  intermediate_path=intermediate_path,
+                  file_name=new_file_name)
+    print(text)
     # return {"text": text}
     return Response(content=json.dumps({"text": text}), media_type="application/json")
+
+
+if __name__ == '__main__':
+    res = do_ocr(input_image_path="/data/receipts/X51008142068.jpg",
+                 intermediate_path="/data/test/",
+                 file_name="X51008142068")
+    print(res)
+
+
+"""
+cd /path/to/mozhi
+docker build -t mozhi-ocr-gpu:latest -f ops/docker/ocr/Dockerfile .
+docker container  run -v $(pwd)/data:/data --network host --gpus all -it --rm --name mozhi-ocr-gpu mozhi-ocr-gpu:latest bash
+python3 api/routers/ocr/calamari/calamari.py
+"""
