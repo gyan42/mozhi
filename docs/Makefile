@@ -23,6 +23,7 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 docs:
+	mkdir -p source/mozhi/
 	touch source/mozhi/temp.rst
 	rm source/mozhi/*.rst
 	sphinx-apidoc -E -M -d 2 -f ../mozhi/ -o source/mozhi/

@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozhi.model.pytorch.torch_crf &mdash; Mozhi 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/vf_style.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="../../../../index.html">
+                Mozhi
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a></li>
+        
+          <li><a href="../../../index.html">Module code</a></li>
+        
+      <li>mozhi.model.pytorch.torch_crf</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="../../../../search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../setup/setup.html">Developers Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/on_minikune.html">Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/dev_machine.html">Setting up Developer Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/dev_machine.html#installations">Installations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/api.html">mozhi API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ocr.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/hf_model_training.html#preparing-the-model">Preparing the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/hf_model_training.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/dl.html#loss-functions">Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/model_serving.html">Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/model_serving.html#tensorflow-model-serving">Tensorflow Model Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/model_serving.html#pytorch-serve">PyTorch Serve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/must_have_maths.html">Must Have</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/must_have_maths.html#kl-divergence">KL Divergence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/must_have_maths.html#cross-entorpy">Cross Entorpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/must_have_maths.html#residula-connection">Residula connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/tf.html">Tensorflow Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ner/ner.html">NER - Named Entity Recognition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ner/ner.html#what-is-ner">What is NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ner/ner.html#use-cases-of-ner">Use cases of NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ner/ner.html#methods-to-extract-ner">Methods to extract NER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/intro.html">NER - Named Entity Recognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/datasets.html">NER Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/deeplearning.html">Deep Learning Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/papers.html">Papers Related to NER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/references.html">Wild References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <h1>Source code for mozhi.model.pytorch.torch_crf</h1><div class="highlight"><pre>
+<span></span><span class="c1"># https://towardsdatascience.com/implementing-a-linear-chain-conditional-random-field-crf-in-pytorch-16b0b9c4b4ea</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+
+
+<div class="viewcode-block" id="CRF"><a class="viewcode-back" href="../../../../mozhi/mozhi.model.pytorch.html#mozhi.model.pytorch.torch_crf.CRF">[docs]</a><span class="k">class</span> <span class="nc">CRF</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Linear-chain Conditional Random Field (CRF).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nb_labels (int): number of labels in your tagset, including special symbols.</span>
+<span class="sd">        bos_tag_id (int): integer representing the beginning of sentence symbol in</span>
+<span class="sd">            your tagset.</span>
+<span class="sd">        eos_tag_id (int): integer representing the end of sentence symbol in your tagset.</span>
+<span class="sd">        pad_tag_id (int, optional): integer representing the pad symbol in your tagset.</span>
+<span class="sd">            If None, the model will treat the PAD as a normal tag. Otherwise, the model</span>
+<span class="sd">            will apply constraints for PAD transitions.</span>
+<span class="sd">        batch_first (bool): Whether the first dimension represents the batch dimension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">nb_labels</span><span class="p">,</span> <span class="n">bos_tag_id</span><span class="p">,</span> <span class="n">eos_tag_id</span><span class="p">,</span> <span class="n">pad_tag_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_labels</span> <span class="o">=</span> <span class="n">nb_labels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">BOS_TAG_ID</span> <span class="o">=</span> <span class="n">bos_tag_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EOS_TAG_ID</span> <span class="o">=</span> <span class="n">eos_tag_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PAD_TAG_ID</span> <span class="o">=</span> <span class="n">pad_tag_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_first</span> <span class="o">=</span> <span class="n">batch_first</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_labels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_labels</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_weights</span><span class="p">()</span>
+
+<div class="viewcode-block" id="CRF.init_weights"><a class="viewcode-back" href="../../../../mozhi/mozhi.model.pytorch.html#mozhi.model.pytorch.torch_crf.CRF.init_weights">[docs]</a>    <span class="k">def</span> <span class="nf">init_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># initialize transitions from a random uniform distribution between -0.1 and 0.1</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="c1"># enforce contraints (rows=from, columns=to) with a big negative number</span>
+        <span class="c1"># so exp(-10000) will tend to zero</span>
+
+        <span class="c1"># no transitions allowed to the beginning of sentence</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">BOS_TAG_ID</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10000.0</span>
+        <span class="c1"># no transition alloed from the end of sentence</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">EOS_TAG_ID</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10000.0</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PAD_TAG_ID</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># no transitions from padding</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">PAD_TAG_ID</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10000.0</span>
+            <span class="c1"># no transitions to padding</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PAD_TAG_ID</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10000.0</span>
+            <span class="c1"># except if the end of sentence is reached</span>
+            <span class="c1"># or we are already in a pad position</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">PAD_TAG_ID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">EOS_TAG_ID</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">PAD_TAG_ID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PAD_TAG_ID</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span></div>
+
+<div class="viewcode-block" id="CRF.forward"><a class="viewcode-back" href="../../../../mozhi/mozhi.model.pytorch.html#mozhi.model.pytorch.torch_crf.CRF.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emissions</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the negative log-likelihood. See `log_likelihood` method.&quot;&quot;&quot;</span>
+        <span class="n">nll</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">emissions</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nll</span></div>
+
+<div class="viewcode-block" id="CRF.log_likelihood"><a class="viewcode-back" href="../../../../mozhi/mozhi.model.pytorch.html#mozhi.model.pytorch.torch_crf.CRF.log_likelihood">[docs]</a>    <span class="k">def</span> <span class="nf">log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emissions</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the probability of a sequence of tags given a sequence of</span>
+<span class="sd">        emissions scores.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            emissions (torch.Tensor): Sequence of emissions for each label.</span>
+<span class="sd">                Shape of (batch_size, seq_len, nb_labels) if batch_first is True,</span>
+<span class="sd">                (seq_len, batch_size, nb_labels) otherwise.</span>
+<span class="sd">            tags (torch.LongTensor): Sequence of labels.</span>
+<span class="sd">                Shape of (batch_size, seq_len) if batch_first is True,</span>
+<span class="sd">                (seq_len, batch_size) otherwise.</span>
+<span class="sd">            mask (torch.FloatTensor, optional): Tensor representing valid positions.</span>
+<span class="sd">                If None, all positions are considered valid.</span>
+<span class="sd">                Shape of (batch_size, seq_len) if batch_first is True,</span>
+<span class="sd">                (seq_len, batch_size) otherwise.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: the (summed) log-likelihoods of each sequence in the batch.</span>
+<span class="sd">                Shape of (1,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># fix tensors order by setting batch as the first dimension</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_first</span><span class="p">:</span>
+            <span class="n">emissions</span> <span class="o">=</span> <span class="n">emissions</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">emissions</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+
+        <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_scores</span><span class="p">(</span><span class="n">emissions</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_log_partition</span><span class="p">(</span><span class="n">emissions</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">partition</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CRF.decode"><a class="viewcode-back" href="../../../../mozhi/mozhi.model.pytorch.html#mozhi.model.pytorch.torch_crf.CRF.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emissions</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find the most probable sequence of labels given the emissions using</span>
+<span class="sd">        the Viterbi algorithm.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            emissions (torch.Tensor): Sequence of emissions for each label.</span>
+<span class="sd">                Shape (batch_size, seq_len, nb_labels) if batch_first is True,</span>
+<span class="sd">                (seq_len, batch_size, nb_labels) otherwise.</span>
+<span class="sd">            mask (torch.FloatTensor, optional): Tensor representing valid positions.</span>
+<span class="sd">                If None, all positions are considered valid.</span>
+<span class="sd">                Shape (batch_size, seq_len) if batch_first is True,</span>
+<span class="sd">                (seq_len, batch_size) otherwise.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: the viterbi score for the for each batch.</span>
+<span class="sd">                Shape of (batch_size,)</span>
+<span class="sd">            list of lists: the best viterbi sequence of labels for each batch.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">emissions</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span> <span class="c1">#TODO device added?</span>
+
+        <span class="n">scores</span><span class="p">,</span> <span class="n">sequences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viterbi_decode</span><span class="p">(</span><span class="n">emissions</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scores</span><span class="p">,</span> <span class="n">sequences</span></div>
+
+    <span class="k">def</span> <span class="nf">_compute_scores</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emissions</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the scores for a given batch of emissions with their tags.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            emissions (torch.Tensor): (batch_size, seq_len, nb_labels)</span>
+<span class="sd">            tags (Torch.LongTensor): (batch_size, seq_len)</span>
+<span class="sd">            mask (Torch.FloatTensor): (batch_size, seq_len)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: Scores for each batch.</span>
+<span class="sd">                Shape of (batch_size,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_length</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+
+        <span class="c1"># save first and last tags to be used later</span>
+        <span class="n">first_tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">last_valid_idx</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">int</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">last_tags</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">last_valid_idx</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+
+        <span class="c1"># add the transition from BOS to the first tags for each batch</span>
+        <span class="n">t_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">BOS_TAG_ID</span><span class="p">,</span> <span class="n">first_tags</span><span class="p">]</span>
+
+        <span class="c1"># add the [unary] emission scores for the first tags for each batch</span>
+        <span class="c1"># for all batches, the first word, see the correspondent emissions</span>
+        <span class="c1"># for the first tags (which is a list of ids):</span>
+        <span class="c1"># emissions[:, 0, [tag_1, tag_2, ..., tag_nblabels]]</span>
+        <span class="n">e_scores</span> <span class="o">=</span> <span class="n">emissions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">first_tags</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+
+        <span class="c1"># the scores for a word is just the sum of both scores</span>
+        <span class="n">scores</span> <span class="o">+=</span> <span class="n">e_scores</span> <span class="o">+</span> <span class="n">t_scores</span>
+
+        <span class="c1"># now lets do this for each remaining word</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">):</span>
+
+            <span class="c1"># we could: iterate over batches, check if we reached a mask symbol</span>
+            <span class="c1"># and stop the iteration, but vecotrizing is faster due to gpu,</span>
+            <span class="c1"># so instead we perform an element-wise multiplication</span>
+            <span class="n">is_valid</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+
+            <span class="n">previous_tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">current_tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+
+            <span class="c1"># calculate emission and transition scores as we did before</span>
+            <span class="n">e_scores</span> <span class="o">=</span> <span class="n">emissions</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">current_tags</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+            <span class="n">t_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="n">previous_tags</span><span class="p">,</span> <span class="n">current_tags</span><span class="p">]</span>
+
+            <span class="c1"># apply the mask</span>
+            <span class="n">e_scores</span> <span class="o">=</span> <span class="n">e_scores</span> <span class="o">*</span> <span class="n">is_valid</span>
+            <span class="n">t_scores</span> <span class="o">=</span> <span class="n">t_scores</span> <span class="o">*</span> <span class="n">is_valid</span>
+
+            <span class="n">scores</span> <span class="o">+=</span> <span class="n">e_scores</span> <span class="o">+</span> <span class="n">t_scores</span>
+
+        <span class="c1"># add the transition from the end tag to the EOS tag for each batch</span>
+        <span class="n">scores</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="n">last_tags</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">EOS_TAG_ID</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">scores</span>
+
+    <span class="k">def</span> <span class="nf">_compute_log_partition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emissions</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the partition function in log-space using the forward-algorithm.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            emissions (torch.Tensor): (batch_size, seq_len, nb_labels)</span>
+<span class="sd">            mask (Torch.FloatTensor): (batch_size, seq_len)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: the partition scores for each batch.</span>
+<span class="sd">                Shape of (batch_size,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">nb_labels</span> <span class="o">=</span> <span class="n">emissions</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="c1"># in the first iteration, BOS will have all the scores</span>
+        <span class="n">alphas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">BOS_TAG_ID</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">emissions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">):</span>
+            <span class="n">alpha_t</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_labels</span><span class="p">):</span>
+
+                <span class="c1"># get the emission for the current tag</span>
+                <span class="n">e_scores</span> <span class="o">=</span> <span class="n">emissions</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">tag</span><span class="p">]</span>
+
+                <span class="c1"># broadcast emission to all labels</span>
+                <span class="c1"># since it will be the same for all previous tags</span>
+                <span class="c1"># (bs, nb_labels)</span>
+                <span class="n">e_scores</span> <span class="o">=</span> <span class="n">e_scores</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># transitions from something to our tag</span>
+                <span class="n">t_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[:,</span> <span class="n">tag</span><span class="p">]</span>
+
+                <span class="c1"># broadcast the transition scores to all batches</span>
+                <span class="c1"># (bs, nb_labels)</span>
+                <span class="n">t_scores</span> <span class="o">=</span> <span class="n">t_scores</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># combine current scores with previous alphas</span>
+                <span class="c1"># since alphas are in log space (see logsumexp below),</span>
+                <span class="c1"># we add them instead of multiplying</span>
+                <span class="n">scores</span> <span class="o">=</span> <span class="n">e_scores</span> <span class="o">+</span> <span class="n">t_scores</span> <span class="o">+</span> <span class="n">alphas</span>
+
+                <span class="c1"># add the new alphas for the current tag</span>
+                <span class="n">alpha_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">logsumexp</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+            <span class="c1"># create a torch matrix from alpha_t</span>
+            <span class="c1"># (bs, nb_labels)</span>
+            <span class="n">new_alphas</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">alpha_t</span><span class="p">)</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+
+
+            <span class="c1"># set alphas if the mask is valid, otherwise keep the current values</span>
+            <span class="n">is_valid</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">is_valid</span> <span class="o">=</span> <span class="n">is_valid</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+
+            <span class="n">alphas</span> <span class="o">=</span> <span class="n">is_valid</span> <span class="o">*</span> <span class="n">new_alphas</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">is_valid</span><span class="p">)</span> <span class="o">*</span> <span class="n">alphas</span>
+
+        <span class="c1"># add the scores for the final transition</span>
+        <span class="n">last_transition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">EOS_TAG_ID</span><span class="p">]</span>
+        <span class="n">end_scores</span> <span class="o">=</span> <span class="n">alphas</span> <span class="o">+</span> <span class="n">last_transition</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># return a *log* of sums of exps</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">logsumexp</span><span class="p">(</span><span class="n">end_scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_viterbi_decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emissions</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the viterbi algorithm to find the most probable sequence of labels</span>
+<span class="sd">        given a sequence of emissions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            emissions (torch.Tensor): (batch_size, seq_len, nb_labels)</span>
+<span class="sd">            mask (Torch.FloatTensor): (batch_size, seq_len)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: the viterbi score for the for each batch.</span>
+<span class="sd">                Shape of (batch_size,)</span>
+<span class="sd">            list of lists of ints: the best viterbi sequence of labels for each batch</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">nb_labels</span> <span class="o">=</span> <span class="n">emissions</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="c1"># in the first iteration, BOS will have all the scores and then, the max</span>
+        <span class="n">alphas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">BOS_TAG_ID</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">emissions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">backpointers</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">):</span>
+            <span class="n">alpha_t</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">backpointers_t</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_labels</span><span class="p">):</span>
+
+                <span class="c1"># get the emission for the current tag and broadcast to all labels</span>
+                <span class="n">e_scores</span> <span class="o">=</span> <span class="n">emissions</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">tag</span><span class="p">]</span>
+                <span class="n">e_scores</span> <span class="o">=</span> <span class="n">e_scores</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># transitions from something to our tag and broadcast to all batches</span>
+                <span class="n">t_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[:,</span> <span class="n">tag</span><span class="p">]</span>
+                <span class="n">t_scores</span> <span class="o">=</span> <span class="n">t_scores</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># combine current scores with previous alphas</span>
+                <span class="n">scores</span> <span class="o">=</span> <span class="n">e_scores</span> <span class="o">+</span> <span class="n">t_scores</span> <span class="o">+</span> <span class="n">alphas</span>
+
+                <span class="c1"># so far is exactly like the forward algorithm,</span>
+                <span class="c1"># but now, instead of calculating the logsumexp,</span>
+                <span class="c1"># we will find the highest score and the tag associated with it</span>
+                <span class="n">max_score</span><span class="p">,</span> <span class="n">max_score_tag</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># add the max score for the current tag</span>
+                <span class="n">alpha_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_score</span><span class="p">)</span>
+
+                <span class="c1"># add the max_score_tag for our list of backpointers</span>
+                <span class="n">backpointers_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_score_tag</span><span class="p">)</span>
+
+            <span class="c1"># create a torch matrix from alpha_t</span>
+            <span class="c1"># (bs, nb_labels)</span>
+            <span class="n">new_alphas</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">alpha_t</span><span class="p">)</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+
+            <span class="c1"># set alphas if the mask is valid, otherwise keep the current values</span>
+            <span class="n">is_valid</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">alphas</span> <span class="o">=</span> <span class="n">is_valid</span> <span class="o">*</span> <span class="n">new_alphas</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">is_valid</span><span class="p">)</span> <span class="o">*</span> <span class="n">alphas</span>
+
+            <span class="c1"># append the new backpointers</span>
+            <span class="n">backpointers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">backpointers_t</span><span class="p">)</span>
+
+        <span class="c1"># add the scores for the final transition</span>
+        <span class="n">last_transition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transitions</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">EOS_TAG_ID</span><span class="p">]</span>
+        <span class="n">end_scores</span> <span class="o">=</span> <span class="n">alphas</span> <span class="o">+</span> <span class="n">last_transition</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># get the final most probable score and the final most probable tag</span>
+        <span class="n">max_final_scores</span><span class="p">,</span> <span class="n">max_final_tags</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">end_scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># find the best sequence of labels for each sample in the batch</span>
+        <span class="n">best_sequences</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">emission_lengths</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">int</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+
+            <span class="c1"># recover the original sentence length for the i-th sample in the batch</span>
+            <span class="n">sample_length</span> <span class="o">=</span> <span class="n">emission_lengths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="c1"># recover the max tag for the last timestep</span>
+            <span class="n">sample_final_tag</span> <span class="o">=</span> <span class="n">max_final_tags</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="c1"># limit the backpointers until the last but one</span>
+            <span class="c1"># since the last corresponds to the sample_final_tag</span>
+            <span class="n">sample_backpointers</span> <span class="o">=</span> <span class="n">backpointers</span><span class="p">[:</span> <span class="n">sample_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># follow the backpointers to build the sequence of labels</span>
+            <span class="n">sample_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_best_path</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sample_final_tag</span><span class="p">,</span> <span class="n">sample_backpointers</span><span class="p">)</span>
+
+            <span class="c1"># add this path to the list of best sequences</span>
+            <span class="n">best_sequences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">max_final_scores</span><span class="p">,</span> <span class="n">best_sequences</span>
+
+    <span class="k">def</span> <span class="nf">_find_best_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_id</span><span class="p">,</span> <span class="n">best_tag</span><span class="p">,</span> <span class="n">backpointers</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Auxiliary function to find the best path sequence for a specific sample.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                sample_id (int): sample index in the range [0, batch_size)</span>
+<span class="sd">                best_tag (int): tag which maximizes the final score</span>
+<span class="sd">                backpointers (list of lists of tensors): list of pointers with</span>
+<span class="sd">                shape (seq_len_i-1, nb_labels, batch_size) where seq_len_i</span>
+<span class="sd">                represents the length of the ith sample in the batch</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                list of ints: a list of tag indexes representing the bast path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># add the final best_tag to our best path</span>
+        <span class="n">best_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">best_tag</span><span class="p">]</span>
+
+        <span class="c1"># traverse the backpointers in backwards</span>
+        <span class="k">for</span> <span class="n">backpointers_t</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">backpointers</span><span class="p">):</span>
+
+            <span class="c1"># recover the best_tag at this timestep</span>
+            <span class="n">best_tag</span> <span class="o">=</span> <span class="n">backpointers_t</span><span class="p">[</span><span class="n">best_tag</span><span class="p">][</span><span class="n">sample_id</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="c1"># append to the beginning of the list so we don&#39;t need to reverse it later</span>
+            <span class="n">best_path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">best_tag</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">best_path</span></div>
+</pre></div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mozhi.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>

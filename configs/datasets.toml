@@ -14,3 +14,4 @@
             ner_tag_col=3
             delete_cache=true
         [developement.datasets.HFConll2003Dataset]
+        [developement.datasets.HFSREIO2019Dataset]

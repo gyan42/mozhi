@@ -22,12 +22,19 @@ from mozhi.ocr.text_stiching import combine_text_files
 
 
 router = APIRouter()
-STORE_PATH = '/tmp/mozhi/'
+TEMP_DATA_ROOT_PATH = '/tmp/mozhi'
 
 craft_text_detection_craft = Craft(crop_type="poly", cuda=False)
 
 
 def do_ocr(input_image_path, intermediate_path, file_name):
+    """
+
+    :param input_image_path: Absolute image to image file
+    :param intermediate_path: Temp location to store craft files
+    :param file_name: Image file name
+    :return:
+    """
     # craft.text_detection_craft(input_image_path=input_image_path,
     #                            output_dir=intermediate_path)
 
@@ -50,20 +57,21 @@ def calamri_engine(file: UploadFile = File(...)):
     image = Image.open(io.BytesIO(file_bytes))
     new_file_name = f"{str(uuid.uuid4())}_{file.filename}"
 
-    if os.path.exists(STORE_PATH):
-        input_image_path = f"{STORE_PATH}/data/{new_file_name}"
+    if os.path.exists(TEMP_DATA_ROOT_PATH + '/data'):
+        input_image_path = f"{TEMP_DATA_ROOT_PATH}/data/{new_file_name}"
     else:
-        os.makedirs(f'{STORE_PATH}/', exist_ok=True)
-        input_image_path = f"{STORE_PATH}/data/{new_file_name}"
+        os.makedirs(f'{TEMP_DATA_ROOT_PATH}/data/', exist_ok=True)
+        input_image_path = f"{TEMP_DATA_ROOT_PATH}/data/{new_file_name}"
 
+    print(f"Storing the image in {input_image_path}")
     image.save(input_image_path)
 
-    intermediate_path = f'{STORE_PATH}/craft/{new_file_name}/'
+    intermediate_path = f'{TEMP_DATA_ROOT_PATH}/craft/{new_file_name}/'
 
     text = do_ocr(input_image_path=input_image_path,
                   intermediate_path=intermediate_path,
                   file_name=new_file_name)
-    print(text)
+    # print(text)
     # return {"text": text}
     return Response(content=json.dumps({"text": text}), media_type="application/json")
 

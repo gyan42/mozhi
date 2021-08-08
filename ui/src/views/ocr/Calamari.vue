@@ -4,7 +4,6 @@
       <div class="hero-body">
         <div class="container">
           <h1 class="title">Calamari OCR</h1>
-<!--          <h2 class="subtitle">Test vanilla version</h2>-->
         </div>
       </div>
     </section>
@@ -47,7 +46,8 @@
 </template>
 
 <script>
-import axios from "../../axios";
+
+import axios from "../../calamariaxios";
 
 export default {
   data()  {
@@ -59,7 +59,8 @@ export default {
   },
   methods: {
     async onRunOCR() {
-      console.info("Running Calamari")
+      console.info("Running Calamari....")
+      console.info(axios.baseUrl)
       let formData = new FormData();
       formData.append('file', this.imageFileName);
       console.info(formData)

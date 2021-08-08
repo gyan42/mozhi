@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PostgreSQL &mdash; Mozhi 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/vf_style.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="../index.html">
+                Mozhi
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a></li>
+        
+      <li>PostgreSQL</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+            
+            <a href="../_sources/setup/postgres.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="../search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Developers Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hf_model_training.html#preparing-the-model">Preparing the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hf_model_training.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/dl.html#loss-functions">Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/model_serving.html">Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#tensorflow-model-serving">Tensorflow Model Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#pytorch-serve">PyTorch Serve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html">Must Have</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#kl-divergence">KL Divergence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#cross-entorpy">Cross Entorpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html#residula-connection">Residula connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/tf.html">Tensorflow Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ner/ner.html">NER - Named Entity Recognition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#what-is-ner">What is NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#use-cases-of-ner">Use cases of NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#methods-to-extract-ner">Methods to extract NER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ner/intro.html">NER - Named Entity Recognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/datasets.html">NER Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/deeplearning.html">Deep Learning Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/papers.html">Papers Related to NER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/references.html">Wild References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <div class="section" id="postgresql">
+<h1>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h1>
+<p>Home url : <a class="reference external" href="https://www.postgresql.org/">https://www.postgresql.org/</a><br />Here is a good comparision <a class="reference external" href="https://www.postgresqltutorial.com/postgresql-vs-mysql/">PostgreSQL vs MySQL</a></p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p><strong>1. Manual</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#install ubuntu packages</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">postgresql</span> <span class="n">postgresql</span><span class="o">-</span><span class="n">contrib</span>
+
+<span class="c1"># check the version</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;SELECT version();&quot;</span>
+
+<span class="c1"># test the installation</span>
+<span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span> <span class="n">postgres</span>
+    <span class="n">psql</span> <span class="c1">#to launch the terminal</span>
+    \<span class="n">q</span> <span class="c1">#to quit</span>
+
+<span class="c1"># or to run psql directly</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span>
+</pre></div>
+</div>
+<p>To cut short the permission configurations for new users, lets create an Ubuntu user with same name:
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">adduser</span> <span class="pre">mozhi</span> <span class="pre">#password</span> <span class="pre">mozhi</span></code></p>
+<p>We need log into PostgresSQL to create users before they can use the DB.
+For our case we are going ot create a user called <code class="docutils literal notranslate"><span class="pre">mozhi</span></code> and DB called <code class="docutils literal notranslate"><span class="pre">mozhidb</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span> <span class="n">postgres</span>
+    <span class="n">psql</span> <span class="c1">#to launch the terminal</span>
+    <span class="c1"># drop user mozhi;</span>
+    <span class="n">CREATE</span> <span class="n">USER</span> <span class="n">mozhi</span> <span class="n">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;mozhi&#39;</span><span class="p">;</span> 
+    \<span class="n">du</span> <span class="c1">#list users</span>
+    <span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">mozhidb</span><span class="p">;</span>
+    <span class="n">grant</span> <span class="nb">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">database</span> <span class="n">mozhidb</span> <span class="n">to</span> <span class="n">mozhi</span><span class="p">;</span>
+    \<span class="nb">list</span> <span class="c1"># to see the DB created</span>
+    \<span class="n">q</span>
+
+<span class="c1"># test the new user and DB</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">mozhi</span>  <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">mozhidb</span>
+    <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">corpus</span> <span class="p">(</span><span class="nb">id</span> <span class="nb">int</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">text</span> <span class="n">TEXT</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">PRIMARY</span> <span class="n">KEY</span> <span class="p">(</span><span class="nb">id</span><span class="p">));</span>
+    <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">corpus</span> <span class="n">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Ravi is sales person from 2012-08-15&#39;</span><span class="p">);</span>
+    <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">corpus</span> <span class="n">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;Kumar is sales person from 2012-09-15&#39;</span><span class="p">);</span>
+    <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">corpus</span> <span class="n">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;Sathis is sales person from 2012-10-15&#39;</span><span class="p">);</span>
+    \<span class="n">dt</span> <span class="c1">#list tables</span>
+    \<span class="n">conninfo</span> <span class="c1">#get connection info</span>
+</pre></div>
+</div>
+<p>Fire a python shell and test out the connection</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5432</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;mozhidb&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">&quot;mozhi&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mozhi&quot;</span><span class="p">)</span>
+<span class="n">sql_command</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM </span><span class="se">\&quot;</span><span class="s2">corpus</span><span class="se">\&quot;</span><span class="s2">;&quot;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">sql_command</span><span class="p">)</span>
+<span class="c1"># Load the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_command</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>2. Docker</strong></p>
+<p><a class="reference external" href="https://towardsdatascience.com/local-development-set-up-of-postgresql-with-docker-c022632f13ea">Reference</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Postgresql Environment variables</span>
+<span class="c1"># https://github.com/docker-library/docs/blob/master/postgres/README.md</span>
+    POSTGRES_PASSWORD
+    POSTGRES_USER
+    PGDATA
+    POSTGRES_DB
+    POSTGRES_INITDB_ARGS
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker pull postgres
+mkdir -p ${HOME}/.mozhi/postgres-data/
+
+docker run -d \
+	--name mozhi-db-server-test \
+	-e POSTGRES_USER=mozhi \
+	-e POSTGRES_PASSWORD=mozhi \
+	-v ${HOME}/postgres-data/:/var/lib/postgresql/data \
+    -p 5432:5432 \
+    postgres
+
+psql -h localhost -U mozhi # pass: mozhi     
+
+psql -h mypostgres -U postgres # pass: mozhi     
+
+
+# clear docker volume data if needed
+sudo rm -rf ${HOME}/postgres-data/ 
+</pre></div>
+</div>
+<p><strong>3. Kubernetes</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mozhi</span><span class="o">/</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">postgresql</span><span class="o">-</span><span class="n">configmap</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">postgresql</span><span class="o">.</span><span class="n">yaml</span>
+
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">namespace</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">reactive</span><span class="o">-</span><span class="n">tech</span><span class="o">/</span><span class="n">kubegres</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">kubegres</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">postgres</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">postgres</span><span class="o">-</span><span class="n">secret</span><span class="o">.</span><span class="n">yaml</span> 
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">postgres</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">postgres</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">kubectl</span> <span class="n">get</span> <span class="n">pod</span><span class="p">,</span><span class="n">statefulset</span><span class="p">,</span><span class="n">svc</span><span class="p">,</span><span class="n">configmap</span> <span class="o">-</span><span class="n">o</span> <span class="n">wide</span> <span class="o">-</span><span class="n">n</span> <span class="n">mozhi</span>
+ 
+<span class="c1"># test the service</span>
+<span class="n">kubectl</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">service</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">postgres</span><span class="o">-</span><span class="n">db</span> <span class="o">-</span><span class="n">n</span> <span class="n">mozhi</span> <span class="o">--</span> <span class="n">bash</span>
+ <span class="o">&gt;&gt;</span> <span class="n">psql</span> <span class="o">-</span><span class="n">U</span> <span class="n">postgres</span>
+ <span class="o">&gt;&gt;</span> <span class="n">mozhi</span>
+ 
+ 
+<span class="n">kubectl</span> <span class="o">-</span><span class="n">n</span> <span class="n">mozhi</span> <span class="n">port</span><span class="o">-</span><span class="n">forward</span> <span class="n">service</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">postgres</span><span class="o">-</span><span class="n">db</span> <span class="mi">4321</span><span class="p">:</span><span class="mi">5432</span>
+
+<span class="n">psql</span> <span class="o">-</span><span class="n">h</span> <span class="n">localhost</span> <span class="o">-</span><span class="n">U</span> <span class="n">postgres</span>
+<span class="o">&gt;&gt;</span><span class="n">mozhi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>To know the file storage in Postgres, this is to make sure the data in Docker can be mapped to a volume for offline storage.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">name,</span> <span class="pre">setting</span> <span class="pre">FROM</span> <span class="pre">pg_settings</span> <span class="pre">WHERE</span> <span class="pre">category</span> <span class="pre">=</span> <span class="pre">'File</span> <span class="pre">Locations';</span></code></p>
+<ul class="simple">
+<li><p>If you would like to restart the service:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">postgresql</span> <span class="n">restart</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">postgresql</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To see how many active connections to the DB are made:
+<code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">pid,</span> <span class="pre">application_name,</span> <span class="pre">state</span> <span class="pre">FROM</span> <span class="pre">pg_stat_activity;</span></code>
+This is important some times the connetion becomes stale and left hanging there, making new connection bounce back.</p></li>
+<li><p>Service management commands:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">postgresql</span> <span class="n">stop</span>
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">postgresql</span> <span class="n">start</span>
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">postgresql</span> <span class="n">restart</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To delete all tables</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>
+  <span class="s1">&#39;DROP TABLE IF EXISTS &quot;&#39;</span> <span class="o">||</span> <span class="n">tablename</span> <span class="o">||</span> <span class="s1">&#39;&quot; CASCADE;&#39;</span> 
+<span class="kn">from</span>
+  <span class="nn">pg_tables</span> <span class="n">WHERE</span> <span class="n">schemaname</span> <span class="o">=</span> <span class="s1">&#39;public&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="integration-with-spark">
+<h2>Integration with Spark<a class="headerlink" href="#integration-with-spark" title="Permalink to this headline">¶</a></h2>
+<p>Part of our work flow we need to read and write to Postresql from Apache Spark.
+Lets test whether we can do it from local <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> terminal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#it is mandate to give the posgres maven ids for runtime</span>
+<span class="n">pyspark</span> <span class="o">--</span><span class="n">packages</span> <span class="n">postgresql</span><span class="p">:</span><span class="n">postgresql</span><span class="p">:</span><span class="mf">9.1</span><span class="o">-</span><span class="mi">901</span><span class="o">-</span><span class="mf">1.</span><span class="n">jdbc4</span>
+
+<span class="c1">#read the table &quot;authors&quot; </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="nb">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://localhost:5432/mozhidb&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;dbtable&quot;</span><span class="p">,</span> <span class="s2">&quot;authors&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;mozhi&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;mozhi&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;driver&quot;</span><span class="p">,</span> <span class="s2">&quot;org.postgresql.Driver&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">load</span><span class="p">()</span>
+
+<span class="c1"># display the table</span>
+<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hive-metastore-db-setup">
+<h2>Hive Metastore DB setup<a class="headerlink" href="#hive-metastore-db-setup" title="Permalink to this headline">¶</a></h2>
+<p>We could use different metastore DB for Hive, below steps helps to use Postgresql as its external metastore,
+which then can be shared with Spark.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="n">hive</span> <span class="c1">#password hive</span>
+
+<span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span> <span class="n">postgres</span>
+    <span class="n">psql</span> <span class="c1">#to launch the terminal</span>
+    <span class="n">CREATE</span> <span class="n">USER</span> <span class="n">hive</span> <span class="n">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;hive&#39;</span><span class="p">;</span> <span class="c1"># drop user hive; (if needed)</span>
+    \<span class="n">du</span>
+    <span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">hive</span><span class="p">;</span>
+    <span class="n">grant</span> <span class="nb">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">database</span> <span class="n">hive</span> <span class="n">to</span> <span class="n">hive</span><span class="p">;</span>
+    \<span class="nb">list</span> <span class="c1"># to see the DB created</span>
+    \<span class="n">q</span>
+</pre></div>
+</div>
+<p>We need do some changes to connection configs, to enable login from different services:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the 3rd colum values to &quot;all&quot;</span>
+<span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">pg_hba</span><span class="o">.</span><span class="n">conf</span>
+    <span class="c1"># &quot;local&quot; is for Unix domain socket connections only</span>
+    <span class="n">local</span>   <span class="nb">all</span>   <span class="nb">all</span>                                     <span class="n">md5</span>
+    <span class="c1"># IPv4 local connections:</span>
+    <span class="n">host</span>    <span class="nb">all</span>   <span class="nb">all</span>             <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">/</span><span class="mi">32</span>            <span class="n">md5</span>
+    <span class="c1"># IPv6 local connections:</span>
+    <span class="n">host</span>    <span class="nb">all</span>   <span class="nb">all</span>             <span class="p">::</span><span class="mi">1</span><span class="o">/</span><span class="mi">128</span>                 <span class="n">md5</span>
+</pre></div>
+</div>
+<p>Fire a python shell and test out the connection</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5432</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;hive&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">&quot;hive&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;hive&quot;</span><span class="p">)</span>
+<span class="n">sql_command</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM </span><span class="se">\&quot;</span><span class="s2">CDS</span><span class="se">\&quot;</span><span class="s2">;&quot;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">sql_command</span><span class="p">)</span>
+<span class="c1"># Load the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_command</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use Hive provided tool to setup the metastore tables an schema:
+<code class="docutils literal notranslate"><span class="pre">/path/to/hive/bin/schematool</span> <span class="pre">-dbType</span> <span class="pre">postgres</span> <span class="pre">-initSchema</span></code></p>
+<p>And then try running following commands, you should see bunch of tables there:</p>
+<div class="highlight-shell script notranslate"><div class="highlight"><pre><span></span>sudo -i -u hive  psql -d hive
+#asks for two password, one for sudo and other one for DB `hive` which is `hive`
+    hive=&gt; \dt
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="psql">
+<h2>PSQL<a class="headerlink" href="#psql" title="Permalink to this headline">¶</a></h2>
+<p>Magic words:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql -U postgres
+</pre></div>
+</div>
+<p>Some interesting flags (to see all, use <code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code> depending on your psql version):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-E</span></code>: will describe the underlaying queries of the <code class="docutils literal notranslate"><span class="pre">\</span></code> commands (cool for learning!)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-l</span></code>: psql will list all databases and then exit (useful if the user you connect with doesn’t has a default database, like at AWS RDS)</p></li>
+</ul>
+<p>Most <code class="docutils literal notranslate"><span class="pre">\d</span></code> commands support additional param of <code class="docutils literal notranslate"><span class="pre">__schema__.name__</span></code> and accept wildcards like <code class="docutils literal notranslate"><span class="pre">*.*</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\q</span></code>: Quit/Exit</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\c</span> <span class="pre">__database__</span></code>: Connect to a database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\d</span> <span class="pre">__table__</span></code>: Show table definition including triggers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\d+</span> <span class="pre">__table__</span></code>: More detailed table definition including description and physical disk size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\l</span></code>: List databases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\dy</span></code>: List events</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\df</span></code>: List functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\di</span></code>: List indexes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\dn</span></code>: List schemas</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\dt</span> <span class="pre">*.*</span></code>: List tables from all schemas (if <code class="docutils literal notranslate"><span class="pre">*.*</span></code> is omitted will only show SEARCH_PATH ones)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\dT+</span></code>: List all data types</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\dv</span></code>: List views</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\df+</span> <span class="pre">__function__</span></code> : Show function SQL code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\x</span></code>: Pretty-format query results instead of the not-so-useful ASCII tables</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\copy</span> <span class="pre">(SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">__table_name__)</span> <span class="pre">TO</span> <span class="pre">'file_path_and_name.csv'</span> <span class="pre">WITH</span> <span class="pre">CSV</span></code>: Export a table as CSV</p></li>
+</ul>
+<p>User Related:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\du</span></code>: List users</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\du</span> <span class="pre">__username__</span></code>: List a username if present.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">role</span> <span class="pre">__test1__</span></code>: Create a role with an existing username.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">role</span> <span class="pre">__test2__</span> <span class="pre">noinherit</span> <span class="pre">login</span> <span class="pre">password</span> <span class="pre">__passsword__;</span></code>: Create a role with username and password.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">role</span> <span class="pre">__test__;</span></code>: Change role for current session to <code class="docutils literal notranslate"><span class="pre">__test__</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grant</span> <span class="pre">__test2__</span> <span class="pre">to</span> <span class="pre">__test1__;</span></code>: Allow <code class="docutils literal notranslate"><span class="pre">__test1__</span></code> to set its role as <code class="docutils literal notranslate"><span class="pre">__test2__</span></code>.</p></li>
+</ul>
+<p>Drop all the tables in a database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">SCHEMA</span> <span class="n">public</span> <span class="n">CASCADE</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">SCHEMA</span> <span class="n">public</span> <span class="n">AUTHORIZATION</span> <span class="p">{</span><span class="n">USER</span><span class="p">};</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">ON</span> <span class="n">schema</span> <span class="n">public</span> <span class="n">TO</span> <span class="p">{</span><span class="n">USER</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Changing verbosity &amp; querying Postgres log:
+<br/>1) First edit the config file, set a decent verbosity, save and restart postgres:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mf">9.3</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">postgresql</span><span class="o">.</span><span class="n">conf</span>
+
+<span class="c1"># Uncomment/Change inside:</span>
+<span class="n">log_min_messages</span> <span class="o">=</span> <span class="n">debug5</span>
+<span class="n">log_min_error_statement</span> <span class="o">=</span> <span class="n">debug5</span>
+<span class="n">log_min_duration_statement</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">sudo</span> <span class="n">service</span> <span class="n">postgresql</span> <span class="n">restart</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Now you will get tons of details of every statement, error, and even background tasks like VACUUMs</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">postgresql</span><span class="o">-</span><span class="mf">9.3</span><span class="o">-</span><span class="n">main</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>How to add user who executed a PG statement to log (editing <code class="docutils literal notranslate"><span class="pre">postgresql.conf</span></code>):</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_line_prefix</span> <span class="o">=</span> <span class="s1">&#39;%t </span><span class="si">%u</span><span class="s1"> </span><span class="si">%d</span><span class="s1"> </span><span class="si">%a</span><span class="s1"> &#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-command">
+<h2>Create command<a class="headerlink" href="#create-command" title="Permalink to this headline">¶</a></h2>
+<p>There are many <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> choices, like <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">DATABASE</span> <span class="pre">__database_name__</span></code>, <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">__table_name__</span></code> … Parameters differ but can be checked <a class="reference external" href="https://www.postgresql.org/search/?u=%2Fdocs%2F9.1%2F&amp;q=CREATE">at the official documentation</a>.</p>
+</div>
+<div class="section" id="handy-queries">
+<h2>Handy queries<a class="headerlink" href="#handy-queries" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">pg_proc</span> <span class="pre">WHERE</span> <span class="pre">proname='__procedurename__'</span></code>: List procedure/function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">pg_views</span> <span class="pre">WHERE</span> <span class="pre">viewname='__viewname__';</span></code>: List view (including the definition)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">pg_size_pretty(pg_total_relation_size('__table_name__'));</span></code>: Show DB table space in use</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">pg_size_pretty(pg_database_size('__database_name__'));</span></code>: Show DB space in use</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">statement_timeout;</span></code>: Show current user’s statement timeout</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">pg_indexes</span> <span class="pre">WHERE</span> <span class="pre">tablename='__table_name__'</span> <span class="pre">AND</span> <span class="pre">schemaname='__schema_name__';</span></code>: Show table indexes</p></li>
+<li><p>Get all indexes from all tables of a schema:</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+   <span class="n">t</span><span class="p">.</span><span class="n">relname</span> <span class="k">AS</span> <span class="k">table_name</span><span class="p">,</span>
+   <span class="n">i</span><span class="p">.</span><span class="n">relname</span> <span class="k">AS</span> <span class="n">index_name</span><span class="p">,</span>
+   <span class="n">a</span><span class="p">.</span><span class="n">attname</span> <span class="k">AS</span> <span class="k">column_name</span>
+<span class="k">FROM</span>
+   <span class="n">pg_class</span> <span class="n">t</span><span class="p">,</span>
+   <span class="n">pg_class</span> <span class="n">i</span><span class="p">,</span>
+   <span class="n">pg_index</span> <span class="n">ix</span><span class="p">,</span>
+   <span class="n">pg_attribute</span> <span class="n">a</span><span class="p">,</span>
+    <span class="n">pg_namespace</span> <span class="n">n</span>
+<span class="k">WHERE</span>
+   <span class="n">t</span><span class="p">.</span><span class="n">oid</span> <span class="o">=</span> <span class="n">ix</span><span class="p">.</span><span class="n">indrelid</span>
+   <span class="k">AND</span> <span class="n">i</span><span class="p">.</span><span class="n">oid</span> <span class="o">=</span> <span class="n">ix</span><span class="p">.</span><span class="n">indexrelid</span>
+   <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">attrelid</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">oid</span>
+   <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">attnum</span> <span class="o">=</span> <span class="k">ANY</span><span class="p">(</span><span class="n">ix</span><span class="p">.</span><span class="n">indkey</span><span class="p">)</span>
+   <span class="k">AND</span> <span class="n">t</span><span class="p">.</span><span class="n">relnamespace</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">oid</span>
+    <span class="k">AND</span> <span class="n">n</span><span class="p">.</span><span class="n">nspname</span> <span class="o">=</span> <span class="s1">&#39;kartones&#39;</span>
+<span class="k">ORDER</span> <span class="k">BY</span>
+   <span class="n">t</span><span class="p">.</span><span class="n">relname</span><span class="p">,</span>
+   <span class="n">i</span><span class="p">.</span><span class="n">relname</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Execution data:</p>
+<ul>
+<li><p>Queries being executed at a certain DB:</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">datname</span><span class="p">,</span> <span class="n">application_name</span><span class="p">,</span> <span class="n">pid</span><span class="p">,</span> <span class="n">backend_start</span><span class="p">,</span> <span class="n">query_start</span><span class="p">,</span> <span class="n">state_change</span><span class="p">,</span> <span class="k">state</span><span class="p">,</span> <span class="n">query</span> 
+  <span class="k">FROM</span> <span class="n">pg_stat_activity</span> 
+  <span class="k">WHERE</span> <span class="n">datname</span><span class="o">=</span><span class="s1">&#39;__database_name__&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Get all queries from all dbs waiting for data (might be hung):</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pg_stat_activity</span> <span class="k">WHERE</span> <span class="n">waiting</span><span class="o">=</span><span class="s1">&#39;t&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Currently running queries with process pid:</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pg_stat_get_backend_pid</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">backendid</span><span class="p">)</span> <span class="k">AS</span> <span class="n">procpid</span><span class="p">,</span> 
+  <span class="n">pg_stat_get_backend_activity</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">backendid</span><span class="p">)</span> <span class="k">AS</span> <span class="n">current_query</span>
+<span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">pg_stat_get_backend_idset</span><span class="p">()</span> <span class="k">AS</span> <span class="n">backendid</span><span class="p">)</span> <span class="k">AS</span> <span class="n">s</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Casting:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CAST</span> <span class="pre">(column</span> <span class="pre">AS</span> <span class="pre">type)</span></code> or <code class="docutils literal notranslate"><span class="pre">column::type</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'__table_name__'::regclass::oid</span></code>: Get oid having a table name</p></li>
+</ul>
+<p>Query analysis:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">__query__</span></code>: see the query plan for the given query</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">ANALYZE</span> <span class="pre">__query__</span></code>: see and query_to_df the query plan for the given query</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ANALYZE</span> <span class="pre">[__table__]</span></code>: collect statistics</p></li>
+</ul>
+<p>Generating random data (<a class="reference external" href="https://www.citusdata.com/blog/2019/07/17/postgres-tips-for-average-and-power-user/">source</a>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">some_table</span> <span class="pre">(a_float_value)</span> <span class="pre">SELECT</span> <span class="pre">random()</span> <span class="pre">*</span> <span class="pre">100000</span> <span class="pre">FROM</span> <span class="pre">generate_series(1,</span> <span class="pre">1000000)</span> <span class="pre">i;</span></code></p></li>
+</ul>
+<p>Keyboard shortcuts</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CTRL</span></code> + <code class="docutils literal notranslate"><span class="pre">R</span></code>: reverse-i-search</p></li>
+</ul>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li><p>https://www.tecmint.com/install-postgresql-on-ubuntu/</p></li>
+<li><p>https://linuxize.com/post/how-to-install-postgresql-on-ubuntu-18-04/</p></li>
+<li><p>https://medium.com/&#64;thomaspt748/how-to-upsert-data-into-relational-database-using-spark-7d2d92e05bb9</p></li>
+<li><p>https://linuxize.com/post/how-to-create-a-sudo-user-on-ubuntu/</p></li>
+<li><p>https://stackoverflow.com/questions/21898152/why-cant-you-start-postgres-in-docker-using-service-postgres-start</p></li>
+<li><p>https://markheath.net/post/exploring-postgresql-with-docker</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ptop</span></code> and <code class="docutils literal notranslate"><span class="pre">pg_top</span></code>: <code class="docutils literal notranslate"><span class="pre">top</span></code> for PG. Available on the APT repository from <code class="docutils literal notranslate"><span class="pre">apt.postgresql.org</span></code>.</p></li>
+<li><p><a class="reference external" href="https://github.com/julmon/pg_activity">pg_activity</a>: Command line tool for PostgreSQL server activity monitoring.</p></li>
+<li><p><a class="reference external" href="https://dba.stackexchange.com/questions/63453/is-there-a-psql-equivalent-of-bashs-reverse-search-history">Unix-like reverse search in psql</a>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;bind &quot;</span>^R<span class="s2">&quot; em-inc-search-prev&quot;</span> &gt; <span class="nv">$HOME</span>/.editrc
+$ <span class="nb">source</span> <span class="nv">$HOME</span>/.editrc
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pgexercises.com/">PostgreSQL Exercises</a>: An awesome resource to learn to learn SQL, teaching you with simple examples in a great visual way. <strong>Highly recommended</strong>.</p></li>
+<li><p><a class="reference external" href="https://severalnines.com/blog/performance-cheat-sheet-postgresql">A Performance Cheat Sheet for PostgreSQL</a>: Great explanations of <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">ANALYZE</span></code>, <code class="docutils literal notranslate"><span class="pre">VACUUM</span></code>, configuration parameters and more. Quite interesting if you need to tune-up a postgres setup.</p></li>
+</ul>
+</div>
+</div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mozhi.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>

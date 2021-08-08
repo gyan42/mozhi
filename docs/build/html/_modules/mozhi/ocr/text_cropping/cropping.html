@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozhi.ocr.text_cropping.cropping &mdash; Mozhi 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/vf_style.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="../../../../index.html">
+                Mozhi
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a></li>
+        
+          <li><a href="../../../index.html">Module code</a></li>
+        
+      <li>mozhi.ocr.text_cropping.cropping</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="../../../../search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../setup/setup.html">Developers Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/on_minikune.html">Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/dev_machine.html">Setting up Developer Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/dev_machine.html#installations">Installations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/api.html">mozhi API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/api.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ocr.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/hf_model_training.html#preparing-the-model">Preparing the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../setup/hf_model_training.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/dl.html#loss-functions">Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/model_serving.html">Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/model_serving.html#tensorflow-model-serving">Tensorflow Model Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/model_serving.html#pytorch-serve">PyTorch Serve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/must_have_maths.html">Must Have</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/must_have_maths.html#kl-divergence">KL Divergence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../study_materials/must_have_maths.html#cross-entorpy">Cross Entorpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/must_have_maths.html#residula-connection">Residula connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/tf.html">Tensorflow Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../study_materials/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ner/ner.html">NER - Named Entity Recognition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ner/ner.html#what-is-ner">What is NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ner/ner.html#use-cases-of-ner">Use cases of NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ner/ner.html#methods-to-extract-ner">Methods to extract NER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/intro.html">NER - Named Entity Recognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/datasets.html">NER Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/deeplearning.html">Deep Learning Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/papers.html">Papers Related to NER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ner/references.html">Wild References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <h1>Source code for mozhi.ocr.text_cropping.cropping</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">fire</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+
+<span class="k">def</span> <span class="nf">_process</span><span class="p">(</span><span class="n">image_file_path</span><span class="p">,</span>
+             <span class="n">text_file_path</span><span class="p">,</span>
+             <span class="n">out_base_file_name</span><span class="p">,</span>
+             <span class="n">out_extension</span><span class="p">,</span>
+             <span class="n">out_dir</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_file_path</span><span class="p">)</span>
+    <span class="n">text_lines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">text_file_path</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">text_line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text_lines</span><span class="p">):</span>
+        <span class="n">x1_1</span><span class="p">,</span> <span class="n">y1_1</span><span class="p">,</span> <span class="n">x2_1</span><span class="p">,</span> <span class="n">y2_1</span><span class="p">,</span> <span class="n">x3_1</span><span class="p">,</span> <span class="n">y3_1</span><span class="p">,</span> <span class="n">x4_1</span><span class="p">,</span> <span class="n">y4_1</span><span class="p">,</span> <span class="n">transcript</span> <span class="o">=</span> <span class="n">text_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[:</span><span class="mi">9</span><span class="p">]</span>
+        <span class="n">x1_1</span><span class="p">,</span> <span class="n">y1_1</span><span class="p">,</span> <span class="n">x2_1</span><span class="p">,</span> <span class="n">y2_1</span><span class="p">,</span> <span class="n">x3_1</span><span class="p">,</span> <span class="n">y3_1</span><span class="p">,</span> <span class="n">x4_1</span><span class="p">,</span> <span class="n">y4_1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x1_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y1_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">x2_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y2_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">x3_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">y3_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">x4_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y4_1</span><span class="p">)</span>
+        <span class="n">cropped_image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="n">y1_1</span><span class="p">:</span><span class="n">y3_1</span><span class="p">,</span> <span class="n">x1_1</span><span class="p">:</span><span class="n">x3_1</span><span class="p">]</span>
+        <span class="n">img_out_file</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">+</span> <span class="n">out_base_file_name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">out_extension</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">img_out_file</span><span class="p">,</span> <span class="n">cropped_image</span><span class="p">)</span>
+        <span class="n">txt_out_file</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">+</span> <span class="n">out_base_file_name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.gt.txt&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">txt_out_file</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">transcript</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Finished processing </span><span class="si">{</span><span class="n">image_file_path</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<div class="viewcode-block" id="SROIE2019TextImageCropper"><a class="viewcode-back" href="../../../../mozhi/mozhi.ocr.text_cropping.html#mozhi.ocr.text_cropping.cropping.SROIE2019TextImageCropper">[docs]</a><span class="k">class</span> <span class="nc">SROIE2019TextImageCropper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Splits the text image into individual line images, based on teh vertices starting from top.</span>
+
+<span class="sd">    Receipt(.png/.jpg)</span>
+
+<span class="sd">    x1_1, y1_1,x2_1,y2_1,x3_1,y3_1,x4_1,y4_1, transcript_1</span>
+<span class="sd">    x1_2,y1_2,x2_2,y2_2,x3_2,y3_2,x4_2,y4_2, transcript_2</span>
+<span class="sd">    x1_3,y1_3,x2_3,y2_3,x3_3,y3_3,x4_3,y4_3, transcript_3</span>
+<span class="sd">    ...</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dir</span><span class="p">,</span> <span class="n">file_ext</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">num_threads</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_input_dir</span> <span class="o">=</span> <span class="n">input_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file_ext</span> <span class="o">=</span> <span class="n">file_ext</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_dir</span> <span class="o">=</span> <span class="n">out_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_image_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collect_image_files</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collect_text_files</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collect_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_threads</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_threads</span><span class="p">)</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_out_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_collect_image_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_input_dir</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">_file</span> <span class="k">for</span> <span class="n">_file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_ext</span><span class="p">)]</span>
+        <span class="c1"># print(files)</span>
+        <span class="k">return</span> <span class="n">files</span>
+
+    <span class="k">def</span> <span class="nf">_collect_text_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_input_dir</span><span class="p">)</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">_file</span> <span class="k">for</span> <span class="n">_file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;txt&quot;</span><span class="p">)]</span>
+        <span class="c1"># print(files)</span>
+        <span class="k">return</span> <span class="n">files</span>
+
+    <span class="k">def</span> <span class="nf">_collect_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">_file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_image_files</span><span class="p">:</span>
+            <span class="n">_text_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">_f</span> <span class="k">for</span> <span class="n">_f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_files</span> <span class="k">if</span> <span class="n">_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">_f</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_text_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span><span class="p">[</span><span class="n">_file</span><span class="p">]</span> <span class="o">=</span> <span class="n">_text_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># TODO only considering the first ground truth text</span>
+
+        <span class="k">return</span> <span class="n">res</span>
+
+<div class="viewcode-block" id="SROIE2019TextImageCropper.process"><a class="viewcode-back" href="../../../../mozhi/mozhi.ocr.text_cropping.html#mozhi.ocr.text_cropping.cropping.SROIE2019TextImageCropper.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_threads</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">result_futures</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image_text_file</span><span class="p">:</span>
+                               <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">_process</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">_input_dir</span> <span class="o">+</span> <span class="n">image_text_file</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">_input_dir</span> <span class="o">+</span> <span class="n">image_text_file</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                <span class="n">image_text_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">_file_ext</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">_out_dir</span><span class="p">),</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">_data_files</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">result_futures</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_files</span><span class="o">.</span><span class="n">items</span><span class="p">())):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time takes on ThreadPoolExecutor: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../../mozhi/mozhi.ocr.text_cropping.html#mozhi.ocr.text_cropping.cropping.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">input_dir</span><span class="p">,</span> <span class="n">file_ext</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">num_threads</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_dir: SROIE2019 data directory</span>
+<span class="sd">        file_ext: .jpeg</span>
+<span class="sd">        out_dir:</span>
+<span class="sd">        num_threads:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cropper</span> <span class="o">=</span> <span class="n">SROIE2019TextImageCropper</span><span class="p">(</span><span class="n">input_dir</span><span class="p">,</span>
+                                        <span class="n">file_ext</span><span class="p">,</span>
+                                        <span class="n">out_dir</span><span class="p">,</span>
+                                        <span class="n">num_threads</span><span class="p">)</span>
+    <span class="n">cropper</span><span class="o">.</span><span class="n">process</span><span class="p">()</span></div>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">cd /path/to/mozhi/</span>
+<span class="sd">export PYTHONPATH=$PYTHONPATH:$(pwd)/mozhi/</span>
+<span class="sd">python mozhi/ocr/text_cropping/cropping.py --input_dir=data/SROIE2019/0325updated.task1train\(626p\)/ \</span>
+<span class="sd">--file_ext=.jpg \</span>
+<span class="sd">--out_dir=/tmp/vf/cropper/ \</span>
+<span class="sd">--num_threads=8</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">fire</span><span class="o">.</span><span class="n">Fire</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mozhi.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>

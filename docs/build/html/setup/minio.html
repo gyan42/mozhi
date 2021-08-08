@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MinIO &mdash; Mozhi 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/vf_style.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="../index.html">
+                Mozhi
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a></li>
+        
+      <li>MinIO</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+            
+            <a href="../_sources/setup/minio.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="../search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Developers Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hf_model_training.html#preparing-the-model">Preparing the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hf_model_training.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/dl.html#loss-functions">Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/model_serving.html">Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#tensorflow-model-serving">Tensorflow Model Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#pytorch-serve">PyTorch Serve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html">Must Have</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#kl-divergence">KL Divergence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#cross-entorpy">Cross Entorpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html#residula-connection">Residula connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/tf.html">Tensorflow Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ner/ner.html">NER - Named Entity Recognition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#what-is-ner">What is NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#use-cases-of-ner">Use cases of NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#methods-to-extract-ner">Methods to extract NER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ner/intro.html">NER - Named Entity Recognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/datasets.html">NER Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/deeplearning.html">Deep Learning Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/papers.html">Papers Related to NER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/references.html">Wild References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <div class="section" id="minio">
+<h1>MinIO<a class="headerlink" href="#minio" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><strong>Local</strong></p></li>
+</ol>
+<p>Refer Install guide <a class="reference external" href="https://min.io/download#/linux">here</a> and install both server and client using <code class="docutils literal notranslate"><span class="pre">deb</span></code> package method.</p>
+<p>Note: The MinIO command line utility  has two aliases <code class="docutils literal notranslate"><span class="pre">mc</span></code> and <code class="docutils literal notranslate"><span class="pre">mcli</span></code>. Both are used interchageably by MinIO docs.</p>
+<ol class="simple">
+<li><p><strong>Kubernetes</strong></p></li>
+</ol>
+<p>MinIO Operator:s</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alias km=&#39;kubectl -n mozhi&#39;
+
+kubectl krew update
+kubectl krew install minio
+
+kubectl create namespace minio-operator
+kubectl minio init --namespace minio-operator
+kubectl get all --namespace minio-operator
+
+# console http://localhost:9090
+kubectl minio proxy -n minio-operator 
+
+kubectl create namespace mozhi
+
+kubectl apply -f ops/k8s/minio/mozhi-tiny-tenant.yaml
+km get all
+km get pvc
+km get pv
+
+kubectl port-forward service/minio 9000:443 --namespace mozhi
+mcli alias set mozhiminio http://localhost:9000 mozhi mozhi
+
+# delete
+kubectl delete pvc -n mozhi $(kubectl get pvc --namespace mozhi | cut -d&#39; &#39; -f1)
+kubectl delete pv -n mozhi $(kubectl get pv --namespace mozhi | cut -d&#39; &#39; -f1)
+kubectl delete namespace mozhi
+</pre></div>
+</div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>https://docs.min.io/docs/minio-admin-complete-guide.html</p></li>
+</ul>
+<p><strong>Adding Keys</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mc</span> <span class="n">alias</span> <span class="nb">set</span> <span class="n">myminio</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.142</span><span class="p">:</span><span class="mi">9000</span> <span class="n">admin</span> <span class="n">password</span>
+<span class="c1"># or</span>
+<span class="n">mcli</span> <span class="n">alias</span> <span class="nb">set</span> <span class="n">myminio</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.142</span><span class="p">:</span><span class="mi">9000</span> <span class="n">BKIKJAA5BMMU2RHO6IBB</span> <span class="n">V7f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12</span>
+</pre></div>
+</div>
+<p>Internal service name: YOURSERVICENAME.NAMESPACE.svc.cluster.local</p>
+<p><strong>Password</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;mozhi&#39;</span> <span class="o">|</span> <span class="n">base64</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;bW96aGk=&#39;</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span>
+
+<span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;mozhi123&#39;</span> <span class="o">|</span> <span class="n">base64</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;bW96aGkxMjM=&#39;</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>https://docs.min.io/docs/deploy-minio-on-kubernetes.html</p></li>
+<li><p>https://github.com/minio/operator/blob/master/README.md</p></li>
+<li><p>https://www.olivercoding.com/2021-03-01-kubernetes-minio-init/</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mozhi.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>

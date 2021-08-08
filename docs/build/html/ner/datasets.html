@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>NER Datasets &mdash; Mozhi 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/vf_style.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deep Learning Approaches" href="deeplearning.html" />
+    <link rel="prev" title="NER - Named Entity Recognition" href="intro.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="../index.html">
+                Mozhi
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a></li>
+        
+          <li><a href="ner.html">NER - Named Entity Recognition</a></li>
+        
+      <li>NER Datasets</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ner/datasets.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="../search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Developers Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup/on_minikune.html">Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/dev_machine.html">Setting up Developer Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#installations">Installations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/api.html">mozhi API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/api.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/api.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/api.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/api.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/hf_model_training.html#preparing-the-model">Preparing the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/hf_model_training.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/dl.html#loss-functions">Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/model_serving.html">Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#tensorflow-model-serving">Tensorflow Model Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#pytorch-serve">PyTorch Serve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html">Must Have</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#kl-divergence">KL Divergence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#cross-entorpy">Cross Entorpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html#residula-connection">Residula connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/tf.html">Tensorflow Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="ner.html">NER - Named Entity Recognition</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ner.html#what-is-ner">What is NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ner.html#use-cases-of-ner">Use cases of NER?</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="ner.html#methods-to-extract-ner">Methods to extract NER</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">NER - Named Entity Recognition</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">NER Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deeplearning.html">Deep Learning Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="papers.html">Papers Related to NER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="references.html">Wild References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <div class="section" id="ner-datasets">
+<h1>NER Datasets<a class="headerlink" href="#ner-datasets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>CoNLL-2003</p>
+<ul>
+<li><p>What is CoNLL data format?</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/27416164/what-is-conll-data-format">2020 So question</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://ufal.mff.cuni.cz/conll2009-st/task-description.html">CoNLL-2009 Shared Task</a></li>
+</ul>
+</div>
+</li>
+<li><p><a class="reference external" href="https://www.clips.uantwerpen.be/conll2003/ner/">https://www.clips.uantwerpen.be/conll2003/ner/</a></p></li>
+</ul>
+</li>
+<li><p>OntoNotes</p></li>
+<li><p>ACE 2004 and ACE 2005</p></li>
+<li><p>Tensorflow Datasets</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.tensorflow.org/datasets/catalog/overview">https://www.tensorflow.org/datasets/catalog/overview</a></li>
+</ul>
+</div>
+</li>
+<li><p>Hugging Face Datasets</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://huggingface.co/datasets">https://huggingface.co/datasets</a></li>
+</ul>
+</div>
+</li>
+<li><p>https://analyticsindiamag.com/most-popular-datasets-for-neural-sequence-tagging-with-the-implementation-in-tensorflow-and-pytorch/</p></li>
+<li><p>https://lionbridge.ai/datasets/15-free-datasets-and-corpora-for-named-entity-recognition-ner/</p></li>
+</ul>
+</div>
+<div class="section" id="formats">
+<h2>Formats<a class="headerlink" href="#formats" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="spacy">
+<h2>Spacy<a class="headerlink" href="#spacy" title="Permalink to this headline">¶</a></h2>
+<p>List of tuples</p>
+<ul class="simple">
+<li><p>First tuple: <code class="docutils literal notranslate"><span class="pre">String</span></code></p></li>
+<li><p>Second tuple: <code class="docutils literal notranslate"><span class="pre">Dict</span></code></p>
+<ul>
+<li><p>{‘entities’ : [(start_index, end_index, ‘NER_TAG’), (start_index, end_index, ‘NER_TAG’), …]}</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRAIN_DATA</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Who is Nishanth?&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s1">&#39;entities&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;PERSON&#39;</span><span class="p">)]</span>
+    <span class="p">}),</span>
+     <span class="p">(</span><span class="s1">&#39;Who is Kamal Khumar?&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s1">&#39;entities&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;PERSON&#39;</span><span class="p">)]</span>
+    <span class="p">}),</span>
+    <span class="p">(</span><span class="s1">&#39;I like London and Berlin.&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s1">&#39;entities&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;LOC&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="s1">&#39;LOC&#39;</span><span class="p">)]</span>
+    <span class="p">})</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="iob-insideoutsidebeginning-tagging-format">
+<h2><a class="reference external" href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">IOB</a>: Inside–outside–beginning (tagging) Format<a class="headerlink" href="#iob-insideoutsidebeginning-tagging-format" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Alex</span> <span class="n">I</span><span class="o">-</span><span class="n">PER</span>
+<span class="ow">is</span> <span class="n">O</span>
+<span class="n">going</span> <span class="n">O</span>
+<span class="n">to</span> <span class="n">O</span>
+<span class="n">Los</span> <span class="n">I</span><span class="o">-</span><span class="n">LOC</span>
+<span class="n">Angeles</span> <span class="n">I</span><span class="o">-</span><span class="n">LOC</span>
+<span class="ow">in</span> <span class="n">O</span>
+<span class="n">California</span> <span class="n">I</span><span class="o">-</span><span class="n">LOC</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bilou">
+<h2>[BILOU]<a class="headerlink" href="#bilou" title="Permalink to this headline">¶</a></h2>
+<p>BILOU format: Beginning, Inside, Last, Outer, Unit.</p>
+</div>
+</div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mozhi.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>

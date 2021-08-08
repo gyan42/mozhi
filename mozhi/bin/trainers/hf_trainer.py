@@ -2,7 +2,6 @@ import os
 
 import fire
 import transformers
-from lxml.html.diff import token
 from transformers import AutoModelForTokenClassification, TrainingArguments, Trainer, AutoTokenizer
 from transformers import DataCollatorForTokenClassification
 import numpy as np
@@ -46,12 +45,12 @@ def main(dataset_name,
          model_n_version):
     """
 
-    Args:
-        dataset_name:
-        hf_pretrained_model_checkpoint:
-
-    Returns:
-
+    :param dataset_name:
+    :param hf_pretrained_model_checkpoint:
+    :param hf_pretrained_tokenizer_checkpoint:
+    :param preprocessor_name:
+    :param model_n_version:
+    :return:
     """
 
     hf_dataset = DATASET_OBJ_MAP[dataset_name](**settings.datasets[dataset_name])

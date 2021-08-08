@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pytorch &mdash; Mozhi 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/vf_style.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="tf_model_training.html" />
+    <link rel="prev" title="Hugging Face Transformers" href="hf_model_training.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="../index.html">
+                Mozhi
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a></li>
+        
+          <li><a href="setup.html">Developers Guide</a></li>
+        
+      <li>Pytorch</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+            
+            <a href="../_sources/setup/pt_model_training.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="../search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="setup.html">Developers Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hf_model_training.html#preparing-the-model">Preparing the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hf_model_training.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/dl.html#loss-functions">Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/model_serving.html">Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#tensorflow-model-serving">Tensorflow Model Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/model_serving.html#pytorch-serve">PyTorch Serve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html">Must Have</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#kl-divergence">KL Divergence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../study_materials/must_have_maths.html#cross-entorpy">Cross Entorpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/must_have_maths.html#residula-connection">Residula connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/tf.html">Tensorflow Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../study_materials/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ner/ner.html">NER - Named Entity Recognition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#what-is-ner">What is NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#use-cases-of-ner">Use cases of NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ner/ner.html#methods-to-extract-ner">Methods to extract NER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ner/intro.html">NER - Named Entity Recognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/datasets.html">NER Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/deeplearning.html">Deep Learning Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/papers.html">Papers Related to NER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ner/references.html">Wild References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <div class="section" id="pytorch">
+<h1>Pytorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h1>
+<p><strong>Build custom Deep Learning Models</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /path/to/mozhi/
+export PYTHONPATH=$(pwd)/:$PYTHONPATH
+export ENV_FOR_VF=developement
+
+python mozhi/bin/trainers/pytorch_trainer.py \
+--experiment_name=&quot;conll2003&quot; \
+--dataset_name=&quot;CoNLL2003DatasetV0&quot; \
+--preprocessor_name=&quot;NaiveSentencePreprocessor&quot; \
+--model_name=&quot;BiLSTMCRFTorch&quot;
+</pre></div>
+</div>
+<p>Tensorboard: <code class="docutils literal notranslate"><span class="pre">tensorbloard</span> <span class="pre">--logdir=${HOME}/.mozhi/logs/pytorch/{MODEL_NAME}</span></code></p>
+<p><strong>Inference using custom build models</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /path/to/mozhi/
+export PYTHONPATH=$(pwd)/:$PYTHONPATH
+export ENV_FOR_VF=developement
+
+#Note: Change model_chk_pth path accordingly
+
+python mozhi/bin/estimators/pytorch_infer.py \
+--experiment_name=&quot;conll2003&quot; \
+--preprocessor_name=&quot;NaiveSentencePreprocessor&quot; \
+--model_name=&quot;BiLSTMCRFTorch&quot; \
+--preprocessor_dir=&quot;${HOME}/.mozhi/preprocessor/conll2003/&quot; \
+--model_chk_pth=&quot;${HOME}/.mozhi/models/pytorch/conll2003/bilstmcrftorch/bilstmcrftorch-epoch=01-val_loss=296.76.ckpt&quot; \
+--sentence=&quot;LONDON 1996-08-22 The following floating-rate issue was announced by lead manager Lehman Brothers International .&quot;
+
+# Expected output: B-LOC O O O O O O O O O O B-ORG I-ORG I-ORG O
+</pre></div>
+</div>
+<p><strong>Serving custom build models</strong> (WIP)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir -p ${HOME}/.mozhi/model_store/
+
+export SERIALIZED_MODEL_FILE=${HOME}/.mozhi/models/pytorch/conll2003/bilstmcrftorch/bilstmcrftorch.pt
+# or
+export SERIALIZED_MODEL_FILE=${HOME}/.mozhi/models/pytorch/conll2003/bilstmcrftorch/bilstmcrftorch-epoch=00-val_loss=0.57.ckpt
+
+# Archive Torch models for serving
+torch-model-archiver --force\
+--model-name bilstmcrf \
+--version 1.0 \
+--model-file mozhi/model/pytorch/ner/bilstm_crf_torch.py \
+--serialized-file  $SERIALIZED_MODEL_FILE\
+--handler mozhi/serve/torch/handler/ner_handler.py \
+--extra-files ${HOME}/.mozhi/preprocessor/conll2003/NaiveSentencePreprocessor \
+--export-path ${HOME}/.mozhi/model_store/ \
+
+# Manually start torchserve
+torchserve \
+ --start \
+ --ts-config configs/torch_serve_config.properties \
+ --model-store ${HOME}/.mozhi/model_store/ \
+ --models bilstmcrf.mar \
+ --foreground
+
+# Run with docker
+docker run --rm -it \
+-p 6543:6543 -p 6544:6544 -p 6545:6545 -p 7070:7070 -p 7071:7071 \
+-p 8080:8080 -p 8081:8081 -p 8082:8082 \
+-v ${HOME}/.mozhi/model_store:/home/model-server/model-store \
+-v $(pwd)/mozhi/:/home/model-server/mozhi \
+mozhi-api-cpu bash
+
+# Command to run inside the docker
+torchserve --start --model-store /home/model-server/model-store --models bilstmcrf.mar --ts-config configs/torch_serve_config.properties --foreground
+
+# Test code to run from host
+python mozhi/bin/serve/test_api.py
+
+# stop torchserve
+torchserve --stop
+</pre></div>
+</div>
+</div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mozhi.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>

@@ -7,9 +7,9 @@ model_root_dir="~/.mozhi/models/pytorch/"
 log_root_dir="~/.mozhi/logs/pytorch/"
 preprocessor_root_dir="~/.mozhi/preprocessor/"
 [developement.hf_trainer]
-max_epochs=3
+max_epochs=10
 learning_rate=2e-5
-batch_size=16
+batch_size=8
 model_root_dir="~/.mozhi/models/hf/"
 [staging]
 
