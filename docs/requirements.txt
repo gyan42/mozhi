@@ -1,7 +1,8 @@
 #documentation
 sphinx==4.0.1
-# karma-sphinx-theme
-sphinx-book-theme
+karma-sphinx-theme
+# sphinx-book-theme
+# sphinx-press-theme
 sphinxcontrib-bibtex==2.2.0
 recommonmark==0.6.0
 m2r==0.2.1

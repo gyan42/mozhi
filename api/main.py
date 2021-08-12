@@ -2,7 +2,8 @@
 https://fastapi.tiangolo.com/tutorial/cors/
 
 """
-
+from typing import Optional
+from datetime import datetime, timedelta
 import uvicorn
 from fastapi import FastAPI
 # from fastapi.middleware.cors import CORSMiddleware
@@ -19,6 +20,20 @@ from api.routers.ner.model import spacy_ner
 # from api.routers.ocr.calamari import calamari
 from api.routers.ocr.tesseract import tesseract
 from api.routers.storage import minio
+from fastapi import Depends, FastAPI, HTTPException, status, Request
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import JWTError, jwt
+from passlib.context import CryptContext
+from pydantic import BaseModel
+
+# https://frankie567.github.io/fastapi-users/configuration/full-example/
+import databases
+import sqlalchemy
+from fastapi_users import FastAPIUsers, models
+from fastapi_users.authentication import JWTAuthentication
+from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
+from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
+
 
 app = FastAPI(
     # root_path="/api/v1",
@@ -101,6 +116,101 @@ async def add_cors_header(request: Request, call_next):
     response.headers["Access-Control-Allow-Methods"] = "*"
     response.headers["Access-Control-Allow-Headers"] = "*"
     return response
+
+# -----------------------------------------------------------------------------------------------------
+
+DATABASE_URL = "sqlite:///./test.db"
+SECRET = "dc5375c4756902155290c885070a2ae8baa70cdb8aa100d2097de1d9dc2965b6"
+
+
+class User(models.BaseUser):
+    pass
+
+
+class UserCreate(models.BaseUserCreate):
+    pass
+
+
+class UserUpdate(User, models.BaseUserUpdate):
+    pass
+
+
+class UserDB(User, models.BaseUserDB):
+    pass
+
+
+database = databases.Database(DATABASE_URL)
+Base: DeclarativeMeta = declarative_base()
+
+
+class UserTable(Base, SQLAlchemyBaseUserTable):
+    pass
+
+
+engine = sqlalchemy.create_engine(
+    DATABASE_URL, connect_args={"check_same_thread": False}
+)
+Base.metadata.create_all(engine)
+
+users = UserTable.__table__
+user_db = SQLAlchemyUserDatabase(UserDB, database, users)
+
+
+def on_after_register(user: UserDB, request: Request):
+    print(f"User {user.id} has registered.")
+
+
+def on_after_forgot_password(user: UserDB, token: str, request: Request):
+    print(f"User {user.id} has forgot their password. Reset token: {token}")
+
+
+def after_verification_request(user: UserDB, token: str, request: Request):
+    print(f"Verification requested for user {user.id}. Verification token: {token}")
+
+
+jwt_authentication = JWTAuthentication(
+    secret=SECRET, lifetime_seconds=3600, tokenUrl="auth/jwt/login"
+)
+
+fastapi_users = FastAPIUsers(
+    user_db,
+    [jwt_authentication],
+    User,
+    UserCreate,
+    UserUpdate,
+    UserDB,
+)
+app.include_router(
+    fastapi_users.get_auth_router(jwt_authentication), prefix="/auth/jwt", tags=["auth"]
+)
+app.include_router(
+    fastapi_users.get_register_router(on_after_register), prefix="/auth", tags=["auth"]
+)
+app.include_router(
+    fastapi_users.get_reset_password_router(
+        SECRET, after_forgot_password=on_after_forgot_password
+    ),
+    prefix="/auth",
+    tags=["auth"],
+)
+app.include_router(
+    fastapi_users.get_verify_router(
+        SECRET, after_verification_request=after_verification_request
+    ),
+    prefix="/auth",
+    tags=["auth"],
+)
+app.include_router(fastapi_users.get_users_router(), prefix="/users", tags=["users"])
+
+
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
 
 
 if __name__ == "__main__":

@@ -28,7 +28,6 @@ minikube addons enable ingress
 minikube dashboard
 
 kubectl delete all --all
-
 ```
 
 **Change owner and group**  

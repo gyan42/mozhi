@@ -1,13 +1,9 @@
 <template>
   <div>
-    <section class="hero is-dark">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Image NER Annotator</h1>
-          <h2 class="subtitle">Object Store and Database Connection Information</h2>
-        </div>
-      </div>
-    </section>
+    <page-header>
+      <h1 class="title">Image NER Annotator</h1>
+      <h2 class="subtitle">Object Store and Database Connection Information</h2>
+    </page-header>
 
     <br>
 
@@ -192,11 +188,13 @@
 </template>
 
 <script>
-import axios from "../../../axios";
+import mozhiapi from "@/backend/mozhiapi";
 import {mapMutations, mapGetters, mapState} from "vuex";
+import PageHeader from "@/components/PageHeader"
 
 export default {
   name: "ImageHome",
+  components: {PageHeader},
   data() {
     return {
       experimentName: "receipts",
@@ -236,7 +234,7 @@ export default {
 
       // Get the total rows count from backend to update progress bar
       let files = ''
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_MINIO_LIST, this.storageServer, headers)
           .then((res) => {
             console.log(res)
@@ -249,8 +247,8 @@ export default {
             this.setFilePrefixes(files)
           })
 
-      // Create the imag table to hold image annotations
-      axios
+      // Create the image table to hold image annotations
+      mozhiapi
           .post(process.env.VUE_APP_API_DB_IMAGE_CREATE, {"db_server": this.dbServerInfo, "experiment_name": this.experimentName}, headers)
           .then((res) => {
             console.log(res)
@@ -264,7 +262,7 @@ export default {
       // route: '/annotator/imagefile'
       setTimeout(() => {
         this.$router.push({name: 'ImageAnnotation', params: {isInitialized: true}});
-      } , 500);
+      } , 1000);
     }
   },
 }

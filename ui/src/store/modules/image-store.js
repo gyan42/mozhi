@@ -24,7 +24,7 @@ export default {
     },
     getters: {
         getFileCurrentPrefix(state) {
-            // console.info("getFileCurrentPrefix", state)
+            console.info("getFileCurrentPrefix", state)
             return state.filePrefixes[state.currentIndex]
         },
         getFilesCount(state) {

@@ -22,7 +22,7 @@ kubectl create namespace minio-operator
 kubectl minio init --namespace minio-operator
 kubectl get all --namespace minio-operator
 
-# console http://localhost:9090
+# To open Operator UI, start a port forward using this command: console http://localhost:9090
 kubectl minio proxy -n minio-operator 
 
 kubectl create namespace mozhi

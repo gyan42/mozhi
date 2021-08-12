@@ -1,12 +1,8 @@
 <template>
   <div class="home">
-    <section class="hero is-dark block">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Calamari OCR</h1>
-        </div>
-      </div>
-    </section>
+    <page-header>
+      <h1 class="title"> Calamari OCR</h1>
+    </page-header>
     <section class="hero block">
       <div style="text-align: center;">
         <div class="file is-centered is-primary has-name">
@@ -47,9 +43,11 @@
 
 <script>
 
-import axios from "../../calamariaxios";
+import calamariapi from "../../backend/calamariapi";
+import PageHeader from "@/components/PageHeader"
 
 export default {
+  components: {PageHeader},
   data()  {
     return {
       imageFileName: '',
@@ -60,7 +58,7 @@ export default {
   methods: {
     async onRunOCR() {
       console.info("Running Calamari....")
-      console.info(axios.baseUrl)
+      console.info(calamariapi.baseUrl)
       let formData = new FormData();
       formData.append('file', this.imageFileName);
       console.info(formData)
@@ -70,7 +68,7 @@ export default {
         },
         timeout: 30000
       }
-      axios
+      calamariapi
           .post(process.env.VUE_APP_API_OCR_CALAMARI, formData, headers)
           .then(res => {
             this.text = res["data"]['text']

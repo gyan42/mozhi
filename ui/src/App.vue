@@ -1,17 +1,11 @@
 <template >
-  <link rel="favicon.ico" type="image/png" href="src/assets/faviconlogo.png"/>
+  <link rel="favicon.ico" type="image/png" href="src/assets/mozhi-logo.png"/>
   <div id="app">
     <div
         id="sidebardiv"
         :class="[{'collapsed' : collapsed}, {'onmobile' : isOnMobile}]">
 
       <img alt="mozhi" src="./assets/mozhi-logo.png">
-
-      <!--          :theme="white-theme"-->
-      <!--          :show-one-child="true"-->
-      <!--          @update:collapsed="onToggleCollapse"-->
-      <!--          @item-click="onItemClick"/-->
-
       <sidebar-menu
           collapsed=true
           :menu="menu"/>
@@ -47,7 +41,7 @@ export default {
           hiddenOnCollapse: true,
         },
         {
-          href: '/',
+          href: '/home',
           title: 'Home',
           icon: 'fas fa-home'
         },
@@ -100,6 +94,11 @@ export default {
           href: '/ner',
           title: 'NER',
           icon: 'fas fa-glasses'
+        },
+        {
+          href: '/controlpane',
+          title: 'Control Pane',
+          icon: 'fas fa-user-cog'
         },
       ],
       mounted () {

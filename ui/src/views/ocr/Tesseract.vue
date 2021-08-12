@@ -1,13 +1,8 @@
 <template>
   <div class="home">
-    <section class="hero is-dark block">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Tesseract OCR</h1>
-<!--          <h2 class="subtitle">Test vanilla version</h2>-->
-        </div>
-      </div>
-    </section>
+    <page-header>
+      <h1 class="title">Tesseract OCR</h1>
+    </page-header>
 
     <section class="hero block">
       <div style="text-align: center;">
@@ -49,9 +44,11 @@
 </template>
 
 <script>
-import axios from "../../axios";
+import mozhiapi from "../../backend/mozhiapi";
+import PageHeader from "@/components/PageHeader"
 
 export default {
+  components: {PageHeader},
   data()  {
     return {
       imageFileName: '',
@@ -71,7 +68,7 @@ export default {
         },
         timeout: 5000
       }
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_OCR_TESSERACT, formData, headers)
           .then(res => {
             this.text = res["data"]['text']

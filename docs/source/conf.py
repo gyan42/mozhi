@@ -101,10 +101,11 @@ todo_include_todos = True
 # a list of builtin themes.
 #
 html_theme = 'karma_sphinx_theme'
-# html_thema = 'sphinx_book_theme'
+# html_theme = 'sphinx_book_theme'
+# html_theme = 'sphinx_redactor_theme'
 
 html_css_files = [
-    'vf_style.css',
+    'mozhi_style.css',
 ]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -127,7 +128,7 @@ html_static_path = ['_static']
 html_context = {
     'css_files': [
         'https://fonts.googleapis.com/css?family=Lato',
-        '_static/css/vf_style.css'
+        '_static/css/mozhi_style.css'
     ],
 }
 

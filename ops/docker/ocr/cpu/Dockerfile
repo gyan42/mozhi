@@ -25,8 +25,6 @@ RUN pip3 install -U pip setuptools
 RUN pip3 install calamari-ocr
 COPY ops/docker/ocr/requirements.txt /
 RUN --mount=type=cache,target=/root/.cache/pip3 pip3 install --no-cache-dir -r /requirements.txt
-RUN ln -s /usr/local/cuda-11.1/targets/x86_64-linux/lib/libcusolver.so.11 /usr/local/cuda-11.1/targets/x86_64-linux/lib/libcusolver.so.10
-ENV LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64/:$LD_LIBRARY_PATH
 
 RUN mkdir -p /home/model-server/model-store
 RUN mkdir /mozhi

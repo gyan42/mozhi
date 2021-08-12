@@ -1,4 +1,4 @@
-ocrVersion: v1
+apiVersion: v1
 kind: Service
 metadata:
   name: mozhi-ocr-cpu-svc
@@ -12,13 +12,13 @@ spec:
     tier: backend
   ports:
   - protocol: "TCP"
-    port: 8088
-    targetPort: 8088
+    port: 8089
+    targetPort: 8089
   type: LoadBalancer
 
 ---
 
-ocrVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mozhi-ocr-cpu
@@ -45,7 +45,7 @@ spec:
           image: mageswaran1989/mozhi-ocr-cpu:latest
           ports:
             - name: http
-              containerPort: 8088
+              containerPort: 8089
           resources:
             # You must specify requests for CPU to autoscale
             # based on CPU utilization
@@ -53,14 +53,14 @@ spec:
               cpu: "250m"
 ---
 
-ocrVersion: autoscaling/v1
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: mozhi-ocr-cpu-hpa
   namespace: mozhi
 spec:
   scaleTargetRef:
-    ocrVersion: apps/v1
+    apiVersion: apps/v1
     kind: Deployment
     name: mozhi-ocr-cpu
   minReplicas: 1
@@ -68,6 +68,3 @@ spec:
   targetCPUUtilizationPercentage: 50
 
 ---
-
-
-

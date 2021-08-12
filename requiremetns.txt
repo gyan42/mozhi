@@ -6,6 +6,8 @@ opencv-python==4.5.2.54
 uvicorn==0.13.4
 python-multipart==0.0.5
 fastapi==0.63.0
+python-jose[cryptography]==3.2.0
+passlib[bcrypt]==1.7.4
 # ------------ DL ------------
 torch==1.8.1
 torchvision==0.8.2

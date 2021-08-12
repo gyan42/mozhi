@@ -1,13 +1,9 @@
 <template>
   <div>
-    <section class="hero is-dark">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">NER Text File Annotator</h1>
-          <h2 class="subtitle">Annotate text for SpaCy NER Model training</h2>
-        </div>
-      </div>
-    </section>
+    <page-header>
+      <h1 class="title">NER Text File Annotator</h1>
+      <h2 class="subtitle">Annotate text for SpaCy NER Model training</h2>
+    </page-header>
 
     <section class="hero">
       <div class="container">
@@ -117,11 +113,14 @@
 <script>
 import LoadTextFile from "./LoadTextFile";
 import {mapMutations} from "vuex";
+import PageHeader from "@/components/PageHeader"
+
 export default {
   name: "StartPage",
   emits: ["file-loaded"],
   components: {
     LoadTextFile,
+    PageHeader
   },
   methods: {
     ...mapMutations("tokenizerInfo", ["resetClass"]),

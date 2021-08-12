@@ -43,11 +43,11 @@
 
 <script>
 import { mapState } from "vuex";
-import axios from "../../../axios";
-import Token from "../../../components/Token";
-import TokenBlock from "../../../components/TokenBlock";
-import ClassesBlock from "../../../components/ClassesBlock.vue";
-import TokenManager from "../../../components/token-manager";
+import mozhiapi from "@/backend/mozhiapi";
+import Token from "@/components/Token";
+import TokenBlock from "@/components/TokenBlock";
+import ClassesBlock from "@/components/ClassesBlock.vue";
+import TokenManager from "@/components/token-manager";
 
 import TextFileAnnotationSidebar from "./TextFileAnnotationSidebar.vue";
 
@@ -98,7 +98,7 @@ export default {
         return;
       }
       this.currentSentence = this.inputSentences[this.currentIndex];
-      axios
+      mozhiapi
         .post(process.env.VUE_APP_API_TOKENIZE, this.currentSentence)
         .then((res) => {
           this.tm = new TokenManager(res.data.tokens);
@@ -147,7 +147,7 @@ export default {
       this.tokenizeCurrentSentence();
     },
     saveTags() {
-      axios
+      mozhiapi
         .post(process.env.VUE_APP_API_DETOKENIZE, { tokens: this.tm.words })
         .then((res) => {
           this.$store.commit("addAnnotation", [

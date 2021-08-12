@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/vf_style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Load and Prepare Demo Data for UI" href="prepare_data.html" />
@@ -195,12 +195,17 @@ are used to access kubernetes service.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://kubernetes.io/docs/tasks/tools/">Kubernetes command line tool</a> : <code class="docutils literal notranslate"><span class="pre">kubectl</span></code></p></li>
 <li><p><a class="reference external" href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></p></li>
-<li><p><strong>Configs used are placed <a class="reference external" href="configs">here</a></strong></p></li>
+<li><p><strong>Configs files used are placed in <a class="reference external" href="../../../configs">mozhi/configs/</a></strong></p></li>
 <li><p>Start minikube</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>minikube start --vm-driver=kvm2
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># let minikube decided what works best fpr your machine setup
+minikube start 
+# if it failes try to use kvm2 as virtual machine  
+minikube start  --vm-driver=kvm2
+
 # to use local images
 eval $(minikube docker-env)
+
 minikube addons enable ingress
 
 alias km=&#39;kubectl -n mozhi&#39;
@@ -209,12 +214,16 @@ alias km=&#39;kubectl -n mozhi&#39;
 <ul class="simple">
 <li><p>Install operators/helm charts</p>
 <ul>
-<li><p>One time installation of <a class="reference external" href="https://www.kubegres.io/doc/getting-started.html">Kubegres Operator</a>
-<code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">https://raw.githubusercontent.com/reactive-tech/kubegres/v1.7/kubegres.yaml</span></code></p></li>
-<li><p>Visit official <a class="reference external" href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/">Krew</a> link for
-<code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">krew</span> <span class="pre">install</span> <span class="pre">minio</span></code></p></li>
+<li><p>One time installation of <a class="reference external" href="https://www.kubegres.io/doc/getting-started.html">Kubegres Operator</a></p></li>
+<li><p>Visit official <a class="reference external" href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/">Krew</a> for installation guide.</p></li>
 </ul>
 </li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">krew</span> <span class="n">install</span> <span class="n">minio</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">reactive</span><span class="o">-</span><span class="n">tech</span><span class="o">/</span><span class="n">kubegres</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">kubegres</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Create mozhi services</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">mozhi</span><span class="o">/</span><span class="n">namespace</span><span class="o">.</span><span class="n">yaml</span>

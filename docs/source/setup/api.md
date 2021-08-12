@@ -35,13 +35,9 @@ kubectl exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: applicati
 
 ## Docker
 
-`export VERSION=0.1`
+`export VERSION=0.7`
 
 **With CPU only**
-
-`
-export VERSION=0.5
-`
 
 - [Dockerfile](../../../ops/docker/api/cpu/multistage/Dockerfile)
 - Build  

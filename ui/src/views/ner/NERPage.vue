@@ -1,11 +1,7 @@
 <template>
-  <section class="hero is-dark">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">NER Playground</h1>
-      </div>
-    </div>
-  </section>
+  <page-header>
+    <h1 class="title">NER Playground</h1>
+  </page-header>
   <div class="columns is-desktop">
     <!--Sidebar-->
     <div class="column is-one-fifth">
@@ -103,8 +99,11 @@ import Token from "./Token";
 import EntityBlock from "./EntityBlock";
 import NERTagsBlock from "@/views/ner/NERTagsBlock";
 import {mapGetters, mapMutations, mapState} from "vuex";
-import axios from "@/axios";
-import torchserve from "@/torchserveaxios"
+import mozhiapi from "@/backend/mozhiapi";
+import torchserveapi from "@/backend/torchserveapi"
+import PageHeader from "@/components/PageHeader"
+
+
 export default {
   name: "NERPredictor",
   data: function() {
@@ -121,12 +120,13 @@ export default {
     Token,
     EntityBlock,
     NERTagsBlock,
+    PageHeader
   },
   computed: {
     ...mapState('nerModelPredictions', ['dataSetName', 'modelName', 'predictions', 'classes'])
   },
   created() {
-    torchserve.managementAPI.get("/models").then(value => {
+    torchserveapi.managementAPI.get("/models").then(value => {
 
       let models = value["data"]["models"]
       models.forEach(model => {
@@ -167,10 +167,10 @@ export default {
     },
     spacy() {
       let api = process.env.VUE_APP_API_NER_SPACY //+ this.modelName
-      console.info("full url", axios.defaults.baseURL)
+      console.info("full url", mozhiapi.defaults.baseURL)
       console.info("api", api)
 
-      axios
+      mozhiapi
           .post(api, {text: this.inTextData})
           .then((res) => {
             this.setPredictions(Object.values(res.data['predictions']))
@@ -194,7 +194,7 @@ export default {
       // let text = "Hugging Face Inc. is a company based in New York City. Its headquarters are in DUMBO, therefore very close to the Manhattan Bridge."
 
       // Selection drop menu has both the name and type separated by space, extract the name alone
-      torchserve.predictionAPI.post("predictions/"+this.modelName.split(" ")[0], {"text": this.inTextData}, {timeout: 5000})
+      torchserveapi.predictionAPI.post("predictions/"+this.modelName.split(" ")[0], {"text": this.inTextData}, {timeout: 5000})
           .then(value => {
             console.info(value["data"])
             data = value["data"]
@@ -223,7 +223,7 @@ export default {
         },
         timeout: 5000
       }
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_OCR_TESSERACT, formData, headers)
           .then(res => {
             this.inTextData = res["data"]['text']

@@ -1,13 +1,9 @@
 `<template>
   <div class ="block">
-    <section class="hero is-dark">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">DataBase Annotator</h1>
-          <h2 class="subtitle">Annotate Table Data for Model training</h2>
-        </div>
-      </div>
-    </section>
+    <page-header>
+      <h1 class="title">DataBase Annotator</h1>
+      <h2 class="subtitle">Annotate Table Data for Model training</h2>
+    </page-header>
     <div class="columns is-desktop">
       <!--Sidebar-->
       <div class="column is-one-fifth">
@@ -83,13 +79,14 @@
 </template>
 
 <script>
-import DBAnnotationSidebar from "@/views/annotator/db/DBAnnotationSidebar";
+import DBAnnotationSidebar from "@/views/annotators/database/DBAnnotationSidebar";
 import Token from "../../../components/Token";
 import TokenBlock from "../../../components/TokenBlock";
 import ClassesBlock from "../../../components/ClassesBlock.vue";
 import TokenManager from "../../../components/token-manager";
 import {mapMutations, mapState, mapGetters} from "vuex";
-import axios from "../../../axios";
+import mozhiapi from "@/backend/mozhiapi";
+import PageHeader from "@/components/PageHeader"
 
 export default {
   name: "DBAnnotator",
@@ -98,6 +95,7 @@ export default {
     Token,
     TokenBlock,
     ClassesBlock,
+    PageHeader
   },
   data: function() {
     return {
@@ -143,7 +141,7 @@ export default {
 
     getInputText() {
       console.log("getInputText")
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_DB_TEXT_TABLE + this.currentId, this.formData, {timeout: 50000})
           .then((res) => {
             console.log(res)
@@ -166,7 +164,7 @@ export default {
         this.annotatedTokens = null
       }
       else {
-        axios
+        mozhiapi
             .post(process.env.VUE_APP_API_TOKENIZE, {"text" : this.currentText}, {timeout: 50000}) //TODO why "text" is needed ?
             .then((res) => {
               this.tm = new TokenManager(res.data.tokens);
@@ -256,7 +254,7 @@ export default {
         let tokensTags = this.tm.exportASCoNLLAnnotations()
         console.log(tokensTags.join(" "))
         // console.log("saveTags", JSON.stringify(tokens))
-        axios
+        mozhiapi
             .post(process.env.VUE_APP_API_DB_TEXT_ANNOTATIONS,
                 {"id": this.currentId,
                   "tokens": tokensTags[0].join(" "),

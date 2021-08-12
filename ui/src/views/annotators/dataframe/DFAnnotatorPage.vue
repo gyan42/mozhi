@@ -1,12 +1,8 @@
 <template>
-    <section class="hero is-dark">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Dataframe Annotator Page</h1>
-<!--          <h2 class="subtitle">Annotate DataFrame Model training</h2>-->
-        </div>
-      </div>
-    </section>
+
+  <page-header>
+    <h1 class="title">Dataframe Annotator Page</h1>
+  </page-header>
   <div class="columns is-desktop">
     <!--Sidebar-->
     <div class="column is-one-fifth">
@@ -69,13 +65,14 @@
 </template>
 
 <script>
-import DFAnnotationSidebar from "@/views/annotator/df/DFAnnotationSidebar";
+import DFAnnotationSidebar from "@/views/annotators/dataframe/DFAnnotationSidebar";
 import Token from "../../../components/Token";
 import TokenBlock from "../../../components/TokenBlock";
 import ClassesBlock from "../../../components/ClassesBlock.vue";
 import TokenManager from "../../../components/token-manager";
 import {mapState} from "vuex";
-import axios from "@/axios";
+import mozhiapi from "@/backend/mozhiapi";
+import PageHeader from "@/components/PageHeader"
 
 
 // https://blog.tensorflow.org/2020/08/introducing-danfo-js-pandas-like-library-in-javascript.html
@@ -95,6 +92,7 @@ export default {
     Token,
     TokenBlock,
     ClassesBlock,
+    PageHeader
   },
   computed: {
     ...mapState(["inputSentences", "classes", "annotations", "currentClass"]),
@@ -121,7 +119,7 @@ export default {
       }
       this.currentSentence = this.inputSentences[this.currentIndex];
       console.info(this.currentSentence)
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_TOKENIZE, this.currentSentence)
           .then((res) => {
             this.tm = new TokenManager(res.data.tokens);
@@ -177,7 +175,7 @@ export default {
       this.tokenizeCurrentSentence();
     },
     saveTags() {
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_DETOKENIZE, { tokens: this.tm.words })
           .then((res) => {
             this.$store.commit("addAnnotation", [

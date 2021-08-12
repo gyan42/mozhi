@@ -33,7 +33,7 @@ Mozhi provides set of tools for end-to-end Named Entity Recognition (NER) NLP ta
 * Model training
 * Deploying models
 
-.. image:: ../images/vf_text_annotations.png
+.. image:: ../images/mozhi_image_annotator.png
     :align: center
     :alt: header-img
 

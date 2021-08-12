@@ -7,22 +7,30 @@ Required software packages:
 - [Kubernetes command line tool](https://kubernetes.io/docs/tasks/tools/) : `kubectl`
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
   
-- **Configs used are placed [here](configs)**
+- **Configs files used are placed in [mozhi/configs/](../../../configs)**
 
 - Start minikube
 ```
-minikube start --vm-driver=kvm2
-# to use local images
-eval $(minikube docker-env)
+# let minikube decided what works best fpr your machine setup
+minikube start 
+# if it failes try to use kvm2 as virtual machine  
+minikube start  --vm-driver=kvm2
+
 minikube addons enable ingress
 
 alias km='kubectl -n mozhi'
 ```
 - Install operators/helm charts
   - One time installation of [Kubegres Operator](https://www.kubegres.io/doc/getting-started.html)
-    `kubectl apply -f https://raw.githubusercontent.com/reactive-tech/kubegres/v1.7/kubegres.yaml`
-  - Visit official [Krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) link for 
-    `kubectl krew install minio`
+  - Visit official [Krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) for installation guide.
+
+```
+kubectl krew install minio
+kubectl create namespace minio-operator
+kubectl minio init --namespace minio-operator
+
+kubectl apply -f https://raw.githubusercontent.com/reactive-tech/kubegres/v1.7/kubegres.yaml
+```
 
 - Create mozhi services
 ```
@@ -42,7 +50,7 @@ echo "$(kubectl get ingress -n mozhi | grep mozhi-api-ingress | cut -d' ' -f10) 
 # copy above line and add at the top of  /etc/hosts file
 sudo vi /etc/hosts 
 ```
-- Create required postgres user credentials and DB
+- Create required postgres user credentials and DB wth in `mozhi-postgres-db` container
 ```
 kubectl exec -it service/mozhi-postgres-db -n mozhi -- bash
   >> psql -U postgres # mozhi
@@ -63,6 +71,12 @@ kubectl  port-forward service/mozhi-postgres-db 4321:5432 -n mozhi
 kubectl port-forward service/minio 9000:80 -n mozhi
 ```
 Create alias : `mcli alias set mozhiminio http://localhost:9000 mozhi mozhi123`
+
+- Port forward Torchserve
+```
+kubectl  port-forward service/mozhi-api-torchserve-svc 6543:6543 6544:6544 6545:6545  -n mozhi
+```
+
 
 ```
 # https://localhost:9090/

@@ -24,6 +24,27 @@ spec:
             name: mozhi-api-cpu-svc
             port:
               number: 8088
+      - path: /api/calamari/v1/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: mozhi-ocr-cpu-svc
+            port:
+              number: 8089
+      - path: /api/torchserve/pred/v1/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: mozhi-api-torchserve-svc
+            port:
+              number: 6543
+      - path: /api/torchserve/mgmnt/v1/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: mozhi-api-torchserve-svc
+            port:
+              number: 6544
       - path: /(.*)
         pathType: Prefix
         backend:

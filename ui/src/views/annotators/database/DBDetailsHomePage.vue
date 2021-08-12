@@ -1,13 +1,11 @@
 <template>
   <div class ="block">
-    <section class="hero is-dark">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">DataBase Annotator</h1>
-          <h2 class="subtitle">Database Connection Information</h2>
-        </div>
-      </div>
-    </section>
+
+    <page-header>
+      <h1 class="title">DataBase Annotator</h1>
+      <h2 class="subtitle">Database Connection Information</h2>
+    </page-header>
+
     <br>
     <form>
       <div class="columns is-3">
@@ -122,10 +120,13 @@
 
 <script>
 import {mapMutations, mapGetters} from "vuex";
-import axios from "../../../axios";
+import mozhiapi from "../../../backend/mozhiapi";
+import PageHeader from "@/components/PageHeader"
 
 export default {
   name: "DBDetailsPage",
+  components: {PageHeader},
+
   data() {
     return {
       // TODO: move to common module
@@ -163,7 +164,7 @@ export default {
 
       // Get the total rows count from backend to update progress bar
       let totalRows = 0
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_DB_TEXT_COUNT, this.formData, headers)
           .then((res) => {
             console.log(res)
@@ -176,7 +177,7 @@ export default {
 
       // Get all tags to setup the NER labels
       let tags = []
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_DB_GET_TAGS, this.formData, headers)
           .then((res) => {
             console.log(res)
@@ -195,7 +196,7 @@ export default {
           })
 
       let data = ""
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_DB_TEXT_TABLE + this.formData.start_id, this.formData, headers)
           .then((res) => {
             console.log("get features", res)

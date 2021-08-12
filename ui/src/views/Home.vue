@@ -1,10 +1,19 @@
 <template>
-  <section class="hero is-dark">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title"> Welcome to Mozhi!</h1>
-        <h2 class="subtitle">A platform to do end-to-end custom entity recognition projects</h2>
-      </div>
-    </div>
-  </section>
+ <page-header>
+    <h1 class="title">Welcome to Mozhi! </h1>
+   <h2 class="subtitle">Web base tool for Named Entity Recognition Tasks</h2>
+ </page-header>
 </template>
+
+<script>
+import PageHeader from "@/components/PageHeader"
+
+export default {
+  name: "ControlPanePage",
+  components: {PageHeader}
+}
+</script>
+
+<style scoped>
+
+</style>

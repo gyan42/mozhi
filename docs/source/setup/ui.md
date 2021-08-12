@@ -17,7 +17,7 @@ yarn serve
 ## Docker 
 
 `
-export VERSION=0.4
+export VERSION=0.7
 `
 
 - [Dockerfile](../../../ops/docker/ui/Dockerfile)

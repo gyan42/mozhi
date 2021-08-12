@@ -1,5 +1,5 @@
 <template>
-  <img alt="mozhi" src="./../../../assets/mozhi-logo.png" id="my-image">
+  <img alt="mozhi" src="@/assets/mozhi-logo.png" id="my-image">
   <div class="columns is-desktop">
     <!--Sidebar-->
     <div class="column is-one-fifth">
@@ -162,9 +162,9 @@
 
 // https://michaelnthiessen.com/this-is-undefined
 //
-import { fabric } from 'fabric';
-import {mapState, mapMutations, mapGetters} from "vuex";
-import axios from "../../../axios";
+import {fabric} from 'fabric';
+import {mapGetters, mapMutations, mapState} from "vuex";
+import mozhiapi from "@/backend/mozhiapi";
 
 export default {
   name: "ImageAnnotation",
@@ -412,7 +412,7 @@ export default {
     tryCacheOrLoad() {
       console.log("tryCacheOrLoad")
       console.log(this.experimentName, this.dbServerInfo, this.storageServer)
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_DB_IMAGE_BBOX_GET, {'experiment_name': this.experimentName, 'prefix':this.getFileCurrentPrefix()})
           .then((res) => {
             console.log(res.data['ocr_text'])
@@ -442,9 +442,11 @@ export default {
       if (this.fabricJsonData.length > 0 && this.ocrText.length > 0)
       {
         console.log("Found previous annotated data...")
+        console.log(params.toString())
+
         this.loadFabricJson()
         // Reload the image to resize the canvas accordingly TODO better way?
-        new fabric.Image.fromURL(axios.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
+        new fabric.Image.fromURL(mozhiapi.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
             function (img) {
               fabricCanvas.setWidth(img.width)
               fabricCanvas.setHeight(img.height)
@@ -458,9 +460,10 @@ export default {
       else
       {
         console.log("Found no previous annotated data...")
+        console.log(params.toString())
         // console.log(this.getFileCurrentPrefix())
         // imgData = "data:" + res.headers["content-type"] + ";base64," + this.utf8_to_b64(res.data).toString('base64')
-        new fabric.Image.fromURL(axios.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
+        new fabric.Image.fromURL(mozhiapi.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
             function (img) {
               fabricCanvas.setWidth(img.width)
               fabricCanvas.setHeight(img.height)
@@ -471,8 +474,8 @@ export default {
               // console.log("loading done!", img.width, img.height)
             },{}
         );
-        axios.defaults.timeout = 30000;
-        axios
+        mozhiapi.defaults.timeout = 30000;
+        mozhiapi
             .get(process.env.VUE_APP_API_MINIO_GET_TEXT, {params: params})
             .then(res => {
               this.ocrText = res["data"]['text']
@@ -480,7 +483,7 @@ export default {
             })
             .catch((err) => alert(err));
 
-        axios
+        mozhiapi
             .get(process.env.VUE_APP_API_MINIO_GET_TEXTINFO, {params: params})
             .then(res => {
               // this.ocrText = res["data"]['text']
@@ -525,7 +528,7 @@ export default {
         "bbox_json" : this.fabricJsonData,
         "prefix": this.getFileCurrentPrefix(),
         "ocr_text": this.ocrText}
-      axios
+      mozhiapi
           .post(process.env.VUE_APP_API_DB_IMAGE_BBOX_GET,
               bboxdata, {timeout: 30000})
           .catch((err) => alert(err))

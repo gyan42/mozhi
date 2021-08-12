@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import LoadDataframeFileHomePage from "@/views/annotator/df/LoadDataframeFileHomePage";
+import LoadDataframeFileHomePage from "@/views/annotators/dataframe/LoadDataframeFileHomePage";
 export default {
   name: "DFUploadPage",
   emits: ["file-loaded"],

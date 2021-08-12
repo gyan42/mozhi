@@ -1,11 +1,11 @@
 : '
 Use this script to build docker images and push it to default dockerhub repo
 1) Frontend
-./scripts/d2d-helper.sh -f frontend -v 0.6
+./scripts/d2d-helper.sh -f frontend -v 0.7
 2) Backend
-./scripts/d2d-helper.sh -f backend -v 0.6
+./scripts/d2d-helper.sh -f backend -v 0.7
 3) All
-./scripts/d2d-helper.sh -f all -v 0.6
+./scripts/d2d-helper.sh -f all -v 0.7
 4) Delete and reapply K8s objects
 ./scripts/d2d-helper.sh -f killnrestart
 5) Update existing K8s objects
@@ -37,6 +37,15 @@ api_image() {
   docker push mageswaran1989/mozhi-api-cpu:latest
 }
 
+ocr_image() {
+  docker build -t mozhi-ocr-cpu:latest -f ops/docker/ocr/cpu/Dockerfile .
+  docker tag mozhi-ocr-cpu:latest mageswaran1989/mozhi-ocr-cpu:$VERSION
+  docker push mageswaran1989/mozhi-ocr-cpu:$VERSION
+
+  docker tag mozhi-ocr-cpu:latest mageswaran1989/mozhi-ocr-cpu:latest
+  docker push mageswaran1989/mozhi-ocr-cpu:latest
+}
+
 apply_mozhi_d2d() {
   kubectl apply -f ops/d2d/services/ --v=0
   kubectl get all
@@ -61,6 +70,7 @@ elif [ "$FLAG" == "backend" ]; then
 elif [ "$FLAG" == "all" ]; then
   ui_image
   api_image
+  ocr_image
 elif [ "$FLAG" == "killandrestart" ]; then
   kill_and_restart
 elif [ "$FLAG" == "update" ]; then
