@@ -32,19 +32,19 @@
 
           <div class="columns">
             <div class="column is-one-third">
-              <label for="user" style="text-align:right" class="label is-large is-right">User</label>
+              <label for="user" style="text-align:right" class="label is-large is-right">AccessKey</label>
             </div>
             <div class="column">
-              <input id="user" class="input is-medium"  type="text" placeholder="mozhi" v-model.lazy="formData.user">
+              <input id="user" class="input is-medium"  type="text" placeholder="mozhi" v-model.lazy="formData.accessKey">
             </div>
           </div>
 
           <div class="columns">
             <div class="column is-one-third">
-              <label for="pass" style="text-align:right" class="label is-large is-right">Password</label>
+              <label for="pass" style="text-align:right" class="label is-large is-right">SecretKey</label>
             </div>
             <div class="column">
-              <input id="pass" class="input is-medium"  type="text" placeholder="mozhi" v-model.lazy="formData.password">
+              <input id="pass" class="input is-medium"  type="text" placeholder="mozhi" v-model.lazy="formData.secretKey">
             </div>
           </div>
 
@@ -60,6 +60,8 @@
 </template>
 
 <script>
+//import {mapMutations, mapGetters} from "vuex";
+
 export default {
   name: "DBInfoDialogBox",
   props: ['isActive', 'close', 'message'],
@@ -71,10 +73,14 @@ export default {
       formData: {
         host: process.env.VUE_APP_DB_HOST,
         port: process.env.VUE_APP_DB_PORT,
-        user: process.env.VUE_APP_DB_USER,
-        password: process.env.VUE_APP_DB_PASSWORD,
+        accessKey: process.env.VUE_APP_MINIO_ACCESS_KEY,
+        secretKey: process.env.VUE_APP_MINIO_SECRET_KEY,
       }
-    }}
+    }
+  },
+  methods: {
+     // ...mapGetters('databaseInfo', ['getFormData']),
+  }
 }
 </script>
 

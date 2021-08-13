@@ -19,7 +19,7 @@
         <a v-on:click="activeTab = 'db'">Database</a>
       </li>
       <li v-bind:class="{ 'is-active': activeTab === 'objstorage' }">
-        <span class="icon is-small"><i class="fas fa-address-book" aria-hidden="true"></i></span>
+        <span class="icon is-small"><i class="fas fa-hdd" aria-hidden="true"></i></span>
         <a v-on:click="activeTab = 'objstorage'">Object Storage</a>
       </li>
     </ul>
@@ -77,8 +77,8 @@
 
 <script>
 import PageHeader from "@/components/PageHeader"
-import DBInfoDialogBox from "@/components/DBInfoDialogBox";
-import MinIOInfoDialogBox from "@/components/MinIOInfoDialogBox";
+import DBInfoDialogBox from "@/components/modals/DBInfoModal";
+import MinIOInfoDialogBox from "@/components/modals/MinIOInfoModal";
 
 export default {
   name: "ControlPanePage",

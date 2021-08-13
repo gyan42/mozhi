@@ -69,7 +69,7 @@ import DFAnnotationSidebar from "@/views/annotators/dataframe/DFAnnotationSideba
 import Token from "../../../components/Token";
 import TokenBlock from "../../../components/TokenBlock";
 import ClassesBlock from "../../../components/ClassesBlock.vue";
-import TokenManager from "../../../components/token-manager";
+import TokenManager from "@/services/token-manager";
 import {mapState} from "vuex";
 import mozhiapi from "@/backend/mozhiapi";
 import PageHeader from "@/components/PageHeader"

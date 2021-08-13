@@ -1,6 +1,12 @@
 export default {
     namespaced: true,
     state: {
+        dbConnectionInfo: {
+            host: 'localhost',
+            port: '5432',
+            user: 'mozhi',
+            password: 'mozhi',
+        },
         formData: {
             host: 'localhost',
             port: '5432',

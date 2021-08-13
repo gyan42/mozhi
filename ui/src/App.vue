@@ -6,6 +6,7 @@
         :class="[{'collapsed' : collapsed}, {'onmobile' : isOnMobile}]">
 
       <img alt="mozhi" src="./assets/mozhi-logo.png">
+
       <sidebar-menu
           collapsed=true
           :menu="menu"/>
@@ -21,29 +22,41 @@
 </template>
 
 <script>
-import "./assets/styles.scss";
+import "@/assets/styles.scss";
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+// import mapGetters from "vuex";
 
 export default {
   name: 'App',
   watch: {
-    '$route' (to, from) { // eslint-disable-line no-unused-vars
+    '$route' (to, from, next) { // eslint-disable-line no-unused-vars
       document.title = to.meta.title || 'mozhi'
     }
   },
+  beforeCreate() {
+    // this.isHide = !this.$store.state.isUserLoggedIn
+    this.collapsed = true
+  },
   data() {
     return {
+      isHide: true,
       collapsed: false,
       isOnMobile: false,
+      // https://github.com/yaminncco/vue-sidebar-menu
       menu: [
         {
-          header: 'Getting Started',
+          header: 'Menu',
           hiddenOnCollapse: true,
+        },
+        {
+          href: '/',
+          title: 'LogIn',
+          icon: 'fas fa-sign-in-alt',
         },
         {
           href: '/home',
           title: 'Home',
-          icon: 'fas fa-home'
+          icon: 'fas fa-home',
         },
         {
           href: '/annotator/',
@@ -93,12 +106,12 @@ export default {
         {
           href: '/ner',
           title: 'NER',
-          icon: 'fas fa-glasses'
+          icon: 'fas fa-glasses',
         },
         {
           href: '/controlpane',
           title: 'Control Pane',
-          icon: 'fas fa-user-cog'
+          icon: 'fas fa-user-cog',
         },
       ],
       mounted () {

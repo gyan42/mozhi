@@ -20,7 +20,7 @@ import SignUp from "@/views/SignUp";
 export const routes = [
   {
     path: '/',
-    name: 'Login',
+    name: 'LogIn',
     component: LogIn,
     meta: { auth: true, title: 'Mozhi Login' }
   },
@@ -32,7 +32,7 @@ export const routes = [
   },
   {
     path: '/home',
-    name: 'home',
+    name: 'Home',
     component: Home,
     meta: { auth: true, title: 'Mozhi Home' }
   },

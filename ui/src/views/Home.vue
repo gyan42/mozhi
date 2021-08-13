@@ -9,11 +9,11 @@
 import PageHeader from "@/components/PageHeader"
 
 export default {
-  name: "ControlPanePage",
+  name: "HomePage",
   components: {PageHeader}
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

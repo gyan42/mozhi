@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import mozhiapi from "../../backend/mozhiapi";
+import MozhiApi from "@/backend/mozhiapi";
 import PageHeader from "@/components/PageHeader"
 
 export default {
@@ -68,7 +68,7 @@ export default {
         },
         timeout: 5000
       }
-      mozhiapi
+      MozhiApi
           .post(process.env.VUE_APP_API_OCR_TESSERACT, formData, headers)
           .then(res => {
             this.text = res["data"]['text']

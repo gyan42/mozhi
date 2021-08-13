@@ -83,7 +83,7 @@ import DBAnnotationSidebar from "@/views/annotators/database/DBAnnotationSidebar
 import Token from "../../../components/Token";
 import TokenBlock from "../../../components/TokenBlock";
 import ClassesBlock from "../../../components/ClassesBlock.vue";
-import TokenManager from "../../../components/token-manager";
+import TokenManager from "@/services/token-manager";
 import {mapMutations, mapState, mapGetters} from "vuex";
 import mozhiapi from "@/backend/mozhiapi";
 import PageHeader from "@/components/PageHeader"

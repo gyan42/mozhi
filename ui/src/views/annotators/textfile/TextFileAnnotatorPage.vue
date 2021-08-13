@@ -47,7 +47,7 @@ import mozhiapi from "@/backend/mozhiapi";
 import Token from "@/components/Token";
 import TokenBlock from "@/components/TokenBlock";
 import ClassesBlock from "@/components/ClassesBlock.vue";
-import TokenManager from "@/components/token-manager";
+import TokenManager from "@/services/token-manager";
 
 import TextFileAnnotationSidebar from "./TextFileAnnotationSidebar.vue";
 
