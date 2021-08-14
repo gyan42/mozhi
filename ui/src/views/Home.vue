@@ -10,7 +10,12 @@ import PageHeader from "@/components/PageHeader"
 
 export default {
   name: "HomePage",
-  components: {PageHeader}
+  components: {PageHeader},
+  mounted() {
+  },
+  created() {
+    console.log(localStorage.getItem('user'))
+  }
 }
 </script>
 

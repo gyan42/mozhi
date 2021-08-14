@@ -2,7 +2,7 @@ import mozhiapi from "@/backend/mozhiapi"
 
 class AuthService {
     login(user) {
-        console.log("AuthService login", user)
+        // console.log("AuthService login", user)
         let headers =   {
             timeout: 3000,
             'accept': 'application/json',
@@ -20,8 +20,9 @@ class AuthService {
         return mozhiapi
             .post(process.env.VUE_APP_AUTH_API_LOGIN, params, headers)
             .then(response => {
-                if (response.data.accessToken) {
+                if (response.data.access_token) {
                     // { "access_token": "...", "token_type": "bearer" }
+                    // console.log("AuthService login", JSON.stringify(response.data))
                     localStorage.setItem('user', JSON.stringify(response.data));
                 }
                 // console.log(response.data)

@@ -23,7 +23,7 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)/mozhi/
 # upload ConLL 2003 annotated data to Database
 python mozhi/bin/db/upload.py \
 --host localhost \
---port 4321 \
+--port 5432 \
 --db_name mozhidb \
 --user mozhi \
 --password mozhi \

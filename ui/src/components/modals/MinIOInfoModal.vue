@@ -5,7 +5,7 @@
 
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Database Admin Connection Info</p>
+        <p class="modal-card-title">Admin Connection Info</p>
         <button @click="close" class="delete" aria-label="close"></button>
 <!--        <button @click="close" class="modal-close"></button>-->
 

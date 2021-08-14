@@ -61,7 +61,7 @@ export default {
       console.info("Running Tesseract")
       let formData = new FormData();
       formData.append('file', this.imageFileName);
-      console.info(formData)
+      console.info("tesseract formData", formData)
       let headers =   {
         headers: {
           'Content-Type': 'multipart/form-data'

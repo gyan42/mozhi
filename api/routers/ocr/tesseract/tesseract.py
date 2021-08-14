@@ -13,7 +13,7 @@ from api.internal.json_models import Text, ExtractedNER
 import pytesseract
 
 router = APIRouter()
-STORE_PATH = '/tmp/mozhi/data'
+STORE_PATH = '/tmp/mozhi/data/ocr'
 
 @router.post("/mozhi/ocr/engine/pytesseract/file")
 def pytesseract_engine(file: UploadFile = File(...)):

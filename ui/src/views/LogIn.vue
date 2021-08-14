@@ -91,7 +91,9 @@ export default {
       console.log("formData", this.formData)
       // loginService.login(this.formData)
       this.login(this.formData).then(
-          () => this.$router.push({name: 'Home'}),
+          () => {
+            this.$router.push({name: 'Home'})
+          },
           error => {console.log("login error", error)}
       )
       if (this.isLoggedIn) {
@@ -99,6 +101,8 @@ export default {
       } else {
         console.log("login error")
       }
+
+
     },
     onSignUp() {
       console.log("moveToSignUpPage")

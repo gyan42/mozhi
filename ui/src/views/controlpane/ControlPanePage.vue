@@ -3,14 +3,17 @@
     <h1 class="title"> Control Pane </h1>
   </page-header>
 
-  <d-b-info-dialog-box :isActive="isDBDialogActive"
-                       :message="message"
-                       :close="close"/>
+  <d-b-info-modal :isActive="isDBModalActive"
+                  :close="close"/>
 
-  <min-i-o-info-dialog-box :isActive="isMinIODialogActive"
-                           :message="message"
+  <min-i-o-info-modal :isActive="isMinIOModalActive"
+                      :close="close"/>
+
+  <create-d-b-modal :isActive="isCreateDBModalActive"
+                    :close="close"/>
+
+  <upload-text-files-modal :isActive="isUploadTextFilesModalActive"
                            :close="close"/>
-
   <!--  Tabs -->
   <div class="tabs is-centered is-medium">
     <ul>
@@ -36,19 +39,26 @@
         </p>
 
         <a class="panel-block is-active">
-          <button v-on:click="launch" class="button is-white is-medium">Connection Info</button>
+          <button v-on:click="launchDBConnectionInfoModal" class="button is-white is-medium">
+            Connection Info
+          </button>
         </a>
         <a class="panel-block is-active">
-          <button v-on:click="launch" class="button is-white is-medium">Create New Database</button>
+          <button v-on:click="launchCreateDBModal" class="button is-white is-medium">
+            Create New Database
+          </button>
         </a>
         <a class="panel-block is-active">
-          <button v-on:click="launch" class="button is-white is-medium">Upload Tagged Data</button>
+          <button v-on:click="launchUploadTextFilesModal" class="button is-white is-medium">
+            Upload Tagged Data
+          </button>
         </a>
-        <a class="panel-block is-active">
-          <button v-on:click="launch" class="button is-white is-medium">Upload Raw Data</button>
-        </a>
+<!--        <a class="panel-block is-active">-->
+<!--          <button v-on:click="launch" class="button is-white is-medium">-->
+<!--            Upload Raw Data-->
+<!--          </button>-->
+<!--        </a>-->
       </nav>
-
     </div>
   </div>
 
@@ -60,13 +70,13 @@
           MinIO
         </p>
         <a class="panel-block is-active">
-          <button v-on:click="launch" class="button is-white is-medium">Connection Info</button>
+          <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Connection Info</button>
         </a>
         <a class="panel-block is-active">
-          <button v-on:click="launch" class="button is-white is-medium">Create Bucket</button>
+          <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Create Bucket</button>
         </a>
         <a class="panel-block is-active">
-          <button v-on:click="launch" class="button is-white is-medium">Upload file(s)..</button>
+          <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Upload file(s)..</button>
         </a>
       </nav>
     </div>
@@ -77,45 +87,57 @@
 
 <script>
 import PageHeader from "@/components/PageHeader"
-import DBInfoDialogBox from "@/components/modals/DBInfoModal";
-import MinIOInfoDialogBox from "@/components/modals/MinIOInfoModal";
+import DBInfoModal from "@/components/modals/DBInfoModal";
+import MinIOInfoModal from "@/components/modals/MinIOInfoModal";
+import CreateDBModal from "@/components/modals/CreateDBModal";
+import UploadTextFilesModal from "@/components/modals/UploadTextFilesModal"
 
 export default {
   name: "ControlPanePage",
   components: {
     PageHeader,
-    DBInfoDialogBox,
-    MinIOInfoDialogBox
+    DBInfoModal,
+    CreateDBModal,
+    MinIOInfoModal,
+    UploadTextFilesModal
   },
   data() {
     return {
-      isDBDialogActive: false,
-      isMinIODialogActive: false,
+      isDBModalActive: false,
+      isMinIOModalActive: false,
+      isCreateDBModalActive: false,
+      isUploadTextFilesModalActive: false,
       activeTab: "db",
       isActive: "pictures"
     }
   },
   methods: {
-    launch() {
-      this.isDBDialogActive = true;
-      this.isMinIODialogActive = true;
+    launchDBConnectionInfoModal() {
+      this.isDBModalActive = true;
+    },
+    launchMinIOConnectionModal() {
+      this.isMinIOModalActive = true;
+    },
+    launchCreateDBModal() {
+      this.isCreateDBModalActive = true
+    },
+    launchUploadTextFilesModal() {
+      this.isUploadTextFilesModalActive = true
     },
     close() {
-      this.isDBDialogActive = false;
-      this.isMinIODialogActive = false;
+      this.isDBModalActive = false;
+      this.isMinIOModalActive = false;
+      this.isCreateDBModalActive = false
+      this.isUploadTextFilesModalActive = false
     },
   },
   computed: {
-    message() {
-      return "Hello Bulma Modal";
-    }
   },
   mounted() {
     // Close modal with 'esc' key
     document.addEventListener("keydown", (e) => {
       if (e.keyCode === 27) {
-        this.isDBDialogActive = false;
-        this.isMinIODialogActive = false;
+        this.close()
       }
     });
   },

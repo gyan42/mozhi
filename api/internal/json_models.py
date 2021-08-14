@@ -23,18 +23,18 @@ class ExtractedNER(BaseModel):
     type: str
 
 
-class DBDetails(BaseModel):
+class DBConnectionInfo(BaseModel):
     host: str
     port: str
     user: str
     password: str
-    db_name: str
-    text_table_name: str = None
-    tag_table_name: str = None
-    text_col_name: str = None
-    features_col_name: str = None
-    labels_col_name: str = None
-    start_id: int = None
+    dbname: str
+    # text_table_name: str = None
+    # tag_table_name: str = None
+    # text_col_name: str = None
+    # features_col_name: str = None
+    # labels_col_name: str = None
+    # start_id: int = None
 
 class DBServer(BaseModel):
     host: str
@@ -56,7 +56,7 @@ class AnnotatedData(BaseModel):
     id: int
     tokens: str
     labels: str
-    form_data: DBDetails
+    form_data: DBConnectionInfo
 
 
 class StorageAuthentication(BaseModel):

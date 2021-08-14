@@ -1,21 +1,21 @@
+import { createStore } from "vuex";
 import nerModelPredictions from "./modules/ner-model-predictions"
 import databaseInfo from "./modules/database-info"
 import tokenizerInfo from "./modules/tokenizer-runtime-info"
 import imageStore from "./modules/image-store"
 import auth from "@/store/modules/auth"
 
-export const mutations = {
-};
-
-export const getters = {
-};
-export default {
+export default createStore({
   state() {
     return {
     };
   },
-  getters,
-  mutations,
+  getters: {
+
+  },
+  mutations: {
+
+  },
   actions: {},
   modules: {
     nerModelPredictions,
@@ -24,4 +24,7 @@ export default {
     imageStore,
     auth
   }
-};
+});
+
+
+

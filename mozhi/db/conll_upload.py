@@ -13,6 +13,12 @@ from mozhi.utils.pretty_print import print_info
 
 
 def delete_table(table_name, engine):
+    """
+
+    :param table_name:
+    :param engine:
+    :return:
+    """
     sql_command = f"drop table if exists {table_name} cascade "
     engine.execute(sql_command)
 

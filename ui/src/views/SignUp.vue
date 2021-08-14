@@ -9,7 +9,7 @@
         <div class="columns is-centered">
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
 
-            <form action="" class="box">
+            <div class="box">
               <div class="field">
                 <label for="emailinput" class="label">Email</label>
                 <div class="control has-icons-left">
@@ -45,7 +45,7 @@
                 </div>
               </div>
 
-            </form>
+            </div>
           </div>
         </div>
       </div>

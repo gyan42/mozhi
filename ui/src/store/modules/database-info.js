@@ -1,24 +1,22 @@
 export default {
     namespaced: true,
     state: {
-        dbConnectionInfo: {
+        connectionInfo: {
             host: 'localhost',
             port: '5432',
             user: 'mozhi',
             password: 'mozhi',
+            dbname: 'mozhidb'
         },
-        formData: {
-            host: 'localhost',
-            port: '5432',
-            user: 'mozhi',
-            password: 'mozhi',
-            db_name: 'mozhidb',
+        tableInfo: {
             text_table_name: 'conll2003_train',
             tag_table_name: 'conll2003_train_tags',
             text_col_name: 'text',
             features_col_name: 'features',
             labels_col_name: 'labels',
-            start_id: 1},
+            start_id: 1
+        },
+
         currentText: "demo text for annotation from store",
         currentId: 1, //current row id
         currentAnnotations: "",
@@ -26,19 +24,27 @@ export default {
 
     },
     getters: {
-        getFormData(state) {
-            console.info("getFormData", state)
-            return state.formData
+        getConnectionInfo(state) {
+            console.info("getConnectionInfo")
+            return state.connectionInfo
+        },
+        getTableInfo(state) {
+            console.log("getCurrentRowId", state)
+            return state.tableInfo
         },
         getCurrentRowId(state) {
             console.log("getCurrentRowId", state)
-            return state.currentId
+            return state.getCurrentRowId
         }
     },
     mutations: {
-        setFormData(state, payload) {
-            console.info("setFormData", payload)
-            state.formData = payload
+        setConnectionInfo(state, payload) {
+            console.info("setConnectionInfo", payload)
+            state.connectionInfo = payload
+        },
+        setTableInfo(state, payload) {
+            console.info("setTableInfo", payload)
+            state.connectionInfo = payload
         },
         setCurrentText(state, payload) {
             console.info("setCurrentText", payload)
