@@ -30,7 +30,7 @@
           Save changes
         </button>
         <button @click="close" class="button">
-          Cancel
+          Close
         </button>
       </footer>
     </div>
@@ -40,7 +40,7 @@
 
 <script>
 import {mapMutations, mapGetters} from "vuex";
-import DBServiceAPI from "@/backend/dbservice"
+import DBServiceAPI from "@/backend/dbservice-api"
 
 export default {
   name: "CreateDBModal",
@@ -52,10 +52,12 @@ export default {
   computed: {
     ...mapGetters('databaseInfo', ['getConnectionInfo', 'getTableInfo', 'getCurrentRowId'])
   },
+  mounted() {
+    console.log(this.getConnectionInfo)
+  },
   methods: {
     ...mapMutations('databaseInfo', ['setConnectionInfo', 'setTableInfo']),
     onSave() {
-      this.setConnectionInfo(this.dbConnectionInfo)
       DBServiceAPI.create_db(this.getConnectionInfo, this.dbname)
     }
   }

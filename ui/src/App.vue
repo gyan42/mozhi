@@ -64,7 +64,7 @@ export default {
           icon: 'fas fa-draw-polygon',
           child : [
             {
-              href: '/annotator/dbdetails',
+              href: '/annotator/db',
               title: 'Database',
               icon: 'fas fa-database'
             },

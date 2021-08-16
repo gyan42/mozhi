@@ -7,7 +7,7 @@
     <div class="columns is-desktop">
       <!--Sidebar-->
       <div class="column is-one-fifth">
-        <DBAnnotationSidebar :currentId="currentId"/>
+        <DBAnnotationSidebar :currentId="currentId" @render-text="onRenderText"/>
       </div>
       <!--Sidebar-->
 
@@ -70,9 +70,9 @@
       <!--Right Side-->
     </div>
 
-    <p>Note: Always select from left. Tag "O" is ignored from highlighting</p>
+    <p>Note: Requested to select text from left for tagging. Tag "O" is ignored from highlighting</p>
     <br>
-    <p>Your text column start ID is {{ formData.start_id }} and current ID is {{ currentId }}</p>
+    <p>Your text column start ID is {{ tableInfo.start_id }} and current ID is {{ currentId }}</p>
     <br><br><br><br>
 
   </div>
@@ -84,9 +84,11 @@ import Token from "../../../components/Token";
 import TokenBlock from "../../../components/TokenBlock";
 import ClassesBlock from "../../../components/ClassesBlock.vue";
 import TokenManager from "@/services/token-manager";
+
 import {mapMutations, mapState, mapGetters} from "vuex";
-import mozhiapi from "@/backend/mozhiapi";
 import PageHeader from "@/components/PageHeader"
+import DBServiceAPI from "@/backend/dbservice-api"
+import NERServiceAPI from "@/backend/ner-service-api"
 
 export default {
   name: "DBAnnotator",
@@ -105,18 +107,20 @@ export default {
     };
   },
   computed: {
-    ...mapState("databaseInfo", ["currentText", "currentAnnotations", "formData", "totalRows", 'currentId']),
+    ...mapState("databaseInfo", ["currentText", "currentAnnotations", "tableInfo", "totalRows", 'currentId']),
     ...mapState("tokenizerInfo", ["inputSentences", "classes", "annotations", "currentClass"]),
+    ...mapGetters('databaseInfo', ['getTableInfo', 'getConnectionInfo']),
+
   },
   beforeCreate() {
-    if (!this.$route.params["isInitialized"]) {
-      // If landed on this page directly, move to DB details page
-      this.$router.push({name: 'DBDetailsHomePage'}) //TODO is this right way ? to prevent stale data?
-    }
+    // if (!this.$route.params["isInitialized"]) {
+    //   // If landed on this page directly, move to DB details page
+    //   this.$router.push({name: 'DBDetailsHomePage'}) //TODO is this right way ? to prevent stale data?
+    // }
 
   },
   created() {
-    this.getInputText()
+    // this.getInputText()
     // console.log("created:")
     // console.log(this.currentText)
     document.addEventListener("mouseup", this.selectTokens);
@@ -127,9 +131,11 @@ export default {
     document.removeEventListener("mouseup", this.selectTokens);
   },
   methods : {
-    ...mapGetters('databaseInfo', ['getFormData']),
-    ...mapMutations('databaseInfo', ['setFormData', 'setCurrentText', 'setTotalCounts', 'setCurrentRowId']),
+    ...mapMutations('databaseInfo', ['setConnectionInfo', 'setCurrentText', 'setTotalCounts', 'setCurrentRowId']),
 
+    onRenderText() {
+      this.getInputText()
+    },
     getRandomColor() {
       var letters = '0123456789ABCDEF'.split('');
       var color = '#';
@@ -141,21 +147,19 @@ export default {
 
     getInputText() {
       console.log("getInputText")
-      mozhiapi
-          .post(process.env.VUE_APP_API_DB_TEXT_TABLE + this.currentId, this.formData, {timeout: 50000})
-          .then((res) => {
-            console.log(res)
-            this.setCurrentText(res.data["text"]);
-            if ("annotated" in res.data){
-              this.annotatedTokens = JSON.parse(res.data["annotated"])
-            }
-            console.log("getInputText", this.annotatedTokens)
-          })
-          .catch((err) => alert(err))
+      var connectionInfo = this.getConnectionInfo
+      connectionInfo.dbname = this.getTableInfo.db_name
+      console.log(this.getTableInfo)
+      DBServiceAPI.get_row(connectionInfo, this.currentId, this.getTableInfo.text_table_name).then( (res) => {
+        this.setCurrentText(res.data["features"])
+        if ("annotated" in res.data){
+          this.annotatedTokens = JSON.parse(res.data["annotated"])
+        }
+      }).catch((err) => alert(err))
           .finally(() => {
             // console.log("tokenize start")
             this.tokenizeCurrentSentence();
-          });
+          })
     },
 
     tokenizeCurrentSentence() {
@@ -164,12 +168,17 @@ export default {
         this.annotatedTokens = null
       }
       else {
-        mozhiapi
-            .post(process.env.VUE_APP_API_TOKENIZE, {"text" : this.currentText}, {timeout: 50000}) //TODO why "text" is needed ?
-            .then((res) => {
-              this.tm = new TokenManager(res.data.tokens);
-            })
-            .catch((err) => alert(err));
+        NERServiceAPI.tokenize(this.currentText).then(
+            (res) => this.tm = new TokenManager(res)
+        ).catch(err => {
+          console.log(err)
+        })
+        // mozhiapi
+        //     .post(process.env.VUE_APP_API_TOKENIZE, {"text" : this.currentText}, {timeout: 50000}) //TODO why "text" is needed ?
+        //     .then((res) => {
+        //       this.tm = new TokenManager(res.data.tokens);
+        //     })
+        //     .catch((err) => alert(err));
       }
     },
     selectTokens() {
@@ -218,7 +227,7 @@ export default {
     previous() {
       // console.log("previous")
       // console.log(this.currentId, this.formData.startId)
-      if (this.currentId <= this.formData.startId) {
+      if (this.currentId <= this.tableInfo.start_id) {
         alert("previous: You have reached the start of dataset!")
         return
       } else {
@@ -254,17 +263,25 @@ export default {
         let tokensTags = this.tm.exportASCoNLLAnnotations()
         console.log(tokensTags.join(" "))
         // console.log("saveTags", JSON.stringify(tokens))
-        mozhiapi
-            .post(process.env.VUE_APP_API_DB_TEXT_ANNOTATIONS,
-                {"id": this.currentId,
-                  "tokens": tokensTags[0].join(" "),
-                  "labels": tokensTags[1].join(" "),
-                  "form_data": this.formData},
-                {timeout: 50000}) //TODO why "text" is needed ?
-            .then((res) => {
-              console.log("insert successfull", res)
-            })
-            .catch((err) => alert(err));
+        DBServiceAPI.save_tags(this.getConnectionInfo,
+            this.currentId,
+            tokensTags[0].join(" "),
+            tokensTags[1].join(" "),
+            this.tableInfo.features_col_name,
+            this.tableInfo.labels_col_name,
+            this.tableInfo.text_table_name
+        )
+        // mozhiapi
+        //     .post(process.env.VUE_APP_API_DB_TEXT_ANNOTATIONS,
+        //         {"id": this.currentId,
+        //           "tokens": tokensTags[0].join(" "),
+        //           "labels": tokensTags[1].join(" "),
+        //           "form_data": this.formData},
+        //         {timeout: 50000}) //TODO why "text" is needed ?
+        //     .then((res) => {
+        //       console.log("insert successfull", res)
+        //     })
+        //     .catch((err) => alert(err));
 
         if (this.currentId === this.totalRows) {
           alert("saveTags: You have reached the end of dataset!")

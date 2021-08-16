@@ -56,7 +56,10 @@ class AnnotatedData(BaseModel):
     id: int
     tokens: str
     labels: str
-    form_data: DBConnectionInfo
+    features_col_name: str
+    labels_col_name: str
+    text_table_name: str
+    connection_info: DBConnectionInfo
 
 
 class StorageAuthentication(BaseModel):

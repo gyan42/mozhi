@@ -20,8 +20,16 @@ router = APIRouter()
 connection = None
 STORE_PATH = '/tmp/mozhi/data/db'
 
+
 @router.post("/mozhi/db/create")
-def create_table(connection_info: DBConnectionInfo, dbname: str):
+def create_db(connection_info: DBConnectionInfo, dbname: str) -> dict:
+    """
+    Creates a new Database with admin user credentials
+    :param connection_info: Admin user credentials and connection address
+    :param dbname: Name of the new Database
+    :return: {"status" : "Success/Failed"}
+    :rtype: dict
+    """
     try:
         connection = psycopg2.connect(host=connection_info.host,
                                       port=connection_info.port,
@@ -44,60 +52,137 @@ def create_table(connection_info: DBConnectionInfo, dbname: str):
 # https://stackoverflow.com/questions/65510798/how-can-i-upload-multiple-files-using-javascript-and-fastapi/65513660#65513660
 @router.post("/mozhi/db/upload/textfiles")
 def upload_text_files(connection_info=Form(...), files: List[UploadFile] = File(...)):
-    res = []
-    new_dir = f"{STORE_PATH}/{str(uuid.uuid4())}"
-    os.makedirs(new_dir)
+    """
+    Uploads the Conll based data to Database
+    :param connection_info: Database connection info
+    :param files:
+    :return:
+    """
+    try:
+        res = []
+        new_dir = f"{STORE_PATH}/{str(uuid.uuid4())}"
+        os.makedirs(new_dir)
 
-    for file in files:
-        file_bytes = file.file.read()
-        bytesio_object = io.BytesIO(file_bytes)
-        name = f"{new_dir}/{file.filename}"
-        res.append(name)
-        with open(name, "wb") as f:
-            f.write(bytesio_object.getbuffer())
-    # TODO find a better way to handle file upload and connection info
-    connection_info: DBConnectionInfo = json.loads(connection_info)
-    user = connection_info['user']
-    password = connection_info['password']
-    host = connection_info['host']
-    port = connection_info['port']
-    db_name = connection_info['dbname']
-    upload_text_data(dir_root_path="/tmp/mozhi/data/db/22a607f2-0c90-4fd4-afd6-1c1031ac2c3f",
-                     is_delete=True,
-                     engine=create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db_name}'),
-                     experiment_name="conll20031")
-    return {"uploadedpath": new_dir}
+        for file in files:
+            file_bytes = file.file.read()
+            bytesio_object = io.BytesIO(file_bytes)
+            name = f"{new_dir}/{file.filename}"
+            res.append(name)
+            with open(name, "wb") as f:
+                f.write(bytesio_object.getbuffer())
+        # TODO find a better way to handle file upload and connection info
+        connection_info: DBConnectionInfo = json.loads(connection_info)
+        user = connection_info['user']
+        password = connection_info['password']
+        host = connection_info['host']
+        port = connection_info['port']
+        db_name = connection_info['dbname']
+        upload_text_data(dir_root_path="/tmp/mozhi/data/db/22a607f2-0c90-4fd4-afd6-1c1031ac2c3f",
+                         is_delete=True,
+                         engine=create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db_name}'),
+                         experiment_name="conll20031")
+        return {"status": "Success"}
+    except Exception as e:
+        print(e)
+        return {"status": "Failed"}
 
 
-# ------------------------------------------------------------------------------------------------------------------------
+@router.post("/mozhi/db/text/get/counts")
+def get_total_rows(connection_info: DBConnectionInfo, text_table_name: str):
+    """
+    Get total number of rows
+    :param connection_info: DB admin user credentials
+    :param text_table_name:
+    :return:
+    """
+    connection = psycopg2.connect(host=connection_info.host,
+                                  port=connection_info.port,
+                                  database=connection_info.dbname,
+                                  user=connection_info.user,
+                                  password=connection_info.password)
+    sql_command = f"SELECT count(*) as count FROM \"{text_table_name}\";"
+
+    df = pd.read_sql(sql_command, connection)
+    res = df["count"].to_list() # Get teh count and convert the value to list
+    if len(res) > 0:
+        res = res[0]
+    else:
+        res = 0
+
+    connection.close()
+    print(f"Count: {res}")
+    return {"count": res}
+
+@router.post("/mozhi/db/text/get/dblist")
+def get_dblist(connection_info: DBConnectionInfo):
+    """
+    Returns list of databases
+    :param connection_info: DB admin user credentials
+    :return:
+    """
+    connection = psycopg2.connect(host=connection_info.host,
+                                  port=connection_info.port,
+                                  database=connection_info.dbname,
+                                  user=connection_info.user,
+                                  password=connection_info.password)
+    df = pd.read_sql("SELECT datname FROM pg_database WHERE datistemplate = false;", connection)
+    dblist = df['datname'].to_list()
+    return {"dblist": dblist}
+
+
+@router.post("/mozhi/db/text/get/tablelist")
+def get_tablelist(connection_info: DBConnectionInfo):
+    """
+    Returns list of tables for given connection info
+    :param connection_info: DB admin user credentials
+    :return:
+    """
+    connection = psycopg2.connect(host=connection_info.host,
+                                  port=connection_info.port,
+                                  database=connection_info.dbname,
+                                  user=connection_info.user,
+                                  password=connection_info.password)
+    df = pd.read_sql("SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = 'public' ORDER BY table_type, table_name;",
+                     connection)
+    table_list = df['table_name'].to_list()
+    return {"tablelist": table_list}
+
 
 @router.post("/mozhi/db/text/get/tags")  # TODO make it as get/query
-def get_table(data: DBConnectionInfo):
-    global connection
-    print(data)
-    conn = psycopg2.connect(host=data.host,
-                            port=data.port,
-                            database=data.db_name,
-                            user=data.user,
-                            password=data.password)
-    connection = conn
-    sql_command = f"SELECT * FROM \"{data.tag_table_name}\";"
+def get_tags(connection_info: DBConnectionInfo, tag_table_name: str):
+    """
+    Returns set of NER tags in the given tag table
+    :param connection_info:
+    :param tag_table_name:
+    :return:
+    """
+    connection = psycopg2.connect(host=connection_info.host,
+                            port=connection_info.port,
+                            database=connection_info.dbname,
+                            user=connection_info.user,
+                            password=connection_info.password)
+    sql_command = f"SELECT * FROM \"{tag_table_name}\";"
 
-    df = pd.read_sql(sql_command, conn)
+    df = pd.read_sql(sql_command, connection)
     tags = df["name"].to_list()
     return {"tags": tags}
 
 
-@router.post("/mozhi/db/text/table/{row_id}") #  TODO make it as get/query
-def get_row(row_id: int, data: DBConnectionInfo):
-    global connection
-    if connection is None:
-        connection = psycopg2.connect(host=data.host,
-                                      port=data.port,
-                                      database=data.db_name,
-                                      user=data.user,
-                                      password=data.password)
-    sql_command = f"SELECT * FROM \"{data.text_table_name}\" where id = {row_id};"
+@router.post("/mozhi/db/text/get/row")
+def get_row(table_name: str, row_id: int, connection_info: DBConnectionInfo):
+    """
+    Returns a row from text table
+    :param table_name:
+    :param row_id:
+    :param connection_info:
+    :return: {"text":"", "features": "", "labels": ""}
+    """
+    connection = psycopg2.connect(host=connection_info.host,
+                                  port=connection_info.port,
+                                  database=connection_info.dbname,
+                                  user=connection_info.user,
+                                  password=connection_info.password)
+    sql_command = f"SELECT * FROM \"{table_name}\" where id = {row_id};"
     print(sql_command)
     df = pd.read_sql(sql_command, connection)
     print("*"*100)
@@ -127,59 +212,41 @@ def get_row(row_id: int, data: DBConnectionInfo):
     return res
 
 
-@router.post("/mozhi/db/text/get/counts")
-def get_total_rows(connection_info: DBConnectionInfo, text_table_name: str):
+@router.post("/mozhi/db/text/insert/annotations")
+def insert_annotated_data(data: AnnotatedData):
+    connection_info: DBConnectionInfo = data.connection_info
+
     connection = psycopg2.connect(host=connection_info.host,
                                   port=connection_info.port,
                                   database=connection_info.dbname,
                                   user=connection_info.user,
                                   password=connection_info.password)
-    sql_command = f"SELECT count(*) as count FROM \"{text_table_name}\";"
-
-    df = pd.read_sql(sql_command, connection)
-    res = df["count"].to_list() # Get teh count and convert the value to list
-    if len(res) > 0:
-        res = res[0]
-    else:
-        res = -1
-
-    connection.close()
-    print(f"Count: {res}")
-    return {"count": res}
-
-
-@router.post("/mozhi/db/text/insert/annotations")
-def insert_annotated_data(data: AnnotatedData):
-    global connection
-    formData: DBConnectionInfo = data.form_data
-    if connection is None:
-        connection = psycopg2.connect(host=formData.host,
-                                      port=formData.port,
-                                      database=formData.db_name,
-                                      user=formData.user,
-                                      password=formData.password)
     print("insert_annotated_data", data)
     # create a new cursor
     cur = connection.cursor()
     # execute the INSERT statement
     # TODO bound variables with kwargs
-    sql_command = f"ALTER TABLE {formData.text_table_name} ADD COLUMN IF NOT EXISTS {formData.features_col_name} TEXT;"
+    sql_command = f"ALTER TABLE {data.text_table_name} ADD COLUMN IF NOT EXISTS {data.features_col_name} TEXT;"
     print(sql_command)
     cur.execute(sql_command)
-    sql_command = f"ALTER TABLE {formData.text_table_name} ADD COLUMN IF NOT EXISTS {formData.labels_col_name} TEXT;"
+    sql_command = f"ALTER TABLE {data.text_table_name} ADD COLUMN IF NOT EXISTS {data.labels_col_name} TEXT;"
     print(sql_command)
     cur.execute(sql_command)
     print(data)
-    sql_command = f"UPDATE {formData.text_table_name} set {formData.features_col_name}=\'{data.tokens}\' where id={data.id};"
+    sql_command = f"UPDATE {data.text_table_name} set {data.features_col_name}=\'{data.tokens}\' where id={data.id};"
     print(sql_command)
     cur.execute(sql_command)
-    sql_command = f"UPDATE {formData.text_table_name} set {formData.labels_col_name}=\'{data.labels}\' where id={data.id};"
+    sql_command = f"UPDATE {data.text_table_name} set {data.labels_col_name}=\'{data.labels}\' where id={data.id};"
     print(sql_command)
     cur.execute(sql_command)
 
     connection.commit()
     cur.close()
     print("<"*100)
+
+
+# ------------------------------------------------------------------------------------------------------------------------
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 

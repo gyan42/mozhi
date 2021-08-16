@@ -3,8 +3,8 @@
     <h1 class="title"> Control Pane </h1>
   </page-header>
 
-  <d-b-info-modal :isActive="isDBModalActive"
-                  :close="close"/>
+  <d-b-connection-info-modal :isActive="isDBModalActive"
+                             :close="close"/>
 
   <min-i-o-info-modal :isActive="isMinIOModalActive"
                       :close="close"/>
@@ -53,11 +53,11 @@
             Upload Tagged Data
           </button>
         </a>
-<!--        <a class="panel-block is-active">-->
-<!--          <button v-on:click="launch" class="button is-white is-medium">-->
-<!--            Upload Raw Data-->
-<!--          </button>-->
-<!--        </a>-->
+        <!--        <a class="panel-block is-active">-->
+        <!--          <button v-on:click="launch" class="button is-white is-medium">-->
+        <!--            Upload Raw Data-->
+        <!--          </button>-->
+        <!--        </a>-->
       </nav>
     </div>
   </div>
@@ -87,7 +87,7 @@
 
 <script>
 import PageHeader from "@/components/PageHeader"
-import DBInfoModal from "@/components/modals/DBInfoModal";
+import DBConnectionInfoModal from "@/components/modals/DBConnectionInfoModal";
 import MinIOInfoModal from "@/components/modals/MinIOInfoModal";
 import CreateDBModal from "@/components/modals/CreateDBModal";
 import UploadTextFilesModal from "@/components/modals/UploadTextFilesModal"
@@ -96,7 +96,7 @@ export default {
   name: "ControlPanePage",
   components: {
     PageHeader,
-    DBInfoModal,
+    DBConnectionInfoModal,
     CreateDBModal,
     MinIOInfoModal,
     UploadTextFilesModal

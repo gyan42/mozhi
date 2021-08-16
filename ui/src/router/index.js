@@ -4,7 +4,6 @@ import AnnotationMainPage from "@/views/annotators/AnnotationMainPage";
 import TextFileUploadPage from "@/views/annotators/textfile/TextFileUploadHomePage";
 import TextFileAnnotatorPage from "@/views/annotators/textfile/TextFileAnnotatorPage";
 import ImageAnnotation from "@/views/annotators/image/ImageAnnotation";
-import DBDetailsHomePage from "@/views/annotators/database/DBDetailsHomePage";
 import DBAnnotatorPage from "@/views/annotators/database/DBAnnotatorPage"
 import DFUploadPage from "@/views/annotators/dataframe/DFUploadPage";
 import DFAnnotatorPage from "@/views/annotators/dataframe/DFAnnotatorPage";
@@ -72,12 +71,6 @@ export const routes = [
     name: 'DBAnnotatorPage',
     component: DBAnnotatorPage,
     meta: { auth: true, title: 'Mozhi DBAnnotatorPage' }
-  },
-  {
-    path: '/annotator/dbdetails',
-    name: 'DBDetailsHomePage',
-    component: DBDetailsHomePage,
-    meta: { auth: true, title: 'Mozhi DBDetailsHomePage' }
   },
   {
     path: '/annotator/dffile',

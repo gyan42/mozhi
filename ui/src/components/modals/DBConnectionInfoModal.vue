@@ -73,7 +73,7 @@
           Save changes
         </button>
         <button @click="close" class="button">
-          Cancel
+          Close
         </button>
       </footer>
     </div>

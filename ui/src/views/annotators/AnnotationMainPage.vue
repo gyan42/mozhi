@@ -13,7 +13,7 @@
       <div class="navbar-dropdown">
         <a class="navbar-item">
           <h2 class="subtitle">
-            <router-link to='/annotator/dbdetails'>Database Annotation</router-link>
+            <router-link to='/annotator/db'>Database Annotation</router-link>
           </h2>
         </a>
         <a class="navbar-item">
