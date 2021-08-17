@@ -4,6 +4,7 @@ import databaseInfo from "@/store/modules/database-info-store"
 import tokenizerInfo from "./modules/tokenizer-runtime-info"
 import imageStore from "./modules/image-store"
 import auth from "@/store/modules/auth"
+import minio from "@/store/modules/minio-store"
 
 export default createStore({
   state() {
@@ -22,7 +23,8 @@ export default createStore({
     databaseInfo,
     tokenizerInfo,
     imageStore,
-    auth
+    auth,
+    minio
   }
 });
 

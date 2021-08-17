@@ -1,6 +1,6 @@
 import mozhiapi from "@/backend/mozhiapi"
 
-class NERServiceAPI {
+class NlpServiceApi {
     tokenize(text) {
         return mozhiapi
             .post(process.env.VUE_APP_API_TOKENIZE, {"text" : text}, {timeout: 50000}) //TODO why "text" is needed ?
@@ -14,4 +14,4 @@ class NERServiceAPI {
     }
 }
 
-export default new NERServiceAPI();
+export default new NlpServiceApi();

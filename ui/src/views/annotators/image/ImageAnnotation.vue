@@ -1,43 +1,75 @@
 <template>
   <img alt="mozhi" src="@/assets/mozhi-logo.png" id="my-image">
+
+  <page-header>
+    <h1 class="title">Image NER Annotator</h1>
+    <h2 class="subtitle">Object Store and Database Connection Information</h2>
+  </page-header>
+
+
   <div class="columns is-desktop">
     <!--Sidebar-->
     <div class="column is-one-fifth">
-      <div class="file is-centered is-primary has-name is-boxed my-4" style="display: none;">
-        <label class="file-label block">
-          <input
-              ref="imgLoader"
-              id="imgLoader"
-              class="file-input"
-              type="file"
-              name="imgLoader"
-              v-on:change="handleImage"
-          />
-          <span class="file-cta">
-          <span class="file-icon">
-            <font-awesome-icon icon="file-alt" />
-          </span>
-          <span class="file-label">
-            Load Image
-          </span>
-        </span>
-        </label>
-      </div>
+      <!--        <div class="file is-centered is-primary has-name is-boxed my-4" style="display: none;">-->
+      <!--          <label class="file-label block">-->
+      <!--            <input-->
+      <!--                ref="imgLoader"-->
+      <!--                id="imgLoader"-->
+      <!--                class="file-input"-->
+      <!--                type="file"-->
+      <!--                name="imgLoader"-->
+      <!--                v-on:change="handleImage"-->
+      <!--            />-->
+      <!--            <span class="file-cta">-->
+      <!--          <span class="file-icon">-->
+      <!--            <font-awesome-icon icon="file-alt" />-->
+      <!--          </span>-->
+      <!--          <span class="file-label">-->
+      <!--            Load Image-->
+      <!--          </span>-->
+      <!--        </span>-->
+      <!--          </label>-->
+      <!--        </div>-->
 
-      <br><br><br><br><br><br><br><br>
-      <div class="columns is-multiline is-mobile">
-        <div class='column'>
-          <button class="button is-info block" v-on:click="onPrevious">Previous Image</button> <br>
+      <br>
+
+      <nav class="panel">
+        <p class="panel-heading">
+          MinIO
+        </p>
+
+
+        <a class="panel-block">
+          <label for="expname" style="text-align:right" class="label">Experiment Name</label>
+        </a>
+        <a class="panel-block">
+          <input id="expname" class="input"  type="text" placeholder="receipts" v-model="experimentName">
+        </a>
+
+
+        <a class="panel-block">
+          <label for="bucket" style="text-align:right" class="label">Bucket</label>
+        </a>
+        <a class="panel-block">
+          <input id="bucket" class="input"  type="text" placeholder="mozhi" v-model="bucket">
+        </a>
+
+
+
+        <a class="panel-block">
+          <label for="prefix" style="text-align:right" class="label">Prefix</label>
+        </a>
+        <a class="panel-block">
+          <input id="prefix" class="input"  type="text" placeholder="data/images/receipts/" v-model="prefix">
+        </a>
+
+
+        <div class="control">
+          <button class="button is-primary" @click="onSubmit" >Submit</button>
         </div>
-        <div class='column'>
-          <button class="button is-primary block" v-on:click="onNext">Next Image</button> <br>
-        </div>
-        <div class='column'>
-          <button class="button is-success block" v-on:click="onSave">Save</button> <br>
-        </div>
-      </div>
-      <!--      <button class="button is-info block" v-on:click="onLoad">Load Json</button> <br>-->
-      <!--      <a class="button is-link" href="https://codebeautify.org/jsonviewer" target="_blank">Online Jsonviewer</a>-->
+
+      </nav>
+
     </div>
     <!--Sidebar-->
 
@@ -102,12 +134,38 @@
             </p>
 
             <p class="control">
+              <button class="button is-info block is-outline" v-on:click="onPrevious">
+                <span>
+                  Previous Image
+                </span>
+              </button>
+            </p>
+
+
+            <p class="control">
+              <button class="button is-primary block" v-on:click="onNext">
+                <span>
+              Next Image
+                </span>
+              </button>
+            </p>
+
+            <p class="control">
+              <button class="button is-success block" v-on:click="onSave">
+                <span>
+                  Save
+                </span>
+              </button>
+            </p>
+
+            <p class="control">
               <button id ="delete" v-if="IsDelButton" class="button is-primary is-outlined" @click="deleteb" >
                 <span>
                   Delete
                 </span>
               </button>
             </p>
+
 
             <p>
               <text style="font-size:12px" >
@@ -164,10 +222,15 @@
 //
 import {fabric} from 'fabric';
 import {mapGetters, mapMutations, mapState} from "vuex";
-import mozhiapi from "@/backend/mozhiapi";
+// import mozhiapi from "@/backend/mozhiapi";
+import PageHeader from "@/components/PageHeader"
+import MinIOServiceAPI from "@/backend/minio-service-api"
 
 export default {
   name: "ImageAnnotation",
+  components: {
+    PageHeader
+  },
   data: function()  {
     return {
       imageFileName: '',
@@ -189,23 +252,19 @@ export default {
       currentIndex: -1,
       ocrText: "",
       fabricJsonData: "",
-      dbDetails : {
-        host: "localhost",
-        port: "5432",
-        db_name: "mozhidb",
-        user: "mozhi",
-        password: "mozhi"
-      },
       dummy1: "",
-      dummy2: ""
+      dummy2: "",
+      experimentName: "receipts",
+      bucket: process.env.VUE_APP_MINIO_BUCKET,
+      prefix: process.env.VUE_APP_MINIO_PREFIX
     }
   },
   beforeCreate() {
     // Flag to get Storage authentication information
-    if (!this.$route.params["isInitialized"]) {
-      // If landed on this page directly, move to DB details page
-      this.$router.push({name: 'ImageHome'}) //TODO is this right way ? to prevent auth info leak?
-    }
+    // if (!this.$route.params["isInitialized"]) {
+    //   // If landed on this page directly, move to DB details page
+    //   this.$router.push({name: 'ImageHome'}) //TODO is this right way ? to prevent auth info leak?
+    // }
   },
   watch: {
     newClassName(now, then) {
@@ -215,6 +274,7 @@ export default {
     },
   },
   mounted() {
+    this.resetClass()
     const canvas = this.$refs.canvas;
     this.canvas = canvas
     this.fabricCanvas = new fabric.Canvas(canvas);
@@ -225,13 +285,14 @@ export default {
   },
   computed: {
     ...mapState("tokenizerInfo", ["classes", "currentClass"]),
-    ...mapState("imageStore", ["dbServerInfo", "experimentName", "storageServer"]),
+    // ...mapState("imageStore", ["dbServerInfo", "experimentName", "storageServer"]),
+    ...mapGetters('imageStore', ['getFileCurrentPrefix', 'getFilesCount']),
+    ...mapGetters('minio', ['getConnectionMinIOInfo']),
+    ...mapGetters('databaseInfo', ['getConnectionInfo']),
   },
   methods: {
-    ...mapMutations("tokenizerInfo", ["removeClass", "setCurrentClass"]),
-    ...mapGetters('imageStore', ['getFileCurrentPrefix', 'getFilesCount']),
+    ...mapMutations("tokenizerInfo", ["removeClass", "setCurrentClass", "resetClass"]),
     ...mapMutations('imageStore', ['setCurrentIndex', 'setFilePrefixes']),
-
     registerCallbacks: function() {
       if (!this.isRegistered) {
         // console.info("registerCallbacks")
@@ -249,6 +310,14 @@ export default {
         this.fabricCanvas.off('mouse:up',  e => this.mouseup(e));
         this.isRegistered = false
       }
+    },
+    onSubmit() {
+      MinIOServiceAPI.get_file_prefixes(this.getConnectionMinIOInfo, this.bucket, this.prefix).then(
+          (res) => {
+            this.setFilePrefixes(res)
+          }
+      )
+      MinIOServiceAPI.create_annotation_table(this.getConnectionInfo, this.experimentName)
     },
     mousedown : function (e){
       if (this.isSelectMode) {
@@ -411,19 +480,20 @@ export default {
     },
     tryCacheOrLoad() {
       console.log("tryCacheOrLoad")
-      console.log(this.experimentName, this.dbServerInfo, this.storageServer)
-      mozhiapi
-          .post(process.env.VUE_APP_API_DB_IMAGE_BBOX_GET, {'experiment_name': this.experimentName, 'prefix':this.getFileCurrentPrefix()})
-          .then((res) => {
+      console.log(this.experimentName, this.getFileCurrentPrefix, this.getConnectionInfo)
+
+      MinIOServiceAPI.get_bbox_json(this.getConnectionInfo,
+          this.experimentName,
+          this.getFileCurrentPrefix).then( (res) => {
             console.log(res.data['ocr_text'])
             this.ocrText = res.data['ocr_text']
             console.log(this.ocrText)
             this.fabricJsonData = res.data['bbox_json'];
-          })
-          .catch((err) => alert(err))
-          .finally(async () => {
-            this.renderWebImage()
-          })
+          }
+      ).finally(async () => {
+        this.renderWebImage()
+      })
+
     },
     renderWebImage() {
       console.log("renderWebImage")
@@ -433,9 +503,15 @@ export default {
       this.canvas.getContext('2d').clearRect(0, 0, this.canvas.width, this.canvas.height);
       var fabricCanvas = this.fabricCanvas
       var canvas = this.canvas
+
       const params = new URLSearchParams();
-      params.append('bucket', this.storageServer.bucket);
-      params.append('file_prefix', this.getFileCurrentPrefix());
+      params.append('bucket', this.bucket);
+      params.append('prefix', this.getFileCurrentPrefix);
+      // params.append('connection_info', this.getConnectionInfo);
+
+      // const paramsDict = {'bucket': this.bucket,
+      //   'prefix': this.getFileCurrentPrefix,
+      //   'connection_info': this.getConnectionInfo}
 
       // console.log(this.dummy1)
       // Fetch the annotation data from current prefix and check for annotated data
@@ -446,7 +522,12 @@ export default {
 
         this.loadFabricJson()
         // Reload the image to resize the canvas accordingly TODO better way?
-        new fabric.Image.fromURL(mozhiapi.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
+        //  curl -X 'GET' \
+        // 'http://0.0.0.0:8088/mozhi/storage/minio/get/image?bucket=mozhi&prefix=data%2Freceipts%2FX51008164524.jpg' \
+        // -H 'accept: application/json'
+        //
+        // http://localhost:8088/mozhi/storage/minio/get/image?bucket=mozhi&file_prefix=data%2Freceipts%2FX51008142068.jpg
+        new fabric.Image.fromURL(process.env.VUE_APP_API_BASE_URL + process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
             function (img) {
               fabricCanvas.setWidth(img.width)
               fabricCanvas.setHeight(img.height)
@@ -463,7 +544,7 @@ export default {
         console.log(params.toString())
         // console.log(this.getFileCurrentPrefix())
         // imgData = "data:" + res.headers["content-type"] + ";base64," + this.utf8_to_b64(res.data).toString('base64')
-        new fabric.Image.fromURL(mozhiapi.defaults.baseURL+ process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
+        new fabric.Image.fromURL(process.env.VUE_APP_API_BASE_URL + process.env.VUE_APP_API_MINIO_GET_IMAGE + '?'+ params.toString(),
             function (img) {
               fabricCanvas.setWidth(img.width)
               fabricCanvas.setHeight(img.height)
@@ -474,22 +555,22 @@ export default {
               // console.log("loading done!", img.width, img.height)
             },{}
         );
-        mozhiapi.defaults.timeout = 30000;
-        mozhiapi
-            .get(process.env.VUE_APP_API_MINIO_GET_TEXT, {params: params})
-            .then(res => {
-              this.ocrText = res["data"]['text']
-              // console.info(res);
-            })
-            .catch((err) => alert(err));
 
-        mozhiapi
-            .get(process.env.VUE_APP_API_MINIO_GET_TEXTINFO, {params: params})
-            .then(res => {
-              // this.ocrText = res["data"]['text']
-              console.info(res);
-            })
-            .catch((err) => alert(err));
+        MinIOServiceAPI.get_text(this.bucket, this.getFileCurrentPrefix, this.getConnectionMinIOInfo).then((res) => {
+          this.ocrText = res
+        })
+
+        MinIOServiceAPI.get_text_info(this.bucket, this.getFileCurrentPrefix, this.getConnectionMinIOInfo).then((res) => {
+          console.info(res);
+        })
+
+        // mozhiapi
+        //     .get(process.env.VUE_APP_API_MINIO_GET_TEXTINFO, {params: params})
+        //     .then(res => {
+        //       // this.ocrText = res["data"]['text']
+        //       console.info(res);
+        //     })
+        //     .catch((err) => alert(err));
       }
 
     },
@@ -505,7 +586,7 @@ export default {
     },
     onNext() {
       this.ocrText = ""
-      let c = this.getFilesCount()
+      let c = this.getFilesCount
       if (this.currentIndex >= parseInt(c) - 1) {
         alert("You reached the end of the file list")
         return
@@ -524,14 +605,20 @@ export default {
       // i.e storage srever authentication needs to be estabilised before loading
       this.fabricJsonData = JSON.stringify(this.fabricCanvas)
       // console.info(JSON.stringify(this.fabricCanvas))
-      let bboxdata = {"experiment_name": "receipts",
-        "bbox_json" : this.fabricJsonData,
-        "prefix": this.getFileCurrentPrefix(),
-        "ocr_text": this.ocrText}
-      mozhiapi
-          .post(process.env.VUE_APP_API_DB_IMAGE_BBOX_GET,
-              bboxdata, {timeout: 30000})
-          .catch((err) => alert(err))
+      // let bboxdata = {"experiment_name": "receipts",
+      //   "bbox_json" : this.fabricJsonData,
+      //   "prefix": this.getFileCurrentPrefix(),
+      //   "ocr_text": this.ocrText}
+      // mozhiapi
+      //     .post(process.env.VUE_APP_API_DB_IMAGE_BBOX_GET,
+      //         bboxdata, {timeout: 30000})
+      //     .catch((err) => alert(err))
+
+      MinIOServiceAPI.insert_bbox_json(this.getConnectionInfo,
+          this.experimentName,
+          this.getFileCurrentPrefix,
+          this.fabricJsonData,
+          this.ocrText).then( (res) => { console.log(res)})
     },
     //http://jsfiddle.net/influenztial/qy7h5/
     //https://stackoverflow.com/questions/44010057/add-background-image-with-fabric-js

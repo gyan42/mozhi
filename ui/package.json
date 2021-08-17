@@ -21,6 +21,7 @@
     "es6-promise": "^4.2.8",
     "fabric": "^4.4.0",
     "feather-icons": "^4.28.0",
+    "minio": "^7.0.18",
     "mosha-vue-toastify": "^1.0.18",
     "vee-validate": "^4.4.9",
     "vue": "^3.0.0",

@@ -4,7 +4,7 @@ import os
 import uuid
 from typing import Optional
 import fastapi
-from fastapi import APIRouter
+from fastapi import APIRouter, Body
 from starlette.responses import Response
 import urllib3.response
 from PIL import Image
@@ -25,23 +25,30 @@ from pytesseract import Output
 
 STORE_PATH = '/tmp/mozhi/data'
 
-@router.post("/mozhi/storage/minio/list")
-def list_prefixes(data: StorageAuthentication):
+client = None
+def get_minio_ref(connection_info: StorageAuthentication = None):
     global client
     if client is None:
-        client = Minio(endpoint=data.host + ":" + data.port,
-                       access_key=data.accessKey,
-                       secret_key=data.secretKey,
-                       secure=False)
-        # client = boto3.resource('s3',
-        #             endpoint_url='http://localhost:9000',
-        #             aws_access_key_id=data.accessKey,
-        #             aws_secret_access_key=data.secretKey,
-        #             config=Config(signature_version='s3v4'),
-        #             region_name='us-east-1')
+        if connection_info:
+            client = Minio(endpoint=connection_info.host + ":" + connection_info.port,
+                           access_key=connection_info.accessKey,
+                           secret_key=connection_info.secretKey,
+                           secure=False)
 
-    objects = client.list_objects(data.bucket,
-                                  prefix=data.prefix,
+    return client
+
+@router.post("/mozhi/storage/minio/list")
+def list_prefixes(bucket: str, prefix: str, data: StorageAuthentication):
+    client = get_minio_ref(connection_info=data)
+    # client = boto3.resource('s3',
+    #             endpoint_url='http://localhost:9000',
+    #             aws_access_key_id=data.accessKey,
+    #             aws_secret_access_key=data.secretKey,
+    #             config=Config(signature_version='s3v4'),
+    #             region_name='us-east-1')
+
+    objects = client.list_objects(bucket,
+                                  prefix=prefix,
                                   recursive=True)
 
     files = []
@@ -54,14 +61,13 @@ def list_prefixes(data: StorageAuthentication):
         #       obj.size,
         #       obj.content_type)
     print(files)
-    return files
+    return files[1:]
 
 
 @router.get("/mozhi/storage/minio/get/image")
-def get_file(bucket: str, file_prefix: str):
-    if client is None:
-        return {"data": ""}
-    response: urllib3.HTTPResponse = client.get_object(bucket, file_prefix)
+def get_file(bucket: str, prefix: str):
+    client = get_minio_ref(connection_info=None)
+    response: urllib3.HTTPResponse = client.get_object(bucket, prefix)
     # print(response.headers)
     # print(type(response.data))
     # print(io.BytesIO(data.data).read())
@@ -75,18 +81,24 @@ def get_file(bucket: str, file_prefix: str):
     #                                   media_type=response.headers["content-type"])
 
 
-@router.get("/mozhi/storage/minio/get/text/")
-def get_text(bucket: str, file_prefix: str):
-    if client is None:
-        return {"data": ""}
-    response: urllib3.HTTPResponse = client.get_object(bucket, file_prefix)
+@router.post("/mozhi/storage/minio/get/text/")
+def get_text(connection_info: StorageAuthentication, bucket: str = Body(...), prefix: str = Body(...)):
+    """
+    Runs tesseract on the image fetched from MiIO path
+    :param connection_info:
+    :param bucket:
+    :param prefix:
+    :return:
+    """
+    client = get_minio_ref(connection_info=connection_info)
+    response: urllib3.HTTPResponse = client.get_object(bucket, prefix)
     image = Image.open(io.BytesIO(response.data))
 
     if os.path.exists(STORE_PATH):
-        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file_prefix.split('/')[-1]}"
+        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{prefix.split('/')[-1]}"
     else:
         os.makedirs(f'{STORE_PATH}/', exist_ok=True)
-        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file_prefix.split('/')[-1]}"
+        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{prefix.split('/')[-1]}"
 
     image.save(name)
     # predictions = resnext(image)
@@ -115,18 +127,26 @@ def extract_bbox(results):
             res.append((x, y, w, h, text))
     return res
 
-@router.get("/mozhi/storage/minio/get/textinfo/")
-def get_text(bucket: str, file_prefix: str):
-    if client is None:
-        return {"data": ""}
-    response: urllib3.HTTPResponse = client.get_object(bucket, file_prefix)
+@router.post("/mozhi/storage/minio/get/textinfo/")
+def get_text_info(connection_info: StorageAuthentication,
+                  bucket: str = Body(...),
+                  prefix: str = Body(...)):
+    """
+    Runs tesseract on the image fetched from MiIO path
+    :param connection_info:
+    :param bucket:
+    :param prefix:
+    :return:
+    """
+    client = get_minio_ref(connection_info=connection_info)
+    response: urllib3.HTTPResponse = client.get_object(bucket, prefix)
     image = Image.open(io.BytesIO(response.data))
 
     if os.path.exists(STORE_PATH):
-        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file_prefix.split('/')[-1]}"
+        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{prefix.split('/')[-1]}"
     else:
         os.makedirs(f'{STORE_PATH}/', exist_ok=True)
-        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file_prefix.split('/')[-1]}"
+        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{prefix.split('/')[-1]}"
 
     image.save(name)
     img = cv2.imread(name)

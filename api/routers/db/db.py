@@ -42,8 +42,8 @@ def create_db(connection_info: DBConnectionInfo, dbname: str) -> dict:
         # Use the psycopg2.sql module instead of string concatenation
         # in order to avoid sql injection attacs.
         cur.execute(sql.SQL("CREATE DATABASE {};").format(
-                sql.Identifier(dbname))
-            )
+            sql.Identifier(dbname))
+        )
         return {"status": "Success"}
     except Exception as e:
         print(e)
@@ -157,10 +157,10 @@ def get_tags(connection_info: DBConnectionInfo, tag_table_name: str):
     :return:
     """
     connection = psycopg2.connect(host=connection_info.host,
-                            port=connection_info.port,
-                            database=connection_info.dbname,
-                            user=connection_info.user,
-                            password=connection_info.password)
+                                  port=connection_info.port,
+                                  database=connection_info.dbname,
+                                  user=connection_info.user,
+                                  password=connection_info.password)
     sql_command = f"SELECT * FROM \"{tag_table_name}\";"
 
     df = pd.read_sql(sql_command, connection)
@@ -248,18 +248,14 @@ def insert_annotated_data(data: AnnotatedData):
 # ------------------------------------------------------------------------------------------------------------------------
 
 
-# ----------------------------------------------------------------------------------------------------------------------
+@router.post("/mozhi/db/image/create/table")
+def create_image_annotations_table(db_connection_info: DBConnectionInfo, experiment_name: str = Body(...)):
 
-
-@router.post("/mozhi/db/image/create")
-def insert_annotated_data(db_server: DBServer, experiment_name: str = Body(...)):
-    global connection
-    if connection is None:
-        connection = psycopg2.connect(host=db_server.host,
-                                      port=db_server.port,
-                                      database=db_server.db_name,
-                                      user=db_server.user,
-                                      password=db_server.password)
+    connection = psycopg2.connect(host=db_connection_info.host,
+                                  port=db_connection_info.port,
+                                  database=db_connection_info.dbname,
+                                  user=db_connection_info.user,
+                                  password=db_connection_info.password)
     cur = connection.cursor()
     sql_command = f"create table if not exists {experiment_name}_image_annotations (" \
                   f"prefix text primary key, " \
@@ -281,17 +277,25 @@ class BBoxJsonData(BaseModel):
 
 
 @router.post("/mozhi/db/image/insert/bboxjson")
-def insert_bbox_josn(data: BBoxJsonData):
-    global connection
+def insert_bbox_josn(db_connection_info: DBConnectionInfo,
+                     experiment_name: str = Body(...),
+                     prefix: str = Body(...),
+                     bbox_json: str = Body(...),
+                     ocr_text: str = Body(...)):
+    connection = psycopg2.connect(host=db_connection_info.host,
+                                  port=db_connection_info.port,
+                                  database=db_connection_info.dbname,
+                                  user=db_connection_info.user,
+                                  password=db_connection_info.password)
     cur = connection.cursor()
-    sql_command = f"INSERT INTO {data.experiment_name}_image_annotations (prefix, bbox_json, ocr_text) " \
-                  f"VALUES {data.prefix, data.bbox_json, data.ocr_text} ON CONFLICT (prefix) " \
+    sql_command = f"INSERT INTO {experiment_name}_image_annotations (prefix, bbox_json, ocr_text) " \
+                  f"VALUES {prefix, bbox_json, ocr_text} ON CONFLICT (prefix) " \
                   f"DO UPDATE " \
                   f"SET prefix=EXCLUDED.prefix"
     print(sql_command)
     cur.execute(sql_command)
     connection.commit()
-    return {}
+    return {"status": "Success"}
 
 
 def get_col(df, col_name):
@@ -305,19 +309,18 @@ def get_col(df, col_name):
     return res
 
 
-class ImageannotatedData(BaseModel):
-    prefix: str
-    experiment_name: str
-
-
 @router.post("/mozhi/db/image/get/bboxjson") #TODO to GET ? axios doesn't have support to send data in body
-def get_fabric_json(data: ImageannotatedData):
-    global connection
-    sql_command = f"SELECT * FROM \"{data.experiment_name}_image_annotations\" where prefix=\'{data.prefix}\';"
+def get_fabric_json(db_connection_info: DBConnectionInfo, prefix: str = Body(...), experiment_name: str = Body(...)):
+    connection = psycopg2.connect(host=db_connection_info.host,
+                                  port=db_connection_info.port,
+                                  database=db_connection_info.dbname,
+                                  user=db_connection_info.user,
+                                  password=db_connection_info.password)
+    sql_command = f"SELECT * FROM \"{experiment_name}_image_annotations\" where prefix=\'{prefix}\';"
 
     df = pd.read_sql(sql_command, connection)
     res = {"bbox_json": get_col(df, "bbox_json"),
            "ocr_text": get_col(df, "ocr_text").replace("\\n", "\n"),
            "prefix": get_col(df, "prefix")}
-    # print(res)
+    print(res)
     return res

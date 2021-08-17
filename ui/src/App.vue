@@ -69,7 +69,7 @@ export default {
               icon: 'fas fa-database'
             },
             {
-              href: '/annotator/imagehome',
+              href: '/annotator/imagefile',
               title: 'TextImage',
               icon: 'fas fa-image'
             },

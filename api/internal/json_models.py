@@ -67,5 +67,3 @@ class StorageAuthentication(BaseModel):
     port: str
     secretKey: str
     accessKey: str
-    bucket: str
-    prefix: str

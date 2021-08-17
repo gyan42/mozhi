@@ -88,7 +88,7 @@ import TokenManager from "@/services/token-manager";
 import {mapMutations, mapState, mapGetters} from "vuex";
 import PageHeader from "@/components/PageHeader"
 import DBServiceAPI from "@/backend/dbservice-api"
-import NERServiceAPI from "@/backend/ner-service-api"
+import NlpServiceApi from "@/backend/nlp-service-api"
 
 export default {
   name: "DBAnnotator",
@@ -168,7 +168,7 @@ export default {
         this.annotatedTokens = null
       }
       else {
-        NERServiceAPI.tokenize(this.currentText).then(
+        NlpServiceApi.tokenize(this.currentText).then(
             (res) => this.tm = new TokenManager(res)
         ).catch(err => {
           console.log(err)
