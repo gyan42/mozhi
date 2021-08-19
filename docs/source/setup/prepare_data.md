@@ -62,8 +62,8 @@ cd data/model-store/
 mcli cp huggingface/* mozhiminio/mozhi/model-store/
 mcli ls mozhiminio/mozhi/model-store/
 # important make the file downloadable
-mcli policy set public mozhiminio/mozhi/model-store/conll2003v1.mar
-mcli policy set public mozhiminio/mozhi/model-store/sroie2019v1.mar
+mcli policy set download mozhiminio/mozhi/model-store/conll2003v1.mar
+mcli policy set download mozhiminio/mozhi/model-store/sroie2019v1.mar
 ```
 
 4. Register the model on Torch Serve 
@@ -76,6 +76,7 @@ kubectl port-forward service/minio 9000:80 -n mozhi
 # Register the model 
 curl -X POST  "http://localhost:6544/models?initial_workers=1&synchronous=true&url=http://localhost:9000/mozhi/model-store/conll2003v1.mar"
 
+               http://localhost:6544/models?initial_workers=1&synchronous=true&url=http://localhost:9000/mozhi/model-store/conll2003v1.mar
 
 curl -X POST  "http://localhost:6544/models?initial_workers=1&synchronous=true&url=http://minio:80/mozhi/model-store/sroie2019v1.mar"
 curl -X POST  "http://localhost:6544/models?initial_workers=1&synchronous=true&url=http://minio:80/mozhi/model-store/conll2003v1.mar"

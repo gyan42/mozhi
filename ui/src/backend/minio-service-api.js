@@ -111,6 +111,22 @@ class MinIOServiceAPI {
                 return Promise.reject(err)
             })
     }
+
+    set_policy(bucket, filePrefix, connection_info) {
+        const body = {'bucket': bucket,
+            'prefix': filePrefix,
+            'connection_info': connection_info}
+        return mozhiapi
+            .post(process.env.VUE_APP_API_MINIO_SET_POLICY, body)
+            .then(res => {
+                return Promise.resolve(res)
+                // console.info(res);
+            })
+            .catch((err) => {alert(err)
+                return Promise.reject(err)
+            })
+
+    }
 }
 
 export default new MinIOServiceAPI()

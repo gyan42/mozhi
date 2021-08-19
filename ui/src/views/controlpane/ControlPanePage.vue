@@ -14,6 +14,10 @@
 
   <upload-text-files-modal :isActive="isUploadTextFilesModalActive"
                            :close="close"/>
+
+  <torch-serve-modal :isActive="isTorchServeActive"
+                           :close="close"/>
+
   <!--  Tabs -->
   <div class="tabs is-centered is-medium">
     <ul>
@@ -24,6 +28,10 @@
       <li v-bind:class="{ 'is-active': activeTab === 'objstorage' }">
         <span class="icon is-small"><i class="fas fa-hdd" aria-hidden="true"></i></span>
         <a v-on:click="activeTab = 'objstorage'">Object Storage</a>
+      </li>
+      <li v-bind:class="{ 'is-active': activeTab === 'torchserve' }">
+        <span class="icon is-small"><i class="fas fa-server" aria-hidden="true"></i></span>
+        <a v-on:click="activeTab = 'torchserve'">Torch Serve</a>
       </li>
     </ul>
   </div>
@@ -83,6 +91,21 @@
   </div>
 
 
+    <div class="tab-contents">
+    <div class="content" v-bind:class="{ 'is-active': activeTab === 'torchserve' }">
+      <nav class="panel is-info">
+        <p class="panel-heading">
+          Torch Serve
+        </p>
+        <a class="panel-block is-active">
+          <button v-on:click="launchTorchServeModal" class="button is-white is-medium">Register PyTorch MAR Model</button>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+
+
 </template>
 
 <script>
@@ -91,6 +114,7 @@ import DBConnectionInfoModal from "@/components/modals/DBConnectionInfoModal";
 import MinIOInfoModal from "@/components/modals/MinIOInfoModal";
 import CreateDBModal from "@/components/modals/CreateDBModal";
 import UploadTextFilesModal from "@/components/modals/UploadTextFilesModal"
+import TorchServeModal from "@/components/modals/TorchServeModal";
 
 export default {
   name: "ControlPanePage",
@@ -99,7 +123,8 @@ export default {
     DBConnectionInfoModal,
     CreateDBModal,
     MinIOInfoModal,
-    UploadTextFilesModal
+    UploadTextFilesModal,
+    TorchServeModal
   },
   data() {
     return {
@@ -107,6 +132,7 @@ export default {
       isMinIOModalActive: false,
       isCreateDBModalActive: false,
       isUploadTextFilesModalActive: false,
+      isTorchServeActive: false,
       activeTab: "db",
       isActive: "pictures"
     }
@@ -124,11 +150,15 @@ export default {
     launchUploadTextFilesModal() {
       this.isUploadTextFilesModalActive = true
     },
+    launchTorchServeModal() {
+      this.isTorchServeActive = true
+    },
     close() {
       this.isDBModalActive = false;
       this.isMinIOModalActive = false;
       this.isCreateDBModalActive = false
       this.isUploadTextFilesModalActive = false
+      this.isTorchServeActive = false
     },
   },
   computed: {

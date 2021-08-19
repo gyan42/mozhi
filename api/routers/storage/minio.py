@@ -155,3 +155,35 @@ def get_text_info(connection_info: StorageAuthentication,
     print(extract_bbox(results))
     # return {"text": text}
     return Response(content=json.dumps({"textinfo": results}), media_type="application/json")
+
+
+@router.post("/mozhi/storage/minio/set/downloadaccess/")
+def set_download_access(connection_info: StorageAuthentication,
+                        bucket: str = Body(...),
+                        prefix: str = Body(...)):
+    # TODO debug why fails to working?
+    try:
+
+        policy = {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {"AWS": "*"},
+                    "Action": ["s3:GetBucketLocation", "s3:ListBucket"],
+                    "Resource": "arn:aws:s3:::" + bucket,
+                },
+                {
+                    "Effect": "Allow",
+                    "Principal": {"AWS": "*"},
+                    "Action": "s3:GetObject",
+                    "Resource": "arn:aws:s3:::" + bucket + prefix,
+                },
+            ],
+        }
+        print(policy)
+        client = get_minio_ref(connection_info=connection_info)
+        client.set_bucket_policy(bucket, json.dumps(policy))
+        return {"Status": "Success"}
+    except:
+        return {"Status": "Failure"}

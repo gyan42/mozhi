@@ -1,6 +1,6 @@
 <template>
   <page-header>
-    <h1 class="title">Welcome to Mozhi! </h1>
+    <h1 class="title">Welcome to Mozhi! {{formData.username}}</h1>
   </page-header>
 
   <section class="hero">
@@ -81,7 +81,8 @@ export default {
   },
   created() {
     if (this.isLoggedIn) {
-      this.$router.push({name: 'Home'});
+      console.log(this.formData)
+    //  this.$router.push({name: 'Home'});
     }
   },
   methods: {

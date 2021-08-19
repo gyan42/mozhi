@@ -47,12 +47,13 @@
 //     ],
 // }
 
-// import minio from "minio"
+import Minio from "minio"
 
-class MinIOService {
+// var Minio = require('minio')
 
+class MinIOJSService {
     constructor(host, port, accessKey, secretKey) {
-        this.minio = new Minio.Client({
+        this.minio = new Minio({
             endPoint: host,
             port: port,
             useSSL: false,
@@ -87,4 +88,4 @@ class MinIOService {
     }
 }
 
-export default MinIOService
+export default MinIOJSService

@@ -250,7 +250,7 @@ export default {
       showNewClassInput: false,
       newClassName: "",
       currentIndex: -1,
-      ocrText: "",
+      ocrText: "Waiting...",
       fabricJsonData: "",
       dummy1: "",
       dummy2: "",
@@ -585,7 +585,7 @@ export default {
       this.tryCacheOrLoad()
     },
     onNext() {
-      this.ocrText = ""
+      this.ocrText = "Waiting..."
       let c = this.getFilesCount
       if (this.currentIndex >= parseInt(c) - 1) {
         alert("You reached the end of the file list")
