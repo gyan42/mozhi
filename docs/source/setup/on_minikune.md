@@ -13,13 +13,23 @@ Required software packages:
 ```
 # let minikube decided what works best fpr your machine setup
 minikube start 
-# if it failes try to use kvm2 as virtual machine  
+# if it failes try re run above command or use kvm2 as virtual machine  
 minikube start  --vm-driver=kvm2
 
 minikube addons enable ingress
 
 alias km='kubectl -n mozhi'
+
+# To point your shell to minikube's docker-daemon, run:
+eval $(minikube -p minikube docker-env)
+
+# pull the images manually to avoid parallel pull error or network lags
+docker pull mageswaran1989/mozhi-ui-cpu:latest
+docker pull mageswaran1989/mozhi-api-cpu:latest
+docker pull mageswaran1989/mozhi-ocr-cpu:latest
+
 ```
+
 - Install operators/helm charts
   - One time installation of [Kubegres Operator](https://www.kubegres.io/doc/getting-started.html)
   - Visit official [Krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) for installation guide.
@@ -31,13 +41,24 @@ kubectl minio init --namespace minio-operator
 
 kubectl apply -f https://raw.githubusercontent.com/reactive-tech/kubegres/v1.7/kubegres.yaml
 ```
-
+- Wait for few minutes till the system sets up the required services
 - Create mozhi services
 ```
 kubectl apply -f ops/k8s/mozhi/namespace.yaml
-kubectl apply -f ops/k8s/mozhi/
+
 kubectl apply -f ops/k8s/postgres/
+  > km get all # make sure postgres pods and services are up and running
+  
 kubectl apply -f ops/k8s/minio/
+  > km get all # make sure minio pods and services are up and running
+  
+# following 
+kubectl apply -f ops/k8s/mozhi/api.yaml
+kubectl apply -f ops/k8s/mozhi/ocr.yaml
+kubectl apply -f ops/k8s/mozhi/torch-serve.yaml
+
+kubectl apply -f ops/k8s/mozhi/ui.yaml
+kubectl apply -f ops/k8s/mozhi/ingress-controller.yaml
 ```
 - Enable minikube tunnel for local access
 ```

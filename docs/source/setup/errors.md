@@ -21,3 +21,8 @@ sudo service docker restart
 # try to use local images in dev environment
 eval $(minikube docker-env)
 ```
+
+- Stuck in `ContainerCreating` 
+```
+kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
+```

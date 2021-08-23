@@ -53,18 +53,18 @@ spec:
               cpu: "250m"
 ---
 
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: mozhi-ocr-cpu-hpa
-  namespace: mozhi
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: mozhi-ocr-cpu
-  minReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+#apiVersion: autoscaling/v1
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: mozhi-ocr-cpu-hpa
+#  namespace: mozhi
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: mozhi-ocr-cpu
+#  minReplicas: 1
+#  maxReplicas: 10
+#  targetCPUUtilizationPercentage: 50
 
 ---

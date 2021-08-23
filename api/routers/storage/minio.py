@@ -53,7 +53,8 @@ def list_prefixes(bucket: str, prefix: str, data: StorageAuthentication):
 
     files = []
     for obj in objects:
-        files.append(obj.object_name)
+        if not str(obj.object_name).endswith("/"):
+            files.append(obj.object_name)
         # print(obj.bucket_name,
         #       obj.object_name.encode('utf-8'),
         #       obj.last_modified,
@@ -61,8 +62,7 @@ def list_prefixes(bucket: str, prefix: str, data: StorageAuthentication):
         #       obj.size,
         #       obj.content_type)
     print(files)
-    return files[1:]
-
+    return files
 
 @router.get("/mozhi/storage/minio/get/image")
 def get_file(bucket: str, prefix: str):

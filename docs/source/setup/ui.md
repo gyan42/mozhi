@@ -27,7 +27,7 @@ docker build -t mozhi-ui-cpu:latest -f ops/docker/ui/Dockerfile .
 `
 - Debug  
 `
-docker container run -it mozhi-api-cpu bash
+docker container run -it mozhi-ui-cpu bash
 `  
 - Run Local Image  
 `
@@ -56,7 +56,11 @@ kubectl apply -f ops/k8s/mozhi/ui.yaml
 ```
 minikube addons enable ingress
 kubectl port-forward service/mozhi-ui-cpu-svc 8080:80
+
+#bash
+kubectl exec -it service/mozhi-ui-cpu-svc -n mozhi -- sh
 ```
+
 - Test back end API from UI pods
 ```
 #Test accesing API pod from UI service pod  
@@ -93,3 +97,6 @@ Test : `curl mozhi.ai`
 `
 kubectl delete pods,services,deployments,ingress,pvc -l org=mozhi
 `  
+
+
+Also Kaya suggested to use GeoLocation client for reading ingested data. 

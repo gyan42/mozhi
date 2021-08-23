@@ -35,7 +35,7 @@ kubectl exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: applicati
 
 ## Docker
 
-`export VERSION=0.7`
+`export VERSION=latest`
 
 **With CPU only**
 

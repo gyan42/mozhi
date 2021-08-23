@@ -155,7 +155,17 @@ export default {
                   })
 
             },
-            error => {console.log("filePaths error", error)}
+            error => {
+              console.log("filePaths error...", error)
+              createToast('Upload Error',
+                  {
+                    description: "Upload Error on server side",
+                    position: 'bottom-right',
+                    type: 'danger',
+                    transition: 'slide',
+                    timeout: 1500
+                  })
+            }
         )
       }
     }

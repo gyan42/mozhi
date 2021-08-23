@@ -77,7 +77,7 @@ def upload_text_files(connection_info=Form(...), files: List[UploadFile] = File(
         host = connection_info['host']
         port = connection_info['port']
         db_name = connection_info['dbname']
-        upload_text_data(dir_root_path="/tmp/mozhi/data/db/22a607f2-0c90-4fd4-afd6-1c1031ac2c3f",
+        upload_text_data(dir_root_path=new_dir,
                          is_delete=True,
                          engine=create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db_name}'),
                          experiment_name="conll20031")

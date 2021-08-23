@@ -65,8 +65,11 @@ class DBServiceAPI {
                 // console.log(res)
                 return Promise.resolve(res.data["uploadedpath"])
             })
-            .catch((error) => {
-                return Promise.reject(error)
+            .catch(err => {
+                if (err.message && err.message.includes('413')) {
+                    console.log('The file you tried to upload is too large.')
+                }
+                return Promise.reject(err)
             })
     }
 

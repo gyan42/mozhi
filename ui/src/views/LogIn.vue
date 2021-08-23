@@ -62,6 +62,7 @@
 </template>
 
 <script>
+// https://github.com/bezkoder/vue-vuex-jwt-auth
 import "@/assets/styles.scss";
 import PageHeader from "@/components/PageHeader"
 // import loginService from "@/services/auth.service"

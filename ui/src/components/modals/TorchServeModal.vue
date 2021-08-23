@@ -62,7 +62,7 @@ export default {
   data() {
     return {
       serverInfo: {
-        bucket:"test",
+        bucket:"mozhi",
         prefix: "/data/model/conll2003v1.mar",
         initialWorkersCount: 1,
       }

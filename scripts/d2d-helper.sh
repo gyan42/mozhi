@@ -66,7 +66,7 @@ if [ "$FLAG" == "frontend" ]
 then
   ui_image
 elif [ "$FLAG" == "backend" ]; then
-  api_images
+  api_image
 elif [ "$FLAG" == "all" ]; then
   ui_image
   api_image
@@ -78,3 +78,4 @@ elif [ "$FLAG" == "update" ]; then
 else
   echo "Invalid choice"
 fi
+
