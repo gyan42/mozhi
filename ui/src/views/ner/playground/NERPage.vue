@@ -221,7 +221,7 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
-        timeout: 5000
+        timeout: 30000
       }
       mozhiapi
           .post(process.env.VUE_APP_API_OCR_TESSERACT, formData, headers)

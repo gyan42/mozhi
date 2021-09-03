@@ -5,6 +5,9 @@ metadata:
   namespace: mozhi
   labels:
     org: mozhi
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: '8082'
 spec:
   selector:
     app: mozhi-api-torchserve
