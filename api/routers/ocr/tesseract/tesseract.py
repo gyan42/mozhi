@@ -20,11 +20,9 @@ def pytesseract_engine(file: UploadFile = File(...)):
     print("running tesseract")
     file_bytes = file.file.read()
     image = Image.open(io.BytesIO(file_bytes))
-    if os.path.exists(STORE_PATH):
-        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file.filename}"
-    else:
+    if not os.path.exists(STORE_PATH):
         os.makedirs(f'{STORE_PATH}/', exist_ok=True)
-        name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file.filename}"
+    name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file.filename}"
 
     image.save(name)
     # predictions = resnext(image)

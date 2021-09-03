@@ -1,67 +1,67 @@
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: minio-pv-volume-0
-  namespace: mozhi
-  labels:
-    type: local
-spec:
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
-  capacity:
-    storage: 256Mi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/working/minio-volume/0"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: minio-pv-volume-1
-  namespace: mozhi
-  labels:
-    type: local
-spec:
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
-  capacity:
-    storage: 256Mi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/working/minio-volume/1"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: minio-pv-volume-2
-  namespace: mozhi
-  labels:
-    type: local
-spec:
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
-  capacity:
-    storage: 256Mi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/working/minio-volume/2"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: minio-pv-volume-3
-  namespace: mozhi
-  labels:
-    type: local
-spec:
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
-  capacity:
-    storage: 256Mi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/media/working/minio-volume/3"
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: minio-pv-volume-0
+#  namespace: mozhi
+#  labels:
+#    type: local
+#spec:
+#  persistentVolumeReclaimPolicy: Delete
+#  storageClassName: local-storage
+#  capacity:
+#    storage: 256Mi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/media/working/minio-volume/0"
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: minio-pv-volume-1
+#  namespace: mozhi
+#  labels:
+#    type: local
+#spec:
+#  persistentVolumeReclaimPolicy: Delete
+#  storageClassName: local-storage
+#  capacity:
+#    storage: 256Mi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/media/working/minio-volume/1"
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: minio-pv-volume-2
+#  namespace: mozhi
+#  labels:
+#    type: local
+#spec:
+#  persistentVolumeReclaimPolicy: Delete
+#  storageClassName: local-storage
+#  capacity:
+#    storage: 256Mi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/media/working/minio-volume/2"
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: minio-pv-volume-3
+#  namespace: mozhi
+#  labels:
+#    type: local
+#spec:
+#  persistentVolumeReclaimPolicy: Delete
+#  storageClassName: local-storage
+#  capacity:
+#    storage: 256Mi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/media/working/minio-volume/3"

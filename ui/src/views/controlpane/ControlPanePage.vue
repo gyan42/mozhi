@@ -80,12 +80,12 @@
         <a class="panel-block is-active">
           <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Connection Info</button>
         </a>
-        <a class="panel-block is-active">
-          <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Create Bucket</button>
-        </a>
-        <a class="panel-block is-active">
-          <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Upload file(s)..</button>
-        </a>
+<!--        <a class="panel-block is-active">-->
+<!--          <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Create Bucket</button>-->
+<!--        </a>-->
+<!--        <a class="panel-block is-active">-->
+<!--          <button v-on:click="launchMinIOConnectionModal" class="button is-white is-medium">Upload file(s)..</button>-->
+<!--        </a>-->
       </nav>
     </div>
   </div>

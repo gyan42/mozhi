@@ -22,7 +22,7 @@ from mozhi.ocr.text_stiching import combine_text_files
 
 
 router = APIRouter()
-TEMP_DATA_ROOT_PATH = '/tmp/mozhi'
+STORE_PATH = '/tmp/mozhi/data/ocr/calamari'
 
 craft_text_detection_craft = Craft(crop_type="poly", cuda=False)
 
@@ -55,18 +55,16 @@ def do_ocr(input_image_path, intermediate_path, file_name):
 def calamri_engine(file: UploadFile = File(...)):
     file_bytes = file.file.read()
     image = Image.open(io.BytesIO(file_bytes))
-    new_file_name = f"{str(uuid.uuid4())}_{file.filename}"
 
-    if os.path.exists(TEMP_DATA_ROOT_PATH + '/data'):
-        input_image_path = f"{TEMP_DATA_ROOT_PATH}/data/{new_file_name}"
-    else:
-        os.makedirs(f'{TEMP_DATA_ROOT_PATH}/data/', exist_ok=True)
-        input_image_path = f"{TEMP_DATA_ROOT_PATH}/data/{new_file_name}"
+    if not os.path.exists(STORE_PATH):
+       os.makedirs(f'{STORE_PATH}/', exist_ok=True)
+
+    name = f"{STORE_PATH}/{str(uuid.uuid4())}_{file.filename}"
 
     print(f"Storing the image in {input_image_path}")
     image.save(input_image_path)
 
-    intermediate_path = f'{TEMP_DATA_ROOT_PATH}/craft/{new_file_name}/'
+    intermediate_path = f'{STORE_PATH}/craft/{new_file_name}/'
 
     text = do_ocr(input_image_path=input_image_path,
                   intermediate_path=intermediate_path,
