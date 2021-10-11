@@ -63,14 +63,14 @@ ls ${HOME}/.mozhi/model-store/
 
 -  Test the PyTorch handler locally
 ```bash
-unzip ${HOME}/.mozhi/model-store/conll2003v1.zip to -d ${HOME}/.mozhi/model-store/conll2003v1/
+unzip ${HOME}/.mozhi/model-store/conll2003v1.zip -d ${HOME}/.mozhi/model-store/conll2003v1/
 
 python mozhi/serve/torch/handler/hf_transformer_handler.py \
 --unserialized_mar_dir ~/.mozhi/model-store/conll2003v1/ \
 --sequence "Hugging Face Inc. is a company based in New York City. Its headquarters are in DUMBO, therefore very close to the Manhattan Bridge."
 
 
-unzip ${HOME}/.mozhi/model-store/sroie2019v1.mar to -d ${HOME}/.mozhi/model-store/sroie2019v1/
+unzip ${HOME}/.mozhi/model-store/sroie2019v1.mar -d ${HOME}/.mozhi/model-store/sroie2019v1/
 
 python mozhi/serve/torch/handler/hf_transformer_handler.py \
 --unserialized_mar_dir ~/.mozhi/model-store/sroie2019v1/ \
