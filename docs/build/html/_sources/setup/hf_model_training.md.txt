@@ -30,7 +30,7 @@ python mozhi/bin/trainers/hf_trainer.py \
 ```bash
 export SERIALIZED_MODEL_FILE=${HOME}/.mozhi/models/hf/conll2003v1/pytorch_model.bin
 
-mkdir -p  ${HOME}/.mozhi/model_store/
+mkdir -p  ${HOME}/.mozhi/model-store/
 
 # Archive Torch models for serving
 torch-model-archiver --force \
@@ -39,10 +39,10 @@ torch-model-archiver --force \
 --serialized-file  $SERIALIZED_MODEL_FILE \
 --handler mozhi/serve/torch/handler/hf_transformer_handler.py \
 --extra-files ${HOME}/.mozhi/models/hf/conll2003v1/config.json,${HOME}/.mozhi/models/hf/conll2003v1/special_tokens_map.json,${HOME}/.mozhi/models/hf/conll2003v1/training_args.bin,${HOME}/.mozhi/models/hf/conll2003v1/tokenizer_config.json,${HOME}/.mozhi/models/hf/conll2003v1/vocab.txt \
---export-path ${HOME}/.mozhi/model_store/
+--export-path ${HOME}/.mozhi/model-store/
 
 #check new sroie2019v1.mar file is created or not
-ls ${HOME}/.mozhi/model_store/
+ls ${HOME}/.mozhi/model-store/
 
 export SERIALIZED_MODEL_FILE=${HOME}/.mozhi/models/hf/sroie2019v1/pytorch_model.bin
 
@@ -53,36 +53,44 @@ torch-model-archiver --force \
 --serialized-file  $SERIALIZED_MODEL_FILE \
 --handler mozhi/serve/torch/handler/hf_transformer_handler.py \
 --extra-files ${HOME}/.mozhi/models/hf/sroie2019v1/config.json,${HOME}/.mozhi/models/hf/sroie2019v1/special_tokens_map.json,${HOME}/.mozhi/models/hf/sroie2019v1/training_args.bin,${HOME}/.mozhi/models/hf/sroie2019v1/tokenizer_config.json,${HOME}/.mozhi/models/hf/sroie2019v1/vocab.txt \
---export-path ${HOME}/.mozhi/model_store/
+--export-path ${HOME}/.mozhi/model-store/
 
 #check new conll2003v1.mar file is created or not
-ls ${HOME}/.mozhi/model_store/
+ls ${HOME}/.mozhi/model-store/
 ```
 
 ## Testing
 
 -  Test the PyTorch handler locally
 ```bash
-unzip ${HOME}/.mozhi/model_store/conll2003v1.zip to -d ${HOME}/.mozhi/model_store/conll2003v1/
+unzip ${HOME}/.mozhi/model-store/conll2003v1.zip -d ${HOME}/.mozhi/model-store/conll2003v1/
 
 python mozhi/serve/torch/handler/hf_transformer_handler.py \
---unserialized_mar_dir ~/.mozhi/model_store/conll2003v1/ \
+--unserialized_mar_dir ~/.mozhi/model-store/conll2003v1/ \
 --sequence "Hugging Face Inc. is a company based in New York City. Its headquarters are in DUMBO, therefore very close to the Manhattan Bridge."
 
 
-unzip ${HOME}/.mozhi/model_store/sroie2019v1.mar to -d ${HOME}/.mozhi/model_store/sroie2019v1/
+unzip ${HOME}/.mozhi/model-store/sroie2019v1.mar -d ${HOME}/.mozhi/model-store/sroie2019v1/
 
 python mozhi/serve/torch/handler/hf_transformer_handler.py \
---unserialized_mar_dir ~/.mozhi/model_store/sroie2019v1/ \
+--unserialized_mar_dir ~/.mozhi/model-store/sroie2019v1/ \
 --sequence "OCEAN IC PACKAGING ENTERPRISE GST NO: 000945983488 41-1J PETALING.57000 KUALA LUMPUR H/P:012-3163818 FAX:0390542829 TAX INVOICE 12:45 #027553 27/06/2018 01LAI 000000 RM152.00 4X 38.00 OTHERS SUBTOTAL RM152.00 GST TAXABLE RM152.00 GST 0% RM0.00 ITEMS 40 RM152.00 CASH"
 ```
 
 - Test PyTorch Serve on our custom docker image. Refer [TorchServe REST API](https://github.com/pytorch/serve/blob/master/docs/rest_api.md) for more details on APIs
 
 ```bash
+export MODEL_DATA=/opt/vlab/gyan42/model-store/huggingface
+
 docker run --rm -it \
--v /opt/vlab/gyan42/model-store/hugging_face:/home/model-server/model-store \
+-v $MODEL_DATA:/home/model-server/model-store \
 --network host \
+mozhi-api-cpu bash
+
+
+docker run --rm -it \
+-v $MODEL_DATA:/home/model-server/model-store \
+-p 6543:6543 -p 6544:6544 -p 6545:6545 \
 mozhi-api-cpu bash
 
 # Command to run inside the docker

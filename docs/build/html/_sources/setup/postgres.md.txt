@@ -38,6 +38,7 @@ sudo su - postgres
     \du #list users
     CREATE DATABASE mozhidb;
     grant all privileges on database mozhidb to mozhi;
+    ALTER USER mozhi WITH CREATEDB;
     \list # to see the DB created
     \q
 
@@ -156,82 +157,6 @@ SELECT
   'DROP TABLE IF EXISTS "' || tablename || '" CASCADE;' 
 from
   pg_tables WHERE schemaname = 'public';
-```
-
-## Integration with Spark
-
-Part of our work flow we need to read and write to Postresql from Apache Spark. 
-Lets test whether we can do it from local `pyspark` terminal.
-
-```
-#it is mandate to give the posgres maven ids for runtime
-pyspark --packages postgresql:postgresql:9.1-901-1.jdbc4
-
-#read the table "authors" 
-df = spark.read. \
-    format("jdbc"). \
-    option("url", "jdbc:postgresql://localhost:5432/mozhidb"). \
-    option("dbtable", "authors"). \
-    option("user", "mozhi"). \
-    option("password", "mozhi"). \
-    option("driver", "org.postgresql.Driver"). \
-    load()
-
-# display the table
-df.printSchema()
-```
-
-## Hive Metastore DB setup
-
-We could use different metastore DB for Hive, below steps helps to use Postgresql as its external metastore,
-which then can be shared with Spark.
-
-```
-sudo adduser hive #password hive
-
-sudo su - postgres
-    psql #to launch the terminal
-    CREATE USER hive WITH PASSWORD 'hive'; # drop user hive; (if needed)
-    \du
-    CREATE DATABASE hive;
-    grant all privileges on database hive to hive;
-    \list # to see the DB created
-    \q
-```
-
-We need do some changes to connection configs, to enable login from different services:
-
-```
-# change the 3rd colum values to "all"
-sudo vim /etc/postgresql/10/main/pg_hba.conf
-    # "local" is for Unix domain socket connections only
-    local   all   all                                     md5
-    # IPv4 local connections:
-    host    all   all             127.0.0.1/32            md5
-    # IPv6 local connections:
-    host    all   all             ::1/128                 md5
-```
-
-Fire a python shell and test out the connection
-
-```    
-import psycopg2
-conn = psycopg2.connect(host="localhost", port=5432, database="hive", user="hive", password="hive")
-sql_command = "SELECT * FROM \"CDS\";"
-print (sql_command)
-# Load the data
-data = pd.read_sql(sql_command, conn)
-print(data)
-```
-
-Use Hive provided tool to setup the metastore tables an schema:
-`/path/to/hive/bin/schematool -dbType postgres -initSchema`
-
-And then try running following commands, you should see bunch of tables there:
-```shell script
-sudo -i -u hive  psql -d hive
-#asks for two password, one for sudo and other one for DB `hive` which is `hive`
-    hive=> \dt
 ```
 
 ------------------------------------------------------------------------------------------------------------------------

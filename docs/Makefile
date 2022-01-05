@@ -27,9 +27,9 @@ docs:
 	touch source/mozhi/temp.rst
 	rm source/mozhi/*.rst
 	sphinx-apidoc -E -M -d 2 -f ../mozhi/ -o source/mozhi/
-	cd source/mozhi/ && sed -i 's/ package//g' *.rst
-	cd source/mozhi/ && sed -i 's/Submodules//g' *.rst
-	cd source/mozhi/ && sed -i 's/Subpackages//g' *.rst
+	cd source/mozhi/ && sed -i '' -e 's/ package//g' *
+	cd source/mozhi/ && sed -i '' -e 's/Submodules//g' *
+	cd source/mozhi/ && sed -i '' -e 's/Subpackages//g' *
 	@make clean
 	@make html
 	git add -f build/

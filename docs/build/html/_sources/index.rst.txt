@@ -37,19 +37,23 @@ Mozhi provides set of tools for end-to-end Named Entity Recognition (NER) NLP ta
     :align: center
     :alt: header-img
 
+Contents
+========
+
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
 
    setup/setup.rst
    study_materials/study_materials.rst
    ner/ner.rst
 
-.. toctree::
-   :maxdepth: 1
-   :caption: API:
+API
+===
 
-   Mozhi/Mozhi.rst
+.. toctree::
+   :maxdepth: 2
+
+   mozhi/mozhi.rst
 
 Indices and tables
 ==================

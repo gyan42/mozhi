@@ -36,7 +36,9 @@ python -m spacy download en_core_web_md
 ### 4. [Vue 3 Js](https://v3.vuejs.org/guide/installation.html#download-and-self-host)
 
 ```
-sudo apt install npm
+sudo apt install npm # or similar one based on your OS
+yarn global add @vue/cli
+npm i -g @vue/cli-service
 npm install vue@next
 ```
 

@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mozhi.db.conll_upload &mdash; Mozhi 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/mozhi_style.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="../../../index.html">
+                Mozhi
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a></li>
+        
+          <li><a href="../../index.html">Module code</a></li>
+        
+      <li>mozhi.db.conll_upload</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="../../../search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/setup.html">Developers Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/dev_machine.html">Setting up Developer Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/dev_machine.html#installations">Installations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/api.html">mozhi API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/api.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/api.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/api.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/api.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/ui.html#vue-reference-links">Vue Reference Links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/ui.html#setup-requirements">Setup Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/ui.html#local-machine">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/ui.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/ocr.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/hf_model_training.html#preparing-the-model">Preparing the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/hf_model_training.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/colab.html">Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup/postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/demo_on_minikube.html">Minikube</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../study_materials/dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../study_materials/dl.html#loss-functions">Loss Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../study_materials/model_serving.html">Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../study_materials/model_serving.html#tensorflow-model-serving">Tensorflow Model Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../study_materials/model_serving.html#pytorch-serve">PyTorch Serve</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../study_materials/must_have_maths.html">Must Have</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../study_materials/must_have_maths.html#kl-divergence">KL Divergence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../study_materials/must_have_maths.html#cross-entorpy">Cross Entorpy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../study_materials/must_have_maths.html#residula-connection">Residula connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../study_materials/tf.html">Tensorflow Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../study_materials/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ner/ner.html">NER - Named Entity Recognition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ner/ner.html#what-is-ner">What is NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ner/ner.html#use-cases-of-ner">Use cases of NER?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ner/ner.html#methods-to-extract-ner">Methods to extract NER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ner/intro.html">NER - Named Entity Recognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ner/datasets.html">NER Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ner/deeplearning.html">Deep Learning Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ner/papers.html">Papers Related to NER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ner/references.html">Wild References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <h1>Source code for mozhi.db.conll_upload</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">fire</span>
+
+<span class="kn">from</span> <span class="nn">mozhi.dataset.ner.conll.vf_conll_2003</span> <span class="kn">import</span> <span class="n">CoNLLLoader</span>
+<span class="kn">from</span> <span class="nn">mozhi.utils.pretty_print</span> <span class="kn">import</span> <span class="n">print_info</span>
+
+
+<div class="viewcode-block" id="delete_table"><a class="viewcode-back" href="../../../mozhi/mozhi.db.html#mozhi.db.conll_upload.delete_table">[docs]</a><span class="k">def</span> <span class="nf">delete_table</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    :param table_name:</span>
+<span class="sd">    :param engine:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sql_command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;drop table if exists </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> cascade &quot;</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_command</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="parse_conll"><a class="viewcode-back" href="../../../mozhi/mozhi.db.html#mozhi.db.conll_upload.parse_conll">[docs]</a><span class="k">def</span> <span class="nf">parse_conll</span><span class="p">(</span><span class="n">txt_file_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parses and converts the vanilla CoNLL 2003 dataset into Dataframe</span>
+<span class="sd">    Args:</span>
+<span class="sd">        txt_file_path:</span>
+
+<span class="sd">    Returns: pandas.DataFrame with columns [text, features, labels]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="n">CoNLLLoader</span><span class="o">.</span><span class="n">split_text_label</span><span class="p">(</span><span class="n">txt_file_path</span><span class="p">)</span>
+    <span class="n">text_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">features_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">labels_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">labels_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+            <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+            <span class="n">labels_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="n">text_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">features</span><span class="p">))</span>
+        <span class="n">features_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">features</span><span class="p">))</span>
+        <span class="n">labels_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text_list</span><span class="p">,</span> <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="n">features_list</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="n">labels_list</span><span class="p">})</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">labels_set</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="upload_text_data"><a class="viewcode-back" href="../../../mozhi/mozhi.db.html#mozhi.db.conll_upload.upload_text_data">[docs]</a><span class="k">def</span> <span class="nf">upload_text_data</span><span class="p">(</span><span class="n">dir_root_path</span><span class="p">,</span>
+                     <span class="n">is_delete</span><span class="p">,</span>
+                     <span class="n">engine</span><span class="p">,</span>
+                     <span class="n">experiment_name</span><span class="p">):</span>
+    <span class="n">print_info</span><span class="p">(</span><span class="s2">&quot;Uploading text data...&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dir_root_path</span><span class="p">):</span>
+        <span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">dir_root_path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">f_name</span>
+        <span class="n">print_info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">):</span>
+            <span class="n">df</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">parse_conll</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+            <span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Only CoNLL vanilla text format is supported, enable the flag `is_conll` to process&quot;</span><span class="p">)</span>
+
+        <span class="n">table_name</span> <span class="o">=</span> <span class="n">experiment_name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">f_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Delete text and tag data</span>
+        <span class="k">if</span> <span class="n">is_delete</span><span class="p">:</span>
+            <span class="n">delete_table</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+            <span class="n">delete_table</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span> <span class="o">+</span> <span class="s1">&#39;_tags&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+        <span class="c1"># Create DF frm tags collected and upload</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">labels</span><span class="p">})</span>
+        <span class="k">if</span> <span class="s1">&#39;id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+            <span class="c1"># Upload the tags</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span>
+                <span class="n">table_name</span> <span class="o">+</span> <span class="s2">&quot;_tags&quot;</span><span class="p">,</span>
+                <span class="n">engine</span><span class="p">,</span>
+                <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Upload text data in chunks</span>
+        <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;features&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="s1">&#39;labels&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="s1">&#39;id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+
+            <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span>
+                <span class="n">table_name</span><span class="p">,</span>
+                <span class="n">engine</span><span class="p">,</span>
+                <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span>  <span class="c1"># if the table already exists, append this data</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="upload_table_data"><a class="viewcode-back" href="../../../mozhi/mozhi.db.html#mozhi.db.conll_upload.upload_table_data">[docs]</a><span class="k">def</span> <span class="nf">upload_table_data</span><span class="p">(</span><span class="n">dir_root_path</span><span class="p">,</span>
+                      <span class="n">is_delete</span><span class="p">,</span>
+                      <span class="n">engine</span><span class="p">,</span>
+                      <span class="n">experiment_name</span><span class="p">):</span>
+    <span class="n">print_info</span><span class="p">(</span><span class="s2">&quot;Uploading table data...&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dir_root_path</span><span class="p">):</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">dir_root_path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">f_name</span>
+        <span class="n">print_info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.parquet&quot;</span><span class="p">):</span>
+            <span class="n">dfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">file_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">):</span>
+            <span class="n">dfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File format not supported : </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">table_name</span> <span class="o">=</span> <span class="n">experiment_name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">f_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">is_delete</span><span class="p">:</span>
+            <span class="n">delete_table</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;_tags&#39;</span> <span class="ow">in</span> <span class="n">file_path</span><span class="p">:</span>
+           <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+                <span class="c1"># Upload the tags</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span>
+                    <span class="n">table_name</span><span class="p">,</span>
+                    <span class="n">engine</span><span class="p">,</span>
+                    <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;features&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">if</span> <span class="s1">&#39;labels&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">if</span> <span class="s1">&#39;id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+
+                <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span>
+                    <span class="n">table_name</span><span class="p">,</span>
+                    <span class="n">engine</span><span class="p">,</span>
+                    <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span>  <span class="c1"># if the table already exists, append this data</span>
+                <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="to_bool"><a class="viewcode-back" href="../../../mozhi/mozhi.db.html#mozhi.db.conll_upload.to_bool">[docs]</a><span class="k">def</span> <span class="nf">to_bool</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../mozhi/mozhi.db.html#mozhi.db.conll_upload.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">port</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">db_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">user</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">dir_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">is_delete</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">is_conll</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+         <span class="n">experiment_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Uploads csv/parquet files to DB for annotation.</span>
+
+<span class="sd">    Table data is expected to have following schema:</span>
+<span class="sd">        text: string</span>
+<span class="sd">        features: string (optional) Space separated tokenized text</span>
+<span class="sd">        labels: string (optional) Space separated corresponding tags</span>
+
+<span class="sd">    Tag data is expected to have following schema:</span>
+<span class="sd">        name: string Name of the tag</span>
+
+<span class="sd">    File name is used as table names. Recommended file name format:</span>
+<span class="sd">        {file_name}.csv and {file_name}_tags.csv</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        host:</span>
+<span class="sd">        port:</span>
+<span class="sd">        db_name:</span>
+<span class="sd">        user:</span>
+<span class="sd">        password:</span>
+<span class="sd">        dir_root:</span>
+<span class="sd">        is_delete: bool Delete existing table data</span>
+<span class="sd">        is_conll:</span>
+<span class="sd">        experiment_name:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;postgresql://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s1">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">to_bool</span><span class="p">(</span><span class="n">is_conll</span><span class="p">):</span>
+        <span class="n">upload_text_data</span><span class="p">(</span><span class="n">dir_root_path</span><span class="o">=</span><span class="n">dir_root</span><span class="p">,</span>
+                         <span class="n">is_delete</span><span class="o">=</span><span class="n">to_bool</span><span class="p">(</span><span class="n">is_delete</span><span class="p">),</span>
+                         <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+                         <span class="n">experiment_name</span><span class="o">=</span><span class="n">experiment_name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">upload_table_data</span><span class="p">(</span><span class="n">dir_root_path</span><span class="o">=</span><span class="n">dir_root</span><span class="p">,</span>
+                          <span class="n">is_delete</span><span class="o">=</span><span class="n">to_bool</span><span class="p">(</span><span class="n">is_delete</span><span class="p">),</span>
+                          <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+                          <span class="n">experiment_name</span><span class="o">=</span><span class="n">experiment_name</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">fire</span><span class="o">.</span><span class="n">Fire</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2021, Mozhi.
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>

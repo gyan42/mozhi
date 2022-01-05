@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>MinIO &mdash; Mozhi 0.0.1 documentation</title>
@@ -28,7 +29,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nvidia" href="nvidia.html" />
+    <link rel="prev" title="Kubernetes" href="kubernetes.html" /> 
 
 </head>
 
@@ -67,6 +70,8 @@
     
       <li><a href="../index.html">Docs</a></li>
         
+          <li><a href="setup.html">Developers Guide</a></li>
+        
       <li>MinIO</li>
     
     
@@ -102,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Developers Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+                                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="setup.html">Developers Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
@@ -119,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -137,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -174,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -183,9 +271,9 @@
                     <div class="document">
                         
                             
-  <div class="section" id="minio">
+  <section id="minio">
 <h1>MinIO<a class="headerlink" href="#minio" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="setup">
+<section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><strong>Local</strong></p></li>
@@ -195,66 +283,154 @@
 <ol class="simple">
 <li><p><strong>Kubernetes</strong></p></li>
 </ol>
-<p>MinIO Operator:s</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alias km=&#39;kubectl -n mozhi&#39;
+<p><a class="reference external" href="https://docs.min.io/minio/k8s/deployment/deploy-minio-operator.html">MinIO Operator</a>:</p>
+<p>YAML Reference Doc: https://github.com/minio/operator/blob/master/docs/crd.adoc</p>
+<ul class="simple">
+<li><p>Install operators/helm charts</p>
+<ul>
+<li><p>Visit official <a class="reference external" href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/">Krew</a> for installation guide.</p></li>
+<li><p>https://github.com/minio/direct-csi</p></li>
+<li><p>https://kubectl.docs.kubernetes.io/installation/kustomize/</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># create alias for quick and short commands</span>
+<span class="nb">alias</span> <span class="nv">km</span><span class="o">=</span><span class="s1">&#39;kubectl -n mozhi&#39;</span>
 
 kubectl krew update
+kubectl krew uninstall minio
 kubectl krew install minio
 
 kubectl create namespace minio-operator
 kubectl minio init --namespace minio-operator
 kubectl get all --namespace minio-operator
 
-# console http://localhost:9090
+kubectl describe -n minio-operator pod/minio-operator-599dfb97-2vltk
+kubectl logs -n minio-operator pod/minio-operator-599dfb97-kjhlh
+kubectl logs -n minio-operator pod/console-789ff4b97b-gj4v7 
+
+<span class="c1"># To open Operator UI, start a port forward using this command: console http://localhost:9090</span>
 kubectl minio proxy -n minio-operator 
 
-kubectl create namespace mozhi
+kubectl delete namespace minio-operator
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://docs.min.io/minio/k8s/tenant-management/deploy-minio-tenant-using-commandline.html#deploy-minio-tenant-commandline">MinIO tenant using command line</a></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl delete namespace mozhi
 
-kubectl apply -f ops/k8s/minio/mozhi-tiny-tenant.yaml
-km get all
+kubectl create namespace mozhi
+kubectl minio tenant create mozhitenant <span class="se">\</span>
+  --servers                 <span class="m">1</span>  <span class="se">\</span>
+  --volumes                 <span class="m">4</span>  <span class="se">\</span>
+  --capacity                16Gi  <span class="se">\</span>
+  --storage-class standard <span class="se">\</span>
+  --namespace               mozhi  <span class="se">\</span>
+  --output &gt;&gt; ops/k8s/minio/tenant.yaml
+
+
+  Username: admin 
+  Password: 52d14759-5853-4b25-88e9-debd85d1b0c9 
+  Note: Copy the credentials to a secure location. MinIO will not display these again.
+
+kubectl apply -f ops/k8s/minio/tenant.yaml
+
+kubectl minio tenant delete mozhitenant 
+kubectl apply -f ops/k8s/minio/autogenerated.yaml
+kubectl <span class="nb">exec</span> -it pod/tenant-ss-0-0 -n mozhi -- bash
+kubectl delete namespace minio-operator
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Test MinIO tenant</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>kubectl port-forward service/minio <span class="m">9000</span>:443 --namespace mozhi
+kubectl port-forward service/mozhitenant-console <span class="m">9443</span>:9443 --namespace mozhi
+
+mc <span class="nb">alias</span> <span class="nb">set</span> mozhiminio http://localhost:9000 admin f53bcf90-4341-4689-8233-0a4eaf401e61
+
 km get pvc
 km get pv
 
-kubectl port-forward service/minio 9000:443 --namespace mozhi
-mcli alias set mozhiminio http://localhost:9000 mozhi mozhi
-
-# delete
-kubectl delete pvc -n mozhi $(kubectl get pvc --namespace mozhi | cut -d&#39; &#39; -f1)
-kubectl delete pv -n mozhi $(kubectl get pv --namespace mozhi | cut -d&#39; &#39; -f1)
+<span class="c1"># delete</span>
+kubectl delete pvc -n mozhi <span class="k">$(</span>kubectl get pvc --namespace mozhi <span class="p">|</span> cut -d<span class="s1">&#39; &#39;</span> -f1<span class="k">)</span>
+kubectl delete pv -n mozhi <span class="k">$(</span>kubectl get pv --namespace mozhi <span class="p">|</span> cut -d<span class="s1">&#39; &#39;</span> -f1<span class="k">)</span>
 kubectl delete namespace mozhi
 </pre></div>
 </div>
-</div>
-<div class="section" id="misc">
+</section>
+<section id="misc">
 <h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>https://docs.min.io/docs/minio-admin-complete-guide.html</p></li>
 </ul>
 <p><strong>Adding Keys</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mc</span> <span class="n">alias</span> <span class="nb">set</span> <span class="n">myminio</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.142</span><span class="p">:</span><span class="mi">9000</span> <span class="n">admin</span> <span class="n">password</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mc <span class="nb">alias</span> <span class="nb">set</span> myminio http://192.168.0.142:9000 admin password
 <span class="c1"># or</span>
-<span class="n">mcli</span> <span class="n">alias</span> <span class="nb">set</span> <span class="n">myminio</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.142</span><span class="p">:</span><span class="mi">9000</span> <span class="n">BKIKJAA5BMMU2RHO6IBB</span> <span class="n">V7f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12</span>
+mcli <span class="nb">alias</span> <span class="nb">set</span> myminio http://192.168.0.142:9000 BKIKJAA5BMMU2RHO6IBB V7f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12
 </pre></div>
 </div>
 <p>Internal service name: YOURSERVICENAME.NAMESPACE.svc.cluster.local</p>
 <p><strong>Password</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;mozhi&#39;</span> <span class="o">|</span> <span class="n">base64</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;bW96aGk=&#39;</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> -n <span class="s1">&#39;mozhi&#39;</span> <span class="p">|</span> base64
+<span class="nb">echo</span> -n <span class="s1">&#39;bW96aGk=&#39;</span> <span class="p">|</span> base64 -d
 
-<span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;mozhi123&#39;</span> <span class="o">|</span> <span class="n">base64</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;bW96aGkxMjM=&#39;</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span>
+<span class="nb">echo</span> -n <span class="s1">&#39;mozhi123&#39;</span> <span class="p">|</span> base64
+<span class="nb">echo</span> -n <span class="s1">&#39;bW96aGkxMjM=&#39;</span> <span class="p">|</span> base64 -d
+
+
+<span class="nb">echo</span> -n <span class="s1">&#39;YWRtaW4=&#39;</span> <span class="p">|</span> base64 -d <span class="c1"># admin</span>
+<span class="nb">echo</span> -n <span class="s1">&#39;NzI5NDllYWItY2U1Yi00YWY2LWFlYmEtZjY3Y2RjZDkwMjdm&#39;</span> <span class="p">|</span> base64 -d <span class="c1"># 72949eab-ce5b-4af6-aeba-f67cdcd9027f</span>
+
+<span class="nb">echo</span> -n <span class="s1">&#39;YmMzNjY2M2UtMzQzMC00ZWQwLWIwNWEtZTA4OTkwZWYwMjNl&#39;</span> <span class="p">|</span> base64 -d <span class="c1"># bc36663e-3430-4ed0-b05a-e08990ef023e</span>
+<span class="nb">echo</span> -n <span class="s1">&#39;OGVhNDY5MmYtNDAyMy00MzQwLTliMGUtZjJlMGU1ZGRmNjI1&#39;</span> <span class="p">|</span> base64 -d <span class="c1"># 8ea4692f-4023-4340-9b0e-f2e0e5ddf625 </span>
 </pre></div>
 </div>
-<div class="section" id="references">
+<section id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>https://docs.min.io/docs/deploy-minio-on-kubernetes.html</p></li>
 <li><p>https://github.com/minio/operator/blob/master/README.md</p></li>
 <li><p>https://www.olivercoding.com/2021-03-01-kubernetes-minio-init/</p></li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+# Persistent Volume by MinIO
+kubectl krew install direct-csi
+kubectl direct-csi install --crd
+kubectl direct-csi drives ls
+kubectl direct-csi drives format --drives  /dev/sda1 --nodes minikube --force
+kubectl direct-csi info
+
+
+- MinIO tenant using Kustomize
+```shell
+kubectl create namespace mozhi
+kustomize build ops/k8s/minio/base | kubectl apply -f -
+kustomize build ops/k8s/minio/tiny | kubectl apply -f -
+
+kubectl delete pvc -n mozhi $(kubectl get pvc --namespace mozhi | cut -d&#39; &#39; -f1)
+kubectl delete pv -n mozhi $(kubectl get pv --namespace mozhi | cut -d&#39; &#39; -f1)
+kubectl delete namespace mozhi
+
+#kubectl apply -f ops/k8s/minio/mozhi-tiny-tenant.yaml
+</pre></div>
 </div>
+<ul class="simple">
+<li><p>MinIO using Helm</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>helm repo add minio https://operator.min.io/
+helm install --namespace mozhi --create-namespace --generate-name mozhi
+</pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
+</section>
+</section>
+</section>
 
 
                         

@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>mozhi.db &mdash; Mozhi 0.0.1 documentation</title>
@@ -28,7 +29,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mozhi.engine" href="mozhi.engine.html" />
+    <link rel="prev" title="mozhi.dataset.ner.sroie2019" href="mozhi.dataset.ner.sroie2019.html" /> 
 
 </head>
 
@@ -67,6 +70,8 @@
     
       <li><a href="../index.html">Docs</a></li>
         
+          <li><a href="mozhi.html">mozhi</a></li>
+        
       <li>mozhi.db</li>
     
     
@@ -102,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+                                <ul>
 <li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Developers Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../setup/on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#local-machine">Local Machine</a></li>
@@ -119,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -137,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -174,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mozhi.html">mozhi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -183,141 +271,79 @@
                     <div class="document">
                         
                             
-  <div class="section" id="module-mozhi.db">
+  <section id="module-mozhi.db">
 <span id="mozhi-db"></span><h1>mozhi.db<a class="headerlink" href="#module-mozhi.db" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<span class="target" id="module-mozhi.db.postgresql"></span><dl class="py class">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mozhi.db.postgresql.</span></span><span class="sig-name descname"><span class="pre">PostgresqlConnection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">postgresql_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'5432'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sparkstreamingdb'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sparkstreaming'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sparkstreaming'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Postgresql utility class to read,write tables and execute query</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<span class="target" id="module-mozhi.db.conll_upload"></span><dl class="py function">
+<dt class="sig sig-object py" id="mozhi.db.conll_upload.delete_table">
+<span class="sig-prename descclassname"><span class="pre">mozhi.db.conll_upload.</span></span><span class="sig-name descname"><span class="pre">delete_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/conll_upload.html#delete_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.conll_upload.delete_table" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>postgresql_host</strong> – Postgresql Host address</p></li>
-<li><p><strong>postgresql_port</strong> – Postgresql port number</p></li>
-<li><p><strong>postgresql_database</strong> – Postgresql database name</p></li>
-<li><p><strong>postgresql_user</strong> – Postgresql user name</p></li>
-<li><p><strong>postgresql_password</strong> – Postgresql password</p></li>
+<li><p><strong>table_name</strong> – </p></li>
+<li><p><strong>engine</strong> – </p></li>
 </ul>
 </dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.get_sqlalchemy_connection">
-<span class="sig-name descname"><span class="pre">get_sqlalchemy_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.get_sqlalchemy_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.get_sqlalchemy_connection" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Returns postgresql sqlalchemy connection</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.get_sqlalchemy_session">
-<span class="sig-name descname"><span class="pre">get_sqlalchemy_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.get_sqlalchemy_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.get_sqlalchemy_session" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.get_table">
-<span class="sig-name descname"><span class="pre">get_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.get_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.get_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use to get the Postgresql table as Pandas dataframe
-:param table_name:
-:return: Pandas DataFrame</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.get_tables_list">
-<span class="sig-name descname"><span class="pre">get_tables_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'public'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.get_tables_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.get_tables_list" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>table_schema</strong> – Postgresql schema. Default is <cite>public</cite></p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of tables on given table schema</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.query_to_df">
-<span class="sig-name descname"><span class="pre">query_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.query_to_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.query_to_df" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.run_query">
-<span class="sig-name descname"><span class="pre">run_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.run_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.run_query" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.store_df_as_parquet">
-<span class="sig-name descname"><span class="pre">store_df_as_parquet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.store_df_as_parquet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.store_df_as_parquet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stores the DataFrame as parquet
-:param df: Pandas DataFrame
-:param path: Local machine path
-:return: None</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlConnection.to_posgresql_table">
-<span class="sig-name descname"><span class="pre">to_posgresql_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'public'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">if_exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fail'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlConnection.to_posgresql_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlConnection.to_posgresql_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stores the DataFrame as Postgresql table
-:param df: Pandas Dataframe
-:param table_name: Name of the table
-:param if_exists: {‘fail’, ‘replace’, ‘append’}, default ‘fail’</p>
-<blockquote>
-<div><p>How to behave if the table already exists.</p>
-<ul class="simple">
-<li><p>fail: Raise a ValueError.</p></li>
-<li><p>replace: Drop the table before inserting new values.</p></li>
-<li><p>append: Insert new values to the existing table.</p></li>
-</ul>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlDatasetBase">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mozhi.db.postgresql.</span></span><span class="sig-name descname"><span class="pre">PostgresqlDatasetBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_output_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'slabel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_tweet_table_name_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw_tweet_dataset'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'5432'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sparkstreamingdb'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sparkstreaming'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postgresql_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sparkstreaming'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlDatasetBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlDatasetBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#mozhi.db.postgresql.PostgresqlConnection" title="mozhi.db.postgresql.PostgresqlConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">mozhi.db.postgresql.PostgresqlConnection</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlDatasetBase.get_latest_raw_dataset_name">
-<span class="sig-name descname"><span class="pre">get_latest_raw_dataset_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlDatasetBase.get_latest_raw_dataset_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlDatasetBase.get_latest_raw_dataset_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the specific version of raw tweet table
-:param version: (int) Run id/version used while dumping the data using ~ssp.spark.consumer.TwitterDataset
-:return: (str) name of the table with version</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlDatasetBase.get_processed_datasets">
-<span class="sig-name descname"><span class="pre">get_processed_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlDatasetBase.get_processed_datasets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlDatasetBase.get_processed_datasets" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlDatasetBase.get_raw_dump_tables_list">
-<span class="sig-name descname"><span class="pre">get_raw_dump_tables_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlDatasetBase.get_raw_dump_tables_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlDatasetBase.get_raw_dump_tables_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns list of raw data tables dataset dumped by ~ssp.spark.consumer.TwitterDataset
-:return: List of string Eg: [raw_tweet_dataset_0,raw_tweet_dataset_1]</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.PostgresqlDatasetBase.split_dataset_table">
-<span class="sig-name descname"><span class="pre">split_dataset_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#PostgresqlDatasetBase.split_dataset_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.PostgresqlDatasetBase.split_dataset_table" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mozhi.db.postgresql.main">
-<span class="sig-prename descclassname"><span class="pre">mozhi.db.postgresql.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argv</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/postgresql.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.postgresql.main" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mozhi.db.conll_upload.main">
+<span class="sig-prename descclassname"><span class="pre">mozhi.db.conll_upload.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_delete</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_conll</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/conll_upload.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.conll_upload.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads csv/parquet files to DB for annotation.</p>
+<dl class="simple">
+<dt>Table data is expected to have following schema:</dt><dd><p>text: string
+features: string (optional) Space separated tokenized text
+labels: string (optional) Space separated corresponding tags</p>
+</dd>
+<dt>Tag data is expected to have following schema:</dt><dd><p>name: string Name of the tag</p>
+</dd>
+<dt>File name is used as table names. Recommended file name format:</dt><dd><p>{file_name}.csv and {file_name}_tags.csv</p>
+</dd>
+<dt>Args:</dt><dd><p>host:
+port:
+db_name:
+user:
+password:
+dir_root:
+is_delete: bool Delete existing table data
+is_conll:
+experiment_name:</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mozhi.db.conll_upload.parse_conll">
+<span class="sig-prename descclassname"><span class="pre">mozhi.db.conll_upload.</span></span><span class="sig-name descname"><span class="pre">parse_conll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt_file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/conll_upload.html#parse_conll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.conll_upload.parse_conll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses and converts the vanilla CoNLL 2003 dataset into Dataframe
+Args:</p>
+<blockquote>
+<div><p>txt_file_path:</p>
+</div></blockquote>
+<p>Returns: pandas.DataFrame with columns [text, features, labels]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mozhi.db.conll_upload.to_bool">
+<span class="sig-prename descclassname"><span class="pre">mozhi.db.conll_upload.</span></span><span class="sig-name descname"><span class="pre">to_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/conll_upload.html#to_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.conll_upload.to_bool" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="mozhi.db.conll_upload.upload_table_data">
+<span class="sig-prename descclassname"><span class="pre">mozhi.db.conll_upload.</span></span><span class="sig-name descname"><span class="pre">upload_table_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_root_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_delete</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/conll_upload.html#upload_table_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.conll_upload.upload_table_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mozhi.db.conll_upload.upload_text_data">
+<span class="sig-prename descclassname"><span class="pre">mozhi.db.conll_upload.</span></span><span class="sig-name descname"><span class="pre">upload_text_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_root_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_delete</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/db/conll_upload.html#upload_text_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.db.conll_upload.upload_text_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
 
 
                         

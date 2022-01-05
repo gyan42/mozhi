@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Kubernetes &mdash; Mozhi 0.0.1 documentation</title>
@@ -28,7 +29,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MinIO" href="minio.html" />
+    <link rel="prev" title="Docker" href="docker.html" /> 
 
 </head>
 
@@ -67,6 +70,8 @@
     
       <li><a href="../index.html">Docs</a></li>
         
+          <li><a href="setup.html">Developers Guide</a></li>
+        
       <li>Kubernetes</li>
     
     
@@ -102,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Developers Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+                                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="setup.html">Developers Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
@@ -119,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -137,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -174,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -183,20 +271,22 @@
                     <div class="document">
                         
                             
-  <div class="section" id="kubernetes">
+  <section id="kubernetes">
 <h1>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h1>
 <p>Kubernetes is an open-source container-orchestration system for automating deployment, scaling and management of
 containerized applications.</p>
 <p><a class="reference external" href="https://kubernetes.io/docs/tasks/tools/">Install instructions</a>.</p>
 <p>Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster
 inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.</p>
+<p><strong><a class="reference external" href="help.sh">Helm</a></strong></p>
 <p><strong>minikube (Linux)</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -y conntrack
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 export DRIVER=docker
-minikube start --vm-driver=$(DRIVER) 
+minikube start --nodes 4 --vm-driver=$(DRIVER) 
+
 minikube stop
 
 #to switch to minicube cluster context
@@ -209,6 +299,9 @@ minikube addons enable ingress
 minikube dashboard
 
 kubectl delete all --all
+
+# delete local minikube node
+minikube delete --all
 </pre></div>
 </div>
 <p><strong>Change owner and group</strong></p>
@@ -228,8 +321,6 @@ sudo chgrp -R $USER $HOME/.minikube
 # docker, virtualbox,
 export DRIVER=docker
 minikube start --vm-driver=$(DRIVER) 
-minikube stop
-
 
 # list down all the pods 
 kubectl get pods
@@ -239,25 +330,12 @@ kubectl get all
 kubectl delete ${name from above list}
 # eg:
 kubectl delete deployment.apps/spacy-flask-ner-python
-
- 
+# stop 
+minikube stop
 </pre></div>
 </div>
-<div class="section" id="api-quick-reference">
-<h2>API Quick Reference<a class="headerlink" href="#api-quick-reference" title="Permalink to this headline">¶</a></h2>
-<p>Here’s a brief explanation of the various fields:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>replicas – Tells Kubernetes how many pods to create during a deployment. Modifying this field is an easy way to scale a containerized application.
-spec.strategy.type – Suppose there is another version of the application that needs to be deployed, and during the deployment phase, you need to update without facilitating an outage. The Rolling Update strategy allows Kubernetes to update a service without facilitating an outage by proceeding to update pods one at a time.
-spec.strategy.rollingUpdate.maxUnavailable – The maximum number of pods that can be unavailable during the Rolling update.
-spec.strategy.rollingUpdate.maxSurge – The maximum number of pods that can be scheduled above the desired number of pods.
-spec.minReadySeconds – An optional Integer that describes the minimum number of seconds, for which a new pod should be ready without any of its containers crashing for it to be considered available.
-spec.revisionHistoryLimit – An optional integer attribute that you can use to tell Kuberneres explicitly how many old ReplicaSets to retain at any given time.
-spec.template.metadata.labels – Adds labels to a deployment specification.
-spec.selector – An optional object that tells the Kubernetes deployment controller to only target pods that match the specified labels. Thus, to only target pods with the labels “app” and “deployer” you can make the following modification to our deployment yaml.
-</pre></div>
-</div>
-<div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>https://medium.com/faun/how-to-restart-kubernetes-pod-7c702ca984c1</p></li>
 <li><p><a class="reference external" href="https://medium.com/&#64;yzhong.cs/getting-started-with-kubernetes-and-docker-with-minikube-b413d4deeb92">https://medium.com/&#64;yzhong.cs/getting-started-with-kubernetes-and-docker-with-minikube-b413d4deeb92</a></p></li>
@@ -281,9 +359,8 @@ spec.selector – An optional object that tells the Kubernetes deployment contro
 </li>
 <li><p><a class="reference external" href="https://www.mirantis.com/blog/introduction-to-yaml-creating-a-kubernetes-deployment/">Kubernetes YAML</a></p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
 
 
                         

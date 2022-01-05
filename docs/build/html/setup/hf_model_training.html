@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Hugging Face Transformers &mdash; Mozhi 0.0.1 documentation</title>
@@ -30,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Pytorch" href="pt_model_training.html" />
-    <link rel="prev" title="mozhi UI" href="ui.html" /> 
+    <link rel="prev" title="OCR" href="ocr.html" /> 
 
 </head>
 
@@ -106,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+                                <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="setup.html">Developers Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
@@ -123,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hugging Face Transformers</a><ul>
@@ -141,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -178,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -187,9 +271,9 @@
                     <div class="document">
                         
                             
-  <div class="section" id="hugging-face-transformers">
+  <section id="hugging-face-transformers">
 <h1>Hugging Face Transformers<a class="headerlink" href="#hugging-face-transformers" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="preparing-the-model">
+<section id="preparing-the-model">
 <h2>Preparing the model<a class="headerlink" href="#preparing-the-model" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Train HF transfomer with custom dataset</p></li>
@@ -219,7 +303,7 @@ python mozhi/bin/trainers/hf_trainer.py <span class="se">\</span>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SERIALIZED_MODEL_FILE</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/conll2003v1/pytorch_model.bin
 
-mkdir -p  <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/
+mkdir -p  <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/
 
 <span class="c1"># Archive Torch models for serving</span>
 torch-model-archiver --force <span class="se">\</span>
@@ -228,10 +312,10 @@ torch-model-archiver --force <span class="se">\</span>
 --serialized-file  <span class="nv">$SERIALIZED_MODEL_FILE</span> <span class="se">\</span>
 --handler mozhi/serve/torch/handler/hf_transformer_handler.py <span class="se">\</span>
 --extra-files <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/conll2003v1/config.json,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/conll2003v1/special_tokens_map.json,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/conll2003v1/training_args.bin,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/conll2003v1/tokenizer_config.json,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/conll2003v1/vocab.txt <span class="se">\</span>
---export-path <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/
+--export-path <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/
 
 <span class="c1">#check new sroie2019v1.mar file is created or not</span>
-ls <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/
+ls <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/
 
 <span class="nb">export</span> <span class="nv">SERIALIZED_MODEL_FILE</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/sroie2019v1/pytorch_model.bin
 
@@ -242,38 +326,46 @@ torch-model-archiver --force <span class="se">\</span>
 --serialized-file  <span class="nv">$SERIALIZED_MODEL_FILE</span> <span class="se">\</span>
 --handler mozhi/serve/torch/handler/hf_transformer_handler.py <span class="se">\</span>
 --extra-files <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/sroie2019v1/config.json,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/sroie2019v1/special_tokens_map.json,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/sroie2019v1/training_args.bin,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/sroie2019v1/tokenizer_config.json,<span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/models/hf/sroie2019v1/vocab.txt <span class="se">\</span>
---export-path <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/
+--export-path <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/
 
 <span class="c1">#check new conll2003v1.mar file is created or not</span>
-ls <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/
+ls <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/
 </pre></div>
 </div>
-</div>
-<div class="section" id="testing">
+</section>
+<section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Test the PyTorch handler locally</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/conll2003v1.zip to -d <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/conll2003v1/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/conll2003v1.zip -d <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/conll2003v1/
 
 python mozhi/serve/torch/handler/hf_transformer_handler.py <span class="se">\</span>
---unserialized_mar_dir ~/.mozhi/model_store/conll2003v1/ <span class="se">\</span>
+--unserialized_mar_dir ~/.mozhi/model-store/conll2003v1/ <span class="se">\</span>
 --sequence <span class="s2">&quot;Hugging Face Inc. is a company based in New York City. Its headquarters are in DUMBO, therefore very close to the Manhattan Bridge.&quot;</span>
 
 
-unzip <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/sroie2019v1.mar to -d <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model_store/sroie2019v1/
+unzip <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/sroie2019v1.mar -d <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.mozhi/model-store/sroie2019v1/
 
 python mozhi/serve/torch/handler/hf_transformer_handler.py <span class="se">\</span>
---unserialized_mar_dir ~/.mozhi/model_store/sroie2019v1/ <span class="se">\</span>
+--unserialized_mar_dir ~/.mozhi/model-store/sroie2019v1/ <span class="se">\</span>
 --sequence <span class="s2">&quot;OCEAN IC PACKAGING ENTERPRISE GST NO: 000945983488 41-1J PETALING.57000 KUALA LUMPUR H/P:012-3163818 FAX:0390542829 TAX INVOICE 12:45 #027553 27/06/2018 01LAI 000000 RM152.00 4X 38.00 OTHERS SUBTOTAL RM152.00 GST TAXABLE RM152.00 GST 0% RM0.00 ITEMS 40 RM152.00 CASH&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Test PyTorch Serve on our custom docker image. Refer <a class="reference external" href="https://github.com/pytorch/serve/blob/master/docs/rest_api">TorchServe REST API</a> for more details on APIs</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm -it <span class="se">\</span>
--v /opt/vlab/gyan42/model-store/hugging_face:/home/model-server/model-store <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MODEL_DATA</span><span class="o">=</span>/opt/vlab/gyan42/model-store/huggingface
+
+docker run --rm -it <span class="se">\</span>
+-v <span class="nv">$MODEL_DATA</span>:/home/model-server/model-store <span class="se">\</span>
 --network host <span class="se">\</span>
+mozhi-api-cpu bash
+
+
+docker run --rm -it <span class="se">\</span>
+-v <span class="nv">$MODEL_DATA</span>:/home/model-server/model-store <span class="se">\</span>
+-p <span class="m">6543</span>:6543 -p <span class="m">6544</span>:6544 -p <span class="m">6545</span>:6545 <span class="se">\</span>
 mozhi-api-cpu bash
 
 <span class="c1"># Command to run inside the docker</span>
@@ -296,8 +388,8 @@ curl <span class="s2">&quot;http://localhost:6544/models&quot;</span>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python mozhi/bin/serve/test_api.py --url http://127.0.0.1:6543/predictions/conll2003v1
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
                         

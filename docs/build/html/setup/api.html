@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>mozhi API &mdash; Mozhi 0.0.1 documentation</title>
@@ -29,8 +30,8 @@
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="OCR" href="ocr.html" />
-    <link rel="prev" title="Setting up Developer Machine" href="dev_machine.html" /> 
+    <link rel="next" title="mozhi UI" href="ui.html" />
+    <link rel="prev" title="Load and Prepare Demo Data for UI" href="prepare_data.html" /> 
 
 </head>
 
@@ -106,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+                                <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="setup.html">Developers Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#local-machine">Local Machine</a></li>
@@ -123,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -141,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -178,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -187,23 +271,24 @@
                     <div class="document">
                         
                             
-  <div class="section" id="mozhi-api">
+  <section id="mozhi-api">
 <h1>mozhi API<a class="headerlink" href="#mozhi-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="setup-requirements">
+<section id="setup-requirements">
 <h2>Setup Requirements<a class="headerlink" href="#setup-requirements" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="local-machine">
+</section>
+<section id="local-machine">
 <h2>Local Machine<a class="headerlink" href="#local-machine" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/mozhi/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m spacy download en_core_web_sm
+<span class="nb">cd</span> /path/to/mozhi/
 <span class="nb">export</span> <span class="nv">DEBUG</span><span class="o">=</span><span class="nb">true</span>
 api/start
 </pre></div>
 </div>
 <p><a class="reference external" href="http://localhost:8088/docs">Check here for API Docs</a></p>
 <p>Test:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">8088</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8088</span>
 
 <span class="n">curl</span> <span class="o">--</span><span class="n">location</span> <span class="o">--</span><span class="n">request</span> <span class="n">OPTIONS</span> <span class="s1">&#39;http://0.0.0.0:8088&#39;</span> <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;Origin: http://mozhi.ai&#39;</span>
 
@@ -218,15 +303,17 @@ api/start
 
 <span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;text&quot;:&quot;Mozhi can solve NER problems&quot;}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8088</span><span class="o">/</span><span class="n">vf</span><span class="o">/</span><span class="n">ner</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">spacy</span>
 
-<span class="n">kubectl</span> <span class="n">exec</span> <span class="n">service</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">ui</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">svc</span> <span class="o">--</span>  <span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;text&quot;:&quot;Mozhi can solve NER problems&quot;}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mozhi</span><span class="o">.</span><span class="n">ai</span><span class="o">/</span><span class="n">vf</span><span class="o">/</span><span class="n">ner</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">spacy</span>
+<span class="n">kubectl</span> <span class="n">exec</span> <span class="n">service</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">ui</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">svc</span> <span class="o">--</span>  <span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;text&quot;:&quot;Mozhi can solve NER problems&quot;}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mozhi</span><span class="o">.</span><span class="n">ai</span><span class="o">/</span><span class="n">mozhi</span><span class="o">/</span><span class="n">ner</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">spacy</span>
+
+
+<span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;text&quot;:&quot;Mozhi can solve NER problems&quot;}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">a7f5567b110444e4cb445a71faee9b95</span><span class="o">-</span><span class="mf">899e8</span><span class="n">adad051668a</span><span class="o">.</span><span class="n">elb</span><span class="o">.</span><span class="n">ap</span><span class="o">-</span><span class="n">south</span><span class="o">-</span><span class="mf">1.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">mozhi</span><span class="o">/</span><span class="n">ner</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">spacy</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="docker">
+</section>
+<section id="docker">
 <h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">VERSION=0.1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">VERSION=latest</span></code></p>
 <p><strong>With CPU only</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">VERSION=0.5</span></code></p>
 <ul class="simple">
 <li><p><a class="reference external" href="../../../ops/docker/api/cpu/multistage/Dockerfile">Dockerfile</a></p></li>
 <li><p>Build<br /><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">mozhi-api-cpu:latest</span> <span class="pre">-f</span> <span class="pre">ops/docker/api/cpu/multistage/Dockerfile</span> <span class="pre">.</span></code></p></li>
@@ -264,19 +351,19 @@ docker tag mozhi-api-gpu:latest mageswaran1989/mozhi-api-gpu:latest
 docker push mageswaran1989/mozhi-api-gpu:latest
 </pre></div>
 </div>
-</div>
-<div class="section" id="kubernetes">
+</section>
+<section id="kubernetes">
 <h2>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/4OH4/kubernetes-fastapi">Ref1</a></p>
 <ul class="simple">
 <li><p>Start<br /><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">ops/k8s/mozhi/api.yaml</span></code></p></li>
 <li><p>Debug
-<code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">port-forward</span> <span class="pre">service/vf-api-cpu-svc</span> <span class="pre">8088</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">-n</span> <span class="pre">mozhi</span> <span class="pre">port-forward</span> <span class="pre">service/mozhi-api-cpu-svc</span> <span class="pre">8088</span></code></p></li>
 <li><p>Stop/Delete
 <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">pods,services,deployments,ingress</span> <span class="pre">-l</span> <span class="pre">org=mozhi</span>&#160;&#160; </code></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
                         

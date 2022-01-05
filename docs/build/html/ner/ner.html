@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>NER - Named Entity Recognition &mdash; Mozhi 0.0.1 documentation</title>
@@ -104,16 +105,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+                                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Developers Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../setup/on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#local-machine">Local Machine</a></li>
@@ -121,16 +135,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -139,7 +154,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -176,6 +211,55 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -185,9 +269,9 @@
                     <div class="document">
                         
                             
-  <div class="section" id="ner-named-entity-recognition">
+  <section id="ner-named-entity-recognition">
 <h1>NER - Named Entity Recognition<a class="headerlink" href="#ner-named-entity-recognition" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-ner">
+<section id="what-is-ner">
 <h2>What is NER?<a class="headerlink" href="#what-is-ner" title="Permalink to this headline">¶</a></h2>
 <p>Named entity recognition is a process where an algorithm takes a string of text (sentence or paragraph) as input and
 identifies relevant nouns (people, places, organizations, etc.,) that are mentioned in that string. As per Wikipedia,
@@ -195,8 +279,8 @@ a named entity is a real-world object (can be abstract or have a physical existe
 locations, organizations, products, etc. that can be denoted with a proper name.</p>
 <p>NER is part of information extraction task where the goal is to locate and classify such named entities from
 unstructured text into predefined categories.</p>
-</div>
-<div class="section" id="use-cases-of-ner">
+</section>
+<section id="use-cases-of-ner">
 <h2>Use cases of NER?<a class="headerlink" href="#use-cases-of-ner" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Content Recommendations</strong> : Extracting entities from current article and recommending articles with similar entities</p></li>
@@ -204,8 +288,8 @@ unstructured text into predefined categories.</p>
 <li><p><strong>Research Papers</strong>: Classifying papers base don the entities from each paper/journels</p></li>
 <li><p><strong>Chatbot</strong> : Extracting entities helps in providing relevant recommendations/information based on the mentioned entity.</p></li>
 </ul>
-</div>
-<div class="section" id="methods-to-extract-ner">
+</section>
+<section id="methods-to-extract-ner">
 <h2>Methods to extract NER<a class="headerlink" href="#methods-to-extract-ner" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>Rule based</p></li>
@@ -235,8 +319,8 @@ unstructured text into predefined categories.</p>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Wild References</a></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
                         

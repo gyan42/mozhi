@@ -1,4 +1,4 @@
-# Mozhi - UI
+# mozhi UI
 
 ## Vue Reference Links
 - [vue-cli-service](https://cli.vuejs.org/guide/cli-service.html#using-the-binary)

@@ -6,9 +6,18 @@
 - [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
 - [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
 
+**[Mac Setup](https://apple.stackexchange.com/questions/373888/how-do-i-start-the-docker-daemon-on-macos)**
+
+```shell
+docker-machine create --driver virtualbox default
+docker-machine restart
+eval "$(docker-machine env default)"
+
+docker-machine rm default
+```
 **docker cli**
 
-```
+```shell
 sudo apt  install docker.io
 
 sudo systemctl start docker
@@ -16,8 +25,8 @@ sudo systemctl enable docker
 docker --version
 
 # Put the user in the docker group
-sudo usermod -a -G docker $USER
 newgrp docker
+sudo usermod -a -G docker $USER
 ```
 
 **docker-compose cli**

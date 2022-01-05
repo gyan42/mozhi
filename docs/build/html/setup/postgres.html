@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>PostgreSQL &mdash; Mozhi 0.0.1 documentation</title>
@@ -28,7 +29,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Minikube" href="demo_on_minikube.html" />
+    <link rel="prev" title="Google Drive Fuse" href="google_drive_fuse.html" /> 
 
 </head>
 
@@ -67,6 +70,8 @@
     
       <li><a href="../index.html">Docs</a></li>
         
+          <li><a href="setup.html">Developers Guide</a></li>
+        
       <li>PostgreSQL</li>
     
     
@@ -102,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Developers Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
+                                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="setup.html">Developers Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
@@ -119,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -137,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -174,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -183,10 +271,10 @@
                     <div class="document">
                         
                             
-  <div class="section" id="postgresql">
+  <section id="postgresql">
 <h1>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h1>
 <p>Home url : <a class="reference external" href="https://www.postgresql.org/">https://www.postgresql.org/</a><br />Here is a good comparision <a class="reference external" href="https://www.postgresqltutorial.com/postgresql-vs-mysql/">PostgreSQL vs MySQL</a></p>
-<div class="section" id="setup">
+<section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <p><strong>1. Manual</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#install ubuntu packages</span>
@@ -215,6 +303,7 @@ For our case we are going ot create a user called <code class="docutils literal 
     \<span class="n">du</span> <span class="c1">#list users</span>
     <span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">mozhidb</span><span class="p">;</span>
     <span class="n">grant</span> <span class="nb">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">database</span> <span class="n">mozhidb</span> <span class="n">to</span> <span class="n">mozhi</span><span class="p">;</span>
+    <span class="n">ALTER</span> <span class="n">USER</span> <span class="n">mozhi</span> <span class="n">WITH</span> <span class="n">CREATEDB</span><span class="p">;</span>
     \<span class="nb">list</span> <span class="c1"># to see the DB created</span>
     \<span class="n">q</span>
 
@@ -276,7 +365,7 @@ sudo rm -rf ${HOME}/postgres-data/
 <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">postgresql</span><span class="o">.</span><span class="n">yaml</span>
 
 <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">namespace</span><span class="o">.</span><span class="n">yaml</span>
-<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">reactive</span><span class="o">-</span><span class="n">tech</span><span class="o">/</span><span class="n">kubegres</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">kubegres</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">reactive</span><span class="o">-</span><span class="n">tech</span><span class="o">/</span><span class="n">kubegres</span><span class="o">/</span><span class="n">v1</span><span class="mf">.7</span><span class="o">/</span><span class="n">kubegres</span><span class="o">.</span><span class="n">yaml</span>
 <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">postgres</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">postgres</span><span class="o">-</span><span class="n">secret</span><span class="o">.</span><span class="n">yaml</span> 
 <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">ops</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">postgres</span><span class="o">/</span><span class="n">mozhi</span><span class="o">-</span><span class="n">postgres</span><span class="o">.</span><span class="n">yaml</span>
 <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pod</span><span class="p">,</span><span class="n">statefulset</span><span class="p">,</span><span class="n">svc</span><span class="p">,</span><span class="n">configmap</span> <span class="o">-</span><span class="n">o</span> <span class="n">wide</span> <span class="o">-</span><span class="n">n</span> <span class="n">mozhi</span>
@@ -293,8 +382,8 @@ sudo rm -rf ${HOME}/postgres-data/
 <span class="o">&gt;&gt;</span><span class="n">mozhi</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="misc">
+</section>
+<section id="misc">
 <h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To know the file storage in Postgres, this is to make sure the data in Docker can be mapped to a volume for offline storage.</p></li>
@@ -327,77 +416,9 @@ This is important some times the connetion becomes stale and left hanging there,
   <span class="nn">pg_tables</span> <span class="n">WHERE</span> <span class="n">schemaname</span> <span class="o">=</span> <span class="s1">&#39;public&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="integration-with-spark">
-<h2>Integration with Spark<a class="headerlink" href="#integration-with-spark" title="Permalink to this headline">¶</a></h2>
-<p>Part of our work flow we need to read and write to Postresql from Apache Spark.
-Lets test whether we can do it from local <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> terminal.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#it is mandate to give the posgres maven ids for runtime</span>
-<span class="n">pyspark</span> <span class="o">--</span><span class="n">packages</span> <span class="n">postgresql</span><span class="p">:</span><span class="n">postgresql</span><span class="p">:</span><span class="mf">9.1</span><span class="o">-</span><span class="mi">901</span><span class="o">-</span><span class="mf">1.</span><span class="n">jdbc4</span>
-
-<span class="c1">#read the table &quot;authors&quot; </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
-    <span class="nb">format</span><span class="p">(</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;jdbc:postgresql://localhost:5432/mozhidb&quot;</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;dbtable&quot;</span><span class="p">,</span> <span class="s2">&quot;authors&quot;</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;mozhi&quot;</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;mozhi&quot;</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">option</span><span class="p">(</span><span class="s2">&quot;driver&quot;</span><span class="p">,</span> <span class="s2">&quot;org.postgresql.Driver&quot;</span><span class="p">)</span><span class="o">.</span> \
-    <span class="n">load</span><span class="p">()</span>
-
-<span class="c1"># display the table</span>
-<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="hive-metastore-db-setup">
-<h2>Hive Metastore DB setup<a class="headerlink" href="#hive-metastore-db-setup" title="Permalink to this headline">¶</a></h2>
-<p>We could use different metastore DB for Hive, below steps helps to use Postgresql as its external metastore,
-which then can be shared with Spark.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="n">hive</span> <span class="c1">#password hive</span>
-
-<span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span> <span class="n">postgres</span>
-    <span class="n">psql</span> <span class="c1">#to launch the terminal</span>
-    <span class="n">CREATE</span> <span class="n">USER</span> <span class="n">hive</span> <span class="n">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;hive&#39;</span><span class="p">;</span> <span class="c1"># drop user hive; (if needed)</span>
-    \<span class="n">du</span>
-    <span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">hive</span><span class="p">;</span>
-    <span class="n">grant</span> <span class="nb">all</span> <span class="n">privileges</span> <span class="n">on</span> <span class="n">database</span> <span class="n">hive</span> <span class="n">to</span> <span class="n">hive</span><span class="p">;</span>
-    \<span class="nb">list</span> <span class="c1"># to see the DB created</span>
-    \<span class="n">q</span>
-</pre></div>
-</div>
-<p>We need do some changes to connection configs, to enable login from different services:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the 3rd colum values to &quot;all&quot;</span>
-<span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">pg_hba</span><span class="o">.</span><span class="n">conf</span>
-    <span class="c1"># &quot;local&quot; is for Unix domain socket connections only</span>
-    <span class="n">local</span>   <span class="nb">all</span>   <span class="nb">all</span>                                     <span class="n">md5</span>
-    <span class="c1"># IPv4 local connections:</span>
-    <span class="n">host</span>    <span class="nb">all</span>   <span class="nb">all</span>             <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">/</span><span class="mi">32</span>            <span class="n">md5</span>
-    <span class="c1"># IPv6 local connections:</span>
-    <span class="n">host</span>    <span class="nb">all</span>   <span class="nb">all</span>             <span class="p">::</span><span class="mi">1</span><span class="o">/</span><span class="mi">128</span>                 <span class="n">md5</span>
-</pre></div>
-</div>
-<p>Fire a python shell and test out the connection</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5432</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;hive&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">&quot;hive&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;hive&quot;</span><span class="p">)</span>
-<span class="n">sql_command</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM </span><span class="se">\&quot;</span><span class="s2">CDS</span><span class="se">\&quot;</span><span class="s2">;&quot;</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">sql_command</span><span class="p">)</span>
-<span class="c1"># Load the data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_command</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Use Hive provided tool to setup the metastore tables an schema:
-<code class="docutils literal notranslate"><span class="pre">/path/to/hive/bin/schematool</span> <span class="pre">-dbType</span> <span class="pre">postgres</span> <span class="pre">-initSchema</span></code></p>
-<p>And then try running following commands, you should see bunch of tables there:</p>
-<div class="highlight-shell script notranslate"><div class="highlight"><pre><span></span>sudo -i -u hive  psql -d hive
-#asks for two password, one for sudo and other one for DB `hive` which is `hive`
-    hive=&gt; \dt
-</pre></div>
-</div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="psql">
+<section id="psql">
 <h2>PSQL<a class="headerlink" href="#psql" title="Permalink to this headline">¶</a></h2>
 <p>Magic words:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql -U postgres
@@ -441,8 +462,8 @@ which then can be shared with Spark.</p>
 <span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">ON</span> <span class="n">schema</span> <span class="n">public</span> <span class="n">TO</span> <span class="p">{</span><span class="n">USER</span><span class="p">};</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="configuration">
+</section>
+<section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Changing verbosity &amp; querying Postgres log:
@@ -470,12 +491,12 @@ which then can be shared with Spark.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_line_prefix</span> <span class="o">=</span> <span class="s1">&#39;%t </span><span class="si">%u</span><span class="s1"> </span><span class="si">%d</span><span class="s1"> </span><span class="si">%a</span><span class="s1"> &#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-command">
+</section>
+<section id="create-command">
 <h2>Create command<a class="headerlink" href="#create-command" title="Permalink to this headline">¶</a></h2>
 <p>There are many <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> choices, like <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">DATABASE</span> <span class="pre">__database_name__</span></code>, <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">__table_name__</span></code> … Parameters differ but can be checked <a class="reference external" href="https://www.postgresql.org/search/?u=%2Fdocs%2F9.1%2F&amp;q=CREATE">at the official documentation</a>.</p>
-</div>
-<div class="section" id="handy-queries">
+</section>
+<section id="handy-queries">
 <h2>Handy queries<a class="headerlink" href="#handy-queries" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">pg_proc</span> <span class="pre">WHERE</span> <span class="pre">proname='__procedurename__'</span></code>: List procedure/function</p></li>
@@ -573,8 +594,8 @@ $ <span class="nb">source</span> <span class="nv">$HOME</span>/.editrc
 <li><p><a class="reference external" href="https://pgexercises.com/">PostgreSQL Exercises</a>: An awesome resource to learn to learn SQL, teaching you with simple examples in a great visual way. <strong>Highly recommended</strong>.</p></li>
 <li><p><a class="reference external" href="https://severalnines.com/blog/performance-cheat-sheet-postgresql">A Performance Cheat Sheet for PostgreSQL</a>: Great explanations of <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">ANALYZE</span></code>, <code class="docutils literal notranslate"><span class="pre">VACUUM</span></code>, configuration parameters and more. Quite interesting if you need to tune-up a postgres setup.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
                         

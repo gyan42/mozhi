@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>mozhi.preprocessor &mdash; Mozhi 0.0.1 documentation</title>
@@ -28,7 +29,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mozhi.protocol" href="mozhi.protocol.html" />
+    <link rel="prev" title="mozhi.pipeline" href="mozhi.pipeline.html" /> 
 
 </head>
 
@@ -67,6 +70,8 @@
     
       <li><a href="../index.html">Docs</a></li>
         
+          <li><a href="mozhi.html">mozhi</a></li>
+        
       <li>mozhi.preprocessor</li>
     
     
@@ -102,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+                                <ul>
 <li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Developers Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../setup/on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#local-machine">Local Machine</a></li>
@@ -119,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -137,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -174,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mozhi.html">mozhi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -183,26 +271,9 @@
                     <div class="document">
                         
                             
-  <div class="section" id="module-mozhi.preprocessor">
+  <section id="module-mozhi.preprocessor">
 <span id="mozhi-preprocessor"></span><h1>mozhi.preprocessor<a class="headerlink" href="#module-mozhi.preprocessor" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<span class="target" id="module-mozhi.preprocessor.conll_sentence"></span><dl class="py class">
-<dt class="sig sig-object py" id="mozhi.preprocessor.conll_sentence.SentencePreprocessor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mozhi.preprocessor.conll_sentence.</span></span><span class="sig-name descname"><span class="pre">SentencePreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sent_len</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/conll_sentence.html#SentencePreprocessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.conll_sentence.SentencePreprocessor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor" title="mozhi.preprocessor.ipreprocessor.IPreprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">mozhi.preprocessor.ipreprocessor.IPreprocessor</span></code></a></p>
-<p>Preprocessor for CoNLL like dataset</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="mozhi.preprocessor.conll_sentence.SentencePreprocessor.NAME">
-<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'NaiveSentencePreprocessor'</span></em><a class="headerlink" href="#mozhi.preprocessor.conll_sentence.SentencePreprocessor.NAME" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.conll_sentence.SentencePreprocessor.init_vf">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">init_vf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="mozhi.protocol.html#mozhi.protocol.dataprotocol.NERDatasetInfo" title="mozhi.protocol.dataprotocol.NERDatasetInfo"><span class="pre">mozhi.protocol.dataprotocol.NERDatasetInfo</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/conll_sentence.html#SentencePreprocessor.init_vf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.conll_sentence.SentencePreprocessor.init_vf" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <span class="target" id="module-mozhi.preprocessor.hf_tokenizer"></span><dl class="py class">
 <dt class="sig sig-object py" id="mozhi.preprocessor.hf_tokenizer.HFTokenizer">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mozhi.preprocessor.hf_tokenizer.</span></span><span class="sig-name descname"><span class="pre">HFTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hf_pretrained_tokenizer_checkpoint</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/hf_tokenizer.html#HFTokenizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.hf_tokenizer.HFTokenizer" title="Permalink to this definition">¶</a></dt>
@@ -229,62 +300,7 @@
 
 </dd></dl>
 
-<span class="target" id="module-mozhi.preprocessor.ipreprocessor"></span><dl class="py class">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mozhi.preprocessor.ipreprocessor.</span></span><span class="sig-name descname"><span class="pre">IPreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sent_len</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="mozhi.utils.html#mozhi.utils.pickle_me.PickleMe" title="mozhi.utils.pickle_me.PickleMe"><code class="xref py py-class docutils literal notranslate"><span class="pre">mozhi.utils.pickle_me.PickleMe</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.get_iterator">
-<span class="sig-name descname"><span class="pre">get_iterator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentences</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.get_iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.get_iterator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.get_preprocessor_info">
-<span class="sig-name descname"><span class="pre">get_preprocessor_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="mozhi.protocol.html#mozhi.protocol.dataprotocol.NERPreprocessorInfo" title="mozhi.protocol.dataprotocol.NERPreprocessorInfo"><span class="pre">mozhi.protocol.dataprotocol.NERPreprocessorInfo</span></a><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.get_preprocessor_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.get_preprocessor_info" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.get_tf_data_iterator">
-<span class="sig-name descname"><span class="pre">get_tf_data_iterator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentences</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.get_tf_data_iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.get_tf_data_iterator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.get_torch_dataloader">
-<span class="sig-name descname"><span class="pre">get_torch_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.get_torch_dataloader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.get_torch_dataloader" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.id2label">
-<span class="sig-name descname"><span class="pre">id2label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.id2label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.id2label" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.ids2labels">
-<span class="sig-name descname"><span class="pre">ids2labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.ids2labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.ids2labels" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.sentences_to_data">
-<span class="sig-name descname"><span class="pre">sentences_to_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence_tuples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.sentences_to_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.sentences_to_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts the sentence + tag tuples into integer IDs for trinaing
-Args:</p>
-<blockquote>
-<div><p>sentence_tuples: [[(word1, tag1), (word2, tag2), …],[…], …]</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>X :[], y: []</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.preprocessor.ipreprocessor.IPreprocessor.tokenize">
-<span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/preprocessor/ipreprocessor.html#IPreprocessor.tokenize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.preprocessor.ipreprocessor.IPreprocessor.tokenize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
+</section>
 
 
                         

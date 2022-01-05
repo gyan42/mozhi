@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>mozhi.model.tf.ner &mdash; Mozhi 0.0.1 documentation</title>
@@ -28,7 +29,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mozhi.model.transformers" href="mozhi.model.transformers.html" />
+    <link rel="prev" title="mozhi.model.tf" href="mozhi.model.tf.html" /> 
 
 </head>
 
@@ -67,6 +70,12 @@
     
       <li><a href="../index.html">Docs</a></li>
         
+          <li><a href="mozhi.html">mozhi</a></li>
+        
+          <li><a href="mozhi.model.html">mozhi.model</a></li>
+        
+          <li><a href="mozhi.model.tf.html">mozhi.model.tf</a></li>
+        
       <li>mozhi.model.tf.ner</li>
     
     
@@ -102,16 +111,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+                                <ul>
 <li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Developers Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../setup/on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/dev_machine.html">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/dev_machine.html#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#local-machine">Local Machine</a></li>
@@ -119,16 +141,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../setup/api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../setup/ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -137,7 +160,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../setup/google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -174,6 +217,55 @@
 </ul>
 </li>
 </ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mozhi.html">mozhi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mozhi.model.html">mozhi.model</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -183,187 +275,10 @@
                     <div class="document">
                         
                             
-  <div class="section" id="module-mozhi.model.tf.ner">
+  <section id="module-mozhi.model.tf.ner">
 <span id="mozhi-model-tf-ner"></span><h1>mozhi.model.tf.ner<a class="headerlink" href="#module-mozhi.model.tf.ner" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<span class="target" id="module-mozhi.model.tf.ner.bert"></span><span class="target" id="module-mozhi.model.tf.ner.bilstm"></span><dl class="py class">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mozhi.model.tf.ner.bilstm.</span></span><span class="sig-name descname"><span class="pre">BiLSTMCRF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/bilstm.html#BiLSTMCRF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tensorflow.python.keras.engine.training.Model</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.NAME">
-<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'BiLSTMCRF'</span></em><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.NAME" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/bilstm.html#BiLSTMCRF.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.call" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the model on new inputs.</p>
-<p>In this case <cite>call</cite> just reapplies
-all ops in the graph to the new inputs
-(e.g. build a new computational graph from the provided inputs).</p>
-<p>Note: This method should not be called directly. It is only meant to be
-overridden when subclassing <cite>tf.keras.Model</cite>.
-To call a model on an input, always use the <cite>__call__</cite> method,
-i.e. <cite>model(inputs)</cite>, which relies on the underlying <cite>call</cite> method.</p>
-<dl>
-<dt>Args:</dt><dd><p>inputs: A tensor or list of tensors.
-training: Boolean or boolean scalar tensor, indicating whether to run</p>
-<blockquote>
-<div><p>the <cite>Network</cite> in training mode or inference mode.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>mask: A mask or list of masks. A mask can be</dt><dd><p>either a tensor or None (no mask).</p>
-</dd>
-</dl>
-</dd>
-<dt>Returns:</dt><dd><p>A tensor if there is a single output, or
-a list of tensors if there are more than one outputs.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.custom_preprocessing">
-<span class="sig-name descname"><span class="pre">custom_preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tf.string</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/bilstm.html#BiLSTMCRF.custom_preprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.custom_preprocessing" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.init_vectorize_layer">
-<span class="sig-name descname"><span class="pre">init_vectorize_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_dataset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tensorflow.python.keras.layers.preprocessing.text_vectorization.TextVectorization</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/bilstm.html#BiLSTMCRF.init_vectorize_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.init_vectorize_layer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.init_vf">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">init_vf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessor_data_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="mozhi.protocol.html#mozhi.protocol.dataprotocol.NERPreprocessorInfo" title="mozhi.protocol.dataprotocol.NERPreprocessorInfo"><span class="pre">mozhi.protocol.dataprotocol.NERPreprocessorInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">word_embeddings_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/mageswarand/.mozhi/models/ner'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/bilstm.html#BiLSTMCRF.init_vf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.init_vf" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.loss">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.loss" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.optimizer">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">optimizer</span></span><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.optimizer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.bilstm.BiLSTMCRF.prediction">
-<span class="sig-name descname"><span class="pre">prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">review</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/bilstm.html#BiLSTMCRF.prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.bilstm.BiLSTMCRF.prediction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-mozhi.model.tf.ner.crf"></span><dl class="py class">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mozhi.model.tf.ner.crf.</span></span><span class="sig-name descname"><span class="pre">CRF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/crf.html#CRF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tensorflow.python.keras.engine.base_layer.Layer</span></code></p>
-<dl class="py property">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF.accuracy">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">accuracy</span></span><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF.accuracy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/crf.html#CRF.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF.build" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates the variables of the layer (optional, for subclass implementers).</p>
-<p>This is a method that implementers of subclasses of <cite>Layer</cite> or <cite>Model</cite>
-can override if they need a state-creation step in-between
-layer instantiation and layer call.</p>
-<p>This is typically used to create the weights of <cite>Layer</cite> subclasses.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><dl class="simple">
-<dt>input_shape: Instance of <cite>TensorShape</cite>, or list of instances of</dt><dd><p><cite>TensorShape</cite> if the layer expects a list of inputs
-(one instance per input).</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_lengths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/crf.html#CRF.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF.call" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is where the layer’s logic lives.</p>
-<p>Note here that <cite>call()</cite> method in <cite>tf.keras</cite> is little bit different
-from <cite>keras</cite> API. In <cite>keras</cite> API, you can pass support masking for
-layers as additional arguments. Whereas <cite>tf.keras</cite> has <cite>compute_mask()</cite>
-method to support masking.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>inputs: Input tensor, or list/tuple of input tensors.
-<a href="#id1"><span class="problematic" id="id2">*</span></a>args: Additional positional arguments. Currently unused.
-<a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs: Additional keyword arguments. Currently unused.</p>
-</dd>
-<dt>Returns:</dt><dd><p>A tensor or list/tuple of tensors.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF.compute_mask">
-<span class="sig-name descname"><span class="pre">compute_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/crf.html#CRF.compute_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF.compute_mask" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes an output mask tensor.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>inputs: Tensor or list of tensors.
-mask: Tensor or list of tensors.</p>
-</dd>
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>None or a tensor (or list of tensors,</dt><dd><p>one per output tensor of the layer).</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF.compute_output_shape">
-<span class="sig-name descname"><span class="pre">compute_output_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/crf.html#CRF.compute_output_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF.compute_output_shape" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the output shape of the layer.</p>
-<p>If the layer has not been built, this method will call <cite>build</cite> on the
-layer. This assumes that the layer will later be used with inputs that
-match the input shape provided here.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><dl class="simple">
-<dt>input_shape: Shape tuple (tuple of integers)</dt><dd><p>or list of shape tuples (one per output tensor of the layer).
-Shape tuples can include None for free dimensions,
-instead of an integer.</p>
-</dd>
-</dl>
-</dd>
-<dt>Returns:</dt><dd><p>An input shape tuple.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF.get_config">
-<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mozhi/model/tf/ner/crf.html#CRF.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF.get_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the config of the layer.</p>
-<p>A layer config is a Python dictionary (serializable)
-containing the configuration of a layer.
-The same layer can be reinstantiated later
-(without its trained weights) from this configuration.</p>
-<p>The config of a layer does not include connectivity
-information, nor the layer class name. These are handled
-by <cite>Network</cite> (one layer of abstraction above).</p>
-<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of dict
-every time it is called. The callers should make a copy of the returned dict
-if they want to modify it.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>Python dictionary.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="mozhi.model.tf.ner.crf.CRF.loss">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#mozhi.model.tf.ner.crf.CRF.loss" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
+<span class="target" id="module-mozhi.model.tf.ner.bert"></span></section>
 
 
                         

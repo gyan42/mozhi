@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Setting up Developer Machine &mdash; Mozhi 0.0.1 documentation</title>
@@ -29,8 +30,8 @@
   <link rel="stylesheet" href="../_static/css/mozhi_style.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="mozhi API" href="api.html" />
-    <link rel="prev" title="Load and Prepare Demo Data for UI" href="prepare_data.html" /> 
+    <link rel="next" title="Docker" href="docker.html" />
+    <link rel="prev" title="Developers Guide" href="setup.html" /> 
 
 </head>
 
@@ -106,16 +107,29 @@
                         
                             
                             
-                                <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+                                <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="setup.html">Developers Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="on_minikune.html">Minikube</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up Developer Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installations">Installations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#folder-structure">Folder Structure</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#setup">1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#misc">2. Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kubernetes.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html">MinIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minio.html#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nvidia.html">Nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_data.html">Load and Prepare Demo Data for UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html">mozhi API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#local-machine">Local Machine</a></li>
@@ -123,16 +137,17 @@
 <li class="toctree-l3"><a class="reference internal" href="api.html#kubernetes">Kubernetes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="ui.html">mozhi UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#vue-reference-links">Vue Reference Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#setup-requirements">Setup Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#local-machine">Local Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#docker">Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ui.html#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocr.html">OCR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocr.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hf_model_training.html">Hugging Face Transformers</a><ul>
@@ -141,7 +156,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pt_model_training.html">Pytorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calamari.html">Calamari</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#dataset">Dataset:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calamari.html#docker-image">Docker Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mysql">MYSQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="colab.html">Google Colab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="google_drive_fuse.html">Google Drive Fuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgres.html">PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#misc">Misc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#psql">PSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#create-command">Create command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postgres.html#handy-queries">Handy queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="demo_on_minikube.html">Minikube</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../study_materials/study_materials.html">Mozhi Study Materials</a><ul>
@@ -178,6 +213,55 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mozhi/mozhi.html">mozhi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.augmenter.html">mozhi.augmenter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.bin.html">mozhi.bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.config.html">mozhi.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.dataset.html">mozhi.dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.dataset.ner.html">mozhi.dataset.ner</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.db.html">mozhi.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.engine.html">mozhi.engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.pytorch.html">mozhi.engine.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.engine.tf.html">mozhi.engine.tf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.external.html">mozhi.external</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.external.experiments.html">mozhi.external.experiments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.metrics.html">mozhi.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.model.html">mozhi.model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.pytorch.html">mozhi.model.pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.tf.html">mozhi.model.tf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.model.transformers.html">mozhi.model.transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.nlp.html">mozhi.nlp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.nlp.embeddings.html">mozhi.nlp.embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.ocr.html">mozhi.ocr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_cropping.html">mozhi.ocr.text_cropping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_detection.html">mozhi.ocr.text_detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_extraction.html">mozhi.ocr.text_extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.ocr.text_stiching.html">mozhi.ocr.text_stiching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.pipeline.html">mozhi.pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.preprocessor.html">mozhi.preprocessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.protocol.html">mozhi.protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.serve.html">mozhi.serve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mozhi/mozhi.serve.torch.html">mozhi.serve.torch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.transformers.html">mozhi.transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mozhi/mozhi.utils.html">mozhi.utils</a></li>
+</ul>
+</li>
+</ul>
 
                             
                         
@@ -187,11 +271,11 @@
                     <div class="document">
                         
                             
-  <div class="section" id="setting-up-developer-machine">
+  <section id="setting-up-developer-machine">
 <h1>Setting up Developer Machine<a class="headerlink" href="#setting-up-developer-machine" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="installations">
+<section id="installations">
 <h2>Installations<a class="headerlink" href="#installations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ubuntu-system-setup">
+<section id="ubuntu-system-setup">
 <h3>1. Ubuntu System Setup<a class="headerlink" href="#ubuntu-system-setup" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=2004&amp;target_type=deblocal">Cuda 11.1 Ubuntu 20.4</a><br /><a class="reference external" href="https://linuxize.com/post/install-java-on-ubuntu-20-04/">Java 11</a><br /><a class="reference internal" href="nvidia.html"><span class="doc">NVidia GPU Setup</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">tesseract</span><span class="o">-</span><span class="n">ocr</span>
@@ -203,11 +287,11 @@
 <span class="c1">#Torch with Cuda 11.1</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span> <span class="n">torchvision</span> <span class="n">torchaudio</span> <span class="n">cudatoolkit</span><span class="o">=</span><span class="mf">11.1</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
 <span class="ow">or</span> 
-<span class="n">pip3</span> <span class="n">install</span> <span class="n">torch</span><span class="o">==</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">1</span><span class="o">+</span><span class="n">cu111</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.9</span><span class="o">.</span><span class="mi">1</span><span class="o">+</span><span class="n">cu111</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">1</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">torch_stable</span><span class="o">.</span><span class="n">html</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">torch</span><span class="o">==</span><span class="mf">1.8.1</span><span class="o">+</span><span class="n">cu111</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.9.1</span><span class="o">+</span><span class="n">cu111</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">0.8.1</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">torch_stable</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="python-environment">
+</section>
+<section id="python-environment">
 <h3>2. Python Environment<a class="headerlink" href="#python-environment" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export VENV_DIR=/opt/envs/vf
 conda create --prefix $VENV_DIR python=3.8
@@ -217,18 +301,20 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_md
 </pre></div>
 </div>
-</div>
-<div class="section" id="postgresql">
+</section>
+<section id="postgresql">
 <h3>3. <a class="reference internal" href="postgres.html"><span class="doc">Postgresql</span></a><a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="vue-3-js">
+</section>
+<section id="vue-3-js">
 <h3>4. <a class="reference external" href="https://v3.vuejs.org/guide/installation.html#download-and-self-host">Vue 3 Js</a><a class="headerlink" href="#vue-3-js" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">npm</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">npm</span> <span class="c1"># or similar one based on your OS</span>
+<span class="n">yarn</span> <span class="k">global</span> <span class="n">add</span> <span class="nd">@vue</span><span class="o">/</span><span class="n">cli</span>
+<span class="n">npm</span> <span class="n">i</span> <span class="o">-</span><span class="n">g</span> <span class="nd">@vue</span><span class="o">/</span><span class="n">cli</span><span class="o">-</span><span class="n">service</span>
 <span class="n">npm</span> <span class="n">install</span> <span class="n">vue</span><span class="nd">@next</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="containers">
+</section>
+<section id="containers">
 <h3>5. Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h3>
 <p>Add following to your bash for cached builds.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DOCKER_BUILDKIT</span><span class="o">=</span><span class="mi">1</span>
@@ -236,17 +322,17 @@ python -m spacy download en_core_web_md
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="minio-s3">
+</section>
+<section id="minio-s3">
 <h3>6. <a class="reference internal" href="minio.html"><span class="doc">MinIO</span></a>/S3<a class="headerlink" href="#minio-s3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#start MinIO server</span>
 <span class="n">MINIO_ROOT_USER</span><span class="o">=</span><span class="n">admin</span> <span class="n">MINIO_ROOT_PASSWORD</span><span class="o">=</span><span class="n">password</span> <span class="n">minio</span> <span class="n">server</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">minio</span><span class="o">/</span><span class="n">data</span><span class="o">/</span>
-<span class="n">mc</span> <span class="n">alias</span> <span class="nb">set</span> <span class="n">myminio</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.142</span><span class="p">:</span><span class="mi">9000</span> <span class="n">admin</span> <span class="n">password</span>
+<span class="n">mc</span> <span class="n">alias</span> <span class="nb">set</span> <span class="n">myminio</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.0.142</span><span class="p">:</span><span class="mi">9000</span> <span class="n">admin</span> <span class="n">password</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="folder-structure">
+</section>
+</section>
+<section id="folder-structure">
 <h2>Folder Structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mozhi</span><span class="o">/</span>
     <span class="n">docs</span><span class="o">/</span>
@@ -258,8 +344,8 @@ python -m spacy download en_core_web_md
        <span class="o">...</span> <span class="c1"># mozhi DL framework source code </span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
                         
