@@ -6,7 +6,7 @@
 ## Contents
 
 - [Features](features)
-- [Developer Machine Setup](docs/source/setup/dev_machine.md)
+- [Developer Guide](docs/source/setup/home.md)
 - [How to run?](how)
 - [Testing](tests/README.md)
 - [Documentation](docs/README.md)

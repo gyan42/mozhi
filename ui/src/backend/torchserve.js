@@ -1,10 +1,9 @@
 import axios from "axios";
-
-
+ 
 class TorchServe {
     constructor() {
         this.api = axios.create({
-            baseURL: process.env.VUE_APP_TORCH_SERVE_MGMT_BASE_URL,
+            baseURL: (process.env.VUE_APP_TORCH_SERVE_MGMT_BASE_URL.includes("localhost")) ? process.env.VUE_APP_TORCH_SERVE_MGMT_BASE_URL: "http://" + location.host + "/" + process.env.VUE_APP_TORCH_SERVE_MGMT_BASE_URL,
             timeout: 1000 * 60, // seconds
         });
     }

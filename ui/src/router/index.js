@@ -10,7 +10,8 @@ import DFAnnotatorPage from "@/views/annotators/dataframe/DFAnnotatorPage";
 import OCRMainPage from "@/views/ocr/OCRMainPage";
 import Tessaract from "@/views/ocr/Tesseract.vue";
 import Calamari from "@/views/ocr/Calamari";
-import NERPage from "@/views/ner/NERPage";
+import NERPage from "@/views/ner/playground/NERPage";
+import ReceiptsPage from "@/views/ner/receipts/ReceiptsPage"
 import ImageHome from "@/views/annotators/image/ImageHome";
 import ControlPanePage from "@/views/controlpane/ControlPanePage";
 import LogIn from "@/views/LogIn";
@@ -109,10 +110,16 @@ export const routes = [
     meta: { auth: true, title: 'Mozhi Calamari' }
   },
   {
-    path: '/ner',
-    name: 'NER',
+    path: '/ner/playground',
+    name: 'NERPlayground',
     component: NERPage,
-    meta: { auth: true, title: 'Mozhi NERPage' }
+    meta: { auth: true, title: 'Mozhi Playground' }
+  },
+  {
+    path: '/ner/receipts',
+    name: 'ReceiptsNER',
+    component: ReceiptsPage,
+    meta: { auth: true, title: 'Mozhi Receipts Form Filling' }
   },
   {
     path: '/controlpane',

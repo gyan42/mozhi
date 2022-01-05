@@ -1,14 +1,12 @@
 import os
-
 import fire
+import numpy as np
 import transformers
 from transformers import AutoModelForTokenClassification, TrainingArguments, Trainer, AutoTokenizer
 from transformers import DataCollatorForTokenClassification
-import numpy as np
 from datasets import load_dataset, load_metric
 
-from mozhi.bin.urn.datasets_urn import DATASET_OBJ_MAP
-from mozhi.bin.urn.preprocessor_urn import PREPROCESSOR_OBJ_MAP
+from mozhi.bin.urn.urn import URNLoader
 from mozhi.config.config import settings
 from mozhi.utils.pretty_print import print_info
 
@@ -40,15 +38,26 @@ def compute_metrics(p, label_list):
 
 class MozhiHFtrainer(object):
     def __init__(self,
-                 dataset_name,
+                 dataset,
                  hf_pretrained_model_checkpoint,
                  hf_pretrained_tokenizer_checkpoint,
-                 preprocessor_name,
+                 preprocessor,
                  model_n_version):
 
-        hf_dataset = DATASET_OBJ_MAP[dataset_name](**settings.datasets[dataset_name])
-        preprocessor = PREPROCESSOR_OBJ_MAP[preprocessor_name].init_vf(
-            hf_pretrained_tokenizer_checkpoint=hf_pretrained_tokenizer_checkpoint)
+        urn = URNLoader()
+        if type(dataset) == str:
+            # Load the class
+            hf_dataset = urn.load_dataset_class(dataset)
+            # Initialize the class
+            hf_dataset = hf_dataset(**settings.datasets[dataset])
+        else:
+            hf_dataset = dataset
+            
+        if type(preprocessor) == str:
+            preprocessor = urn.load_preprocess_class(preprocessor)
+            preprocessor.init_vf(
+                hf_pretrained_tokenizer_checkpoint=hf_pretrained_tokenizer_checkpoint)
+
         hf_model = AutoModelForTokenClassification.from_pretrained(hf_pretrained_model_checkpoint,
                                                                    num_labels=len(hf_dataset.labels))
         hf_model.config.id2label = hf_dataset.id2label
@@ -85,7 +94,7 @@ class MozhiHFtrainer(object):
 
         # ---------------------------------------------------------------------------------------------------
 
-        predictions, labels, _ = trainer.predict(tokenized_datasets["validation"])
+        predictions, labels, _ = trainer.predict(tokenized_datasets["test"])
         predictions = np.argmax(predictions, axis=2)
 
         # Remove ignored index (special tokens)
@@ -105,16 +114,16 @@ class MozhiHFtrainer(object):
         trainer.save_model(out_dir)
 
 
-def main(dataset_name,
+def main(dataset,
          hf_pretrained_model_checkpoint,
          hf_pretrained_tokenizer_checkpoint,
-         preprocessor_name,
+         preprocessor,
          model_n_version):
 
-    MozhiHFtrainer(dataset_name=dataset_name,
+    MozhiHFtrainer(dataset=dataset,
                    hf_pretrained_model_checkpoint=hf_pretrained_model_checkpoint,
                    hf_pretrained_tokenizer_checkpoint=hf_pretrained_tokenizer_checkpoint,
-                   preprocessor_name=preprocessor_name,
+                   preprocessor=preprocessor,
                    model_n_version=model_n_version)
 
 

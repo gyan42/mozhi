@@ -1,17 +1,26 @@
-# mozhi UI
+# Mozhi - UI
 
-[localhost:8080](localhost:8080)
+## Vue Reference Links
+- [vue-cli-service](https://cli.vuejs.org/guide/cli-service.html#using-the-binary)
+- [Configuration](https://cli.vuejs.org/config/)
+- [Mode and environment](https://cli.vuejs.org/guide/mode-and-env.html)
 
 ## Setup Requirements
 - [Deveploment Machine](dev_machine.md)
 
 ## Local Machine
 
+[localhost:8080](localhost:8080)
+
 ```
 cd /path/to/mozhi/
 cd ui
+yarn add node-sass
+
 yarn build
-yarn serve
+
+export NODE_ENV=developement
+yarn serve --mode $NODE_ENV
 ```
 
 ## Docker 
@@ -27,7 +36,7 @@ docker build -t mozhi-ui-cpu:latest -f ops/docker/ui/Dockerfile .
 `
 - Debug  
 `
-docker container run -it mozhi-ui-cpu bash
+docker container run -it mozhi-ui-cpu bin/sh
 `  
 - Run Local Image  
 `
@@ -55,7 +64,7 @@ kubectl apply -f ops/k8s/mozhi/ui.yaml
 - Debug
 ```
 minikube addons enable ingress
-kubectl port-forward service/mozhi-ui-cpu-svc 8080:80
+kubectl -n mozhi port-forward service/mozhi-ui-cpu-svc 8080:80
 
 #bash
 kubectl exec -it service/mozhi-ui-cpu-svc -n mozhi -- sh
@@ -67,14 +76,26 @@ kubectl exec -it service/mozhi-ui-cpu-svc -n mozhi -- sh
 kubectl -n mozhi exec service/mozhi-ui-cpu-svc  --  curl http://mozhi-api-cpu-svc:8088
 kubectl -n mozhi exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: application/json" --request POST --data '{"text":"mozhi can solve NER problems"}' http://mozhi-api-cpu-svc:8088/mozhi/ner/model/spacy
   
-#Test accesing API pod from API pod  
+#Test accesing API pod from UI pod  
+
+kubectl -n mozhi exec service/mozhi-ui-cpu-svc -- curl --location --request OPTIONS 'http://mozhi-api-cpu-svc:8088/' --header 'Origin: http://mozhi.ai'
+
+kubectl -n mozhi exec service/mozhi-ui-cpu-svc -- curl --location --request OPTIONS 'http://mozhi-api-cpu-svc:8088/mozhi/ner/model/spacy' --header 'Origin: http://mozhi.ai' --header "Content-Type: application/json" --request POST --data '{"text":"mozhi can solve NER problems"}'
+
+
 kubectl -n mozhi exec pod/mozhi-ui-cpu-5b94bf8d78-45rdf --  curl http://localhost:8088
 
 
 kubectl -n mozhi exec pod/mozhi-api-cpu-68bf8dcd69-q6lpf -- curl --location --request OPTIONS 'http://localhost:8088' --header 'Origin: http://mozhi.ai'
 
-kubectl -n mozhi exec service/mozhi-ui-cpu-svc -- curl --location --request OPTIONS 'http://mozhi-api-cpu-svc:8088/' --header 'Origin: http://mozhi.ai'
+
+
 kubectl -n mozhi exec pod/mozhi-ui-cpu-85d4b7d768-bwx66 -- curl --location --request OPTIONS 'http://mozhi-api-cpu-svc:8088/' --header 'Origin: http://mozhi.ai'
+
+
+kubectl -n mozhi exec pod/mozhi-ui-cpu-85d4b7d768-bwx66 -- curl --location --request OPTIONS 'http://mozhi-api-cpu-svc:8088/mozhi/ner/model/spacy' --header 'Origin: http://mozhi.ai'
+
+
 kubectl -n mozhi exec pod/mozhi-ui-cpu-85d4b7d768-bwx66 -- curl --location --request OPTIONS 'http://mozhi-api-cpu-svc:8088/mozhi/ner/model/spacy' --header 'Origin: http://mozhi.ai'
 
 # run the DNS lookup tool to resolve the Service name:

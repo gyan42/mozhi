@@ -8,19 +8,20 @@ python-multipart==0.0.5
 fastapi==0.68.0
 fastapi_users==6.1.2
 databases
-python-jose[cryptography]==3.2.0
+# python-jose[cryptography]
+python-jose==3.3.0
 passlib[bcrypt]==1.7.4
 # ------------ DL ------------
-torch==1.8.1
-torchvision==0.8.2
-torchserve==0.4.0
-torch-model-archiver==0.4.0
-torchcrf==1.1.0
-pytorch-crf==0.7.2
-tensorflow-gpu==2.3.3
-tensorflow_addons==0.12.1
-tensorflow_transform==0.24.1
-tensorflow_text==2.5.0
+#torch==1.8.1
+#torchvision==0.8.2
+#torchserve==0.4.0
+#torch-model-archiver==0.4.0
+#torchcrf==1.1.0
+#pytorch-crf==0.7.2
+#tensorflow==2.6.0
+#tensorflow_addons==0.12.1
+#tensorflow_transform==0.24.1
+#tensorflow_text==2.5.0
 # ------------ Word vectors ------------
 # pymagnitude
 # ------------ Metrics ------------
@@ -33,6 +34,7 @@ pytesseract==0.3.7
 # ------------ DB ------------
 sqlalchemy==1.4.23
 psycopg2-binary==2.8.6
+# brew install postgresql
 psycopg2==2.8.6
 databases
 aiosqlite==0.17.0
@@ -50,6 +52,7 @@ pyconll==3.0.4
 datasets==1.6.2
 # ------------ configuration management ------------
 dynaconf==3.1.4
+fire
 # ------------ Progressbar ------------
 fastprogress==1.0.0
 tqdm==4.49.0
@@ -60,3 +63,6 @@ boto3==1.17.1
 # ------------ Model Explain ------------
 captum==0.3.1
 # ----------- Dev Only Pakcages ----------
+pulumi==3.20.0
+pulumi_eks==0.36.0
+awscli

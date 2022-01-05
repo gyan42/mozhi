@@ -81,9 +81,13 @@ export default {
     ...mapGetters('auth', ['isLoggedIn']),
   },
   created() {
+    console.log("location.host", location.host)
+    console.log("window.location", window.locationt)
+
     if (this.isLoggedIn) {
       console.log(this.formData)
     //  this.$router.push({name: 'Home'});
+    
     }
   },
   methods: {

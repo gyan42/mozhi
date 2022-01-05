@@ -107,6 +107,18 @@ export default {
           href: '/ner',
           title: 'NER',
           icon: 'fas fa-glasses',
+          child : [
+            {
+              href: '/ner/playground',
+              title: 'NER Playground',
+              icon: 'fas fa-cube'
+            },
+            {
+              href: '/ner/receipts',
+              title: 'Receipts',
+              icon: 'fas fa-cubes'
+            },
+          ]
         },
         {
           href: '/controlpane',

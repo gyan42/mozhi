@@ -37,6 +37,19 @@ class SROIE2019(datasets.GeneratorBasedBuilder):
         SROIE2019Config(name="SROIE2019", version=datasets.Version("1.0.0"), description="SROIE2019 dataset"),
     ]
 
+    def __init__(self, 
+                 *args,
+                 url="https://github.com/gyan42/model-store/raw/main/SROIE2019/", 
+                 train_file="train.txt", 
+                 val_file="valid.txt", 
+                 test_file="test.txt", 
+                 **kwargs):
+        super(SROIE2019, self).__init__(*args, **kwargs)
+        self._url = url
+        self._train_file = train_file
+        self._val_file = val_file
+        self._test_file = test_file
+
     def _info(self):
         return datasets.DatasetInfo(
             description=_DESCRIPTION,
@@ -61,9 +74,9 @@ class SROIE2019(datasets.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager):
         """Returns SplitGenerators."""
         urls_to_download = {
-            "train": f"{_URL}{_TRAINING_FILE}",
-            "dev": f"{_URL}{_DEV_FILE}",
-            "test": f"{_URL}{_TEST_FILE}",
+            "train": f"{self._url}{self._train_file}",
+            "dev": f"{self._url}{self._val_file}",
+            "test": f"{self._url}{self._test_file}",
         }
         downloaded_files = dl_manager.download_and_extract(urls_to_download)
 
@@ -105,4 +118,15 @@ class SROIE2019(datasets.GeneratorBasedBuilder):
 
 if __name__ == '__main__':
     config = DownloadConfig(cache_dir=os.path.join(str(Path.home()), '.mozhi'))
-    dataset = SROIE2019().download_and_prepare(download_config=config)
+    dataset = SROIE2019()
+    dataset.download_and_prepare(download_config=config)
+    dataset = dataset.as_dataset()
+
+    print(dataset['train'])
+    print(dataset['test'])
+    print(dataset['validation'])
+
+    print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
+
+
+    print("First sample: ", dataset['train'][0])

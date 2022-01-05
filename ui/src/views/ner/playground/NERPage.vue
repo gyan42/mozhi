@@ -94,10 +94,10 @@
 </template>
 
 <script>
-import NERSidebar from "@/views/ner/NERSidebar";
+import NERSidebar from "@/views/ner/playground/NERSidebar";
 import Token from "./Token";
 import EntityBlock from "./EntityBlock";
-import NERTagsBlock from "@/views/ner/NERTagsBlock";
+import NERTagsBlock from "@/views/ner/playground/NERTagsBlock";
 import {mapGetters, mapMutations, mapState} from "vuex";
 import mozhiapi from "@/backend/mozhiapi";
 import torchserveapi from "@/backend/torchserveapi"

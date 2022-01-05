@@ -1,0 +1,5 @@
+resources:
+  - namespace.yaml
+  - ui.yaml
+  - api.yaml
+  - aws-nginx-ingress-controller.yaml

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import DatasetTypeSelector from "@/views/ner/DatasetTypeSelector";
-import ModelTypeSelector from "@/views/ner/ModelTypeSelector";
+import DatasetTypeSelector from "@/views/ner/playground/DatasetTypeSelector";
+import ModelTypeSelector from "@/views/ner/playground/ModelTypeSelector";
 
 export default {
   name: "NERSidebar",

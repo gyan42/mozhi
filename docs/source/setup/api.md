@@ -6,6 +6,7 @@
 ## Local Machine
 
 ```bash
+python -m spacy download en_core_web_sm
 cd /path/to/mozhi/
 export DEBUG=true
 api/start
@@ -29,7 +30,10 @@ curl mozhi.ai/api/v1/
 
 curl --header "Content-Type: application/json" --request POST --data '{"text":"Mozhi can solve NER problems"}' http://localhost:8088/vf/ner/model/spacy
 
-kubectl exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: application/json" --request POST --data '{"text":"Mozhi can solve NER problems"}' http://mozhi.ai/vf/ner/model/spacy
+kubectl exec service/mozhi-ui-cpu-svc --  curl --header "Content-Type: application/json" --request POST --data '{"text":"Mozhi can solve NER problems"}' http://mozhi.ai/mozhi/ner/model/spacy
+
+
+curl --header "Content-Type: application/json" --request POST --data '{"text":"Mozhi can solve NER problems"}' http://a7f5567b110444e4cb445a71faee9b95-899e8adad051668a.elb.ap-south-1.amazonaws.com/api/v1/mozhi/ner/model/spacy
 
 ```
 
@@ -104,7 +108,7 @@ kubectl apply -f ops/k8s/mozhi/api.yaml
 `
 - Debug
 `
-kubectl port-forward service/vf-api-cpu-svc 8088
+kubectl -n mozhi port-forward service/mozhi-api-cpu-svc 8088
 `  
 - Stop/Delete
 `
