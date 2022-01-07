@@ -275,23 +275,22 @@
 <h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
 <section id="setup">
 <h2>1. Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>https://hub.docker.com/r/nvidia/cuda</p></li>
-<li><p>https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker</p></li>
-<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04</a></p></li>
-<li><p><a class="reference external" href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></p></li>
-</ul>
-<p><strong><a class="reference external" href="https://apple.stackexchange.com/questions/373888/how-do-i-start-the-docker-daemon-on-macos">Mac Setup</a></strong></p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker-machine create --driver virtualbox default
+<p><strong><a class="reference external" href="https://apple.stackexchange.com/questions/373888/how-do-i-start-the-docker-daemon-on-macos">Mac</a></strong></p>
+<p>Note: If Docker Desktop is installed and running you can skip following section.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># start docker machien</span>
+docker-machine create --driver virtualbox default
+<span class="c1"># restart if needed</span>
 docker-machine restart
+<span class="c1"># export the docker environment to the shell</span>
 <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>docker-machine env default<span class="k">)</span><span class="s2">&quot;</span>
-
+<span class="c1"># remove the driver named `default`</span>
 docker-machine rm default
 </pre></div>
 </div>
-<p><strong>docker cli</strong></p>
+<p><strong>Linux docker cli</strong></p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt  install docker.io
 
+<span class="c1">#start the deamon</span>
 sudo systemctl start docker
 sudo systemctl <span class="nb">enable</span> docker
 docker --version
@@ -302,7 +301,7 @@ sudo usermod -a -G docker <span class="nv">$USER</span>
 </pre></div>
 </div>
 <p><strong>docker-compose cli</strong></p>
-<p>https://docs.docker.com/compose/install/</p>
+<p><a class="reference external" href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
@@ -351,9 +350,10 @@ sudo systemctl restart docker
 sudo ls /opt/binaries/docker
     mageswarand@IMCHLT276:/opt/binaries/docker$ ls
     builder  buildkit  containers  image  network  overlay2  plugins  runtimes  swarm  tmp  trust  volumes
+
+docker container top f1
 </pre></div>
 </div>
-<p>docker container top f1</p>
 <p>In case if you face any face network issues with docker,
 refer <a class="reference external" href="https://pythonspeed.com/articles/docker-connection-refused/">https://pythonspeed.com/articles/docker-connection-refused/</a></p>
 </section>
@@ -458,16 +458,20 @@ docker exec -it &lt;container&gt; bash
 </div>
 <p><strong>References</strong></p>
 <ul class="simple">
-<li><p>https://towardsdatascience.com/a-complete-guide-to-building-a-docker-image-serving-a-machine-learning-system-in-production-d8b5b0533bde</p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/r/nvidia/cuda">https://hub.docker.com/r/nvidia/cuda</a></p></li>
+<li><p><a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker</a></p></li>
+<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/a-complete-guide-to-building-a-docker-image-serving-a-machine-learning-system-in-production-d8b5b0533bde">https://towardsdatascience.com/a-complete-guide-to-building-a-docker-image-serving-a-machine-learning-system-in-production-d8b5b0533bde</a></p></li>
 <li><p><a class="reference external" href="https://www.bogotobogo.com/DevOps/DevOps-Kubernetes-1-Running-Kubernetes-Locally-via-Minikube.php">https://www.bogotobogo.com/DevOps/DevOps-Kubernetes-1-Running-Kubernetes-Locally-via-Minikube.php</a></p></li>
-<li><p>https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/</p></li>
-<li><p>https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72</p></li>
-<li><p>https://medium.com/rahasak/kafka-and-zookeeper-with-docker-65cff2c2c34f</p></li>
-<li><p>https://github.com/sameersbn/docker-postgresql</p></li>
-<li><p>https://github.com/kibatic/docker-single-node-hadoop/</p></li>
-<li><p>https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile</p></li>
-<li><p>Permission Denied Error &#64; https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke</p></li>
-<li><p>https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041</p></li>
+<li><p><a class="reference external" href="https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/">https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/</a></p></li>
+<li><p><a class="reference external" href="https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72">https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72</a>
+<a class="reference external" href="https://medium.com/rahasak/kafka-and-zookeeper-with-docker-65cff2c2c34f">- https://medium.com/rahasak/kafka-and-zookeeper-with-docker-65cff2c2c34f</a>
+<a class="reference external" href="https://github.com/sameersbn/docker-postgresql">- https://github.com/sameersbn/docker-postgresql</a></p></li>
+<li><p><a class="reference external" href="https://github.com/kibatic/docker-single-node-hadoop/">https://github.com/kibatic/docker-single-node-hadoop/</a>
+<a class="reference external" href="https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile">- https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke">Permission Denied Error</a></p></li>
+<li><p><a class="reference external" href="https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041">https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041</a></p></li>
 </ul>
 </section>
 </section>

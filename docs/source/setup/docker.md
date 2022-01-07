@@ -1,25 +1,27 @@
 # Docker
 
 ## 1. Setup
-- https://hub.docker.com/r/nvidia/cuda
-- https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
-- [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
-- [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
 
-**[Mac Setup](https://apple.stackexchange.com/questions/373888/how-do-i-start-the-docker-daemon-on-macos)**
+**[Mac](https://apple.stackexchange.com/questions/373888/how-do-i-start-the-docker-daemon-on-macos)**
+
+Note: If Docker Desktop is installed and running you can skip following section.
 
 ```shell
+# start docker machien
 docker-machine create --driver virtualbox default
+# restart if needed
 docker-machine restart
+# export the docker environment to the shell
 eval "$(docker-machine env default)"
-
+# remove the driver named `default`
 docker-machine rm default
 ```
-**docker cli**
+**Linux docker cli**
 
 ```shell
 sudo apt  install docker.io
 
+#start the deamon
 sudo systemctl start docker
 sudo systemctl enable docker
 docker --version
@@ -31,7 +33,7 @@ sudo usermod -a -G docker $USER
 
 **docker-compose cli**
 
-https://docs.docker.com/compose/install/
+[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
 ```
 docker-compose --version
@@ -90,8 +92,8 @@ sudo ls /opt/binaries/docker
     mageswarand@IMCHLT276:/opt/binaries/docker$ ls
     builder  buildkit  containers  image  network  overlay2  plugins  runtimes  swarm  tmp  trust  volumes
 
-```
 docker container top f1
+```
 
 In case if you face any face network issues with docker, 
 refer [https://pythonspeed.com/articles/docker-connection-refused/](https://pythonspeed.com/articles/docker-connection-refused/)
@@ -190,14 +192,17 @@ sudo mount -t vboxsf /opt/vlab/spark-streaming-playground/ /mnt/dockerfolder
 
 
 **References**
-
-- https://towardsdatascience.com/a-complete-guide-to-building-a-docker-image-serving-a-machine-learning-system-in-production-d8b5b0533bde
+- [https://hub.docker.com/r/nvidia/cuda](https://hub.docker.com/r/nvidia/cuda)
+- [https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+- [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
+- [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
+- [https://towardsdatascience.com/a-complete-guide-to-building-a-docker-image-serving-a-machine-learning-system-in-production-d8b5b0533bde](https://towardsdatascience.com/a-complete-guide-to-building-a-docker-image-serving-a-machine-learning-system-in-production-d8b5b0533bde)
 - [https://www.bogotobogo.com/DevOps/DevOps-Kubernetes-1-Running-Kubernetes-Locally-via-Minikube.php](https://www.bogotobogo.com/DevOps/DevOps-Kubernetes-1-Running-Kubernetes-Locally-via-Minikube.php)
-- https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/
-- https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72
-- https://medium.com/rahasak/kafka-and-zookeeper-with-docker-65cff2c2c34f
-- https://github.com/sameersbn/docker-postgresql
-- https://github.com/kibatic/docker-single-node-hadoop/
-- https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile
-- Permission Denied Error @ https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke
-- https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041
+- [https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/](https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/)
+- [https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72)
+[- https://medium.com/rahasak/kafka-and-zookeeper-with-docker-65cff2c2c34f](https://medium.com/rahasak/kafka-and-zookeeper-with-docker-65cff2c2c34f)
+[- https://github.com/sameersbn/docker-postgresql](https://github.com/sameersbn/docker-postgresql)
+- [https://github.com/kibatic/docker-single-node-hadoop/](https://github.com/kibatic/docker-single-node-hadoop/)
+[- https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile](https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile)
+- [Permission Denied Error](https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke)
+- [https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041](https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041)
