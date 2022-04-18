@@ -1,6 +1,6 @@
 # Docker
 
-## 1. Setup
+## Setup
 
 **[Mac](https://apple.stackexchange.com/questions/373888/how-do-i-start-the-docker-daemon-on-macos)**
 
@@ -16,6 +16,7 @@ eval "$(docker-machine env default)"
 # remove the driver named `default`
 docker-machine rm default
 ```
+
 **Linux docker cli**
 
 ```shell
@@ -99,7 +100,7 @@ In case if you face any face network issues with docker,
 refer [https://pythonspeed.com/articles/docker-connection-refused/](https://pythonspeed.com/articles/docker-connection-refused/)
 
 
-## 2. Misc 
+## Misc 
 
 **Image Size Analysis**
 ```
@@ -174,7 +175,6 @@ docker rm {id}
 docker build ...
 # for multiple shells for same container
 docker exec -it <container> bash
-
 ```
 
 - Docker image disk usage : `docker system df` 
@@ -206,3 +206,6 @@ sudo mount -t vboxsf /opt/vlab/spark-streaming-playground/ /mnt/dockerfolder
 [- https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile](https://github.com/bbonnin/docker-hadoop-3/blob/master/Dockerfile)
 - [Permission Denied Error](https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke)
 - [https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041](https://gist.github.com/nathzi1505/d2aab27ff93a3a9d82dada1336c45041)
+
+
+

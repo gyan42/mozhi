@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:experimental
 #https://github.com/tiangolo/full-stack-fastapi-postgresql/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/backend/backend.dockerfile
 
 # export DOCKER_BUILDKIT=1
@@ -80,11 +81,17 @@ RUN mkdir /services
 COPY mozhi /mozhi
 COPY api /api
 COPY configs /configs
-
+COPY configs/torch_serve_config.properties /home/model-server/shared/config/config.properties
 EXPOSE 8088 8080 8081 8082 6543 6544 6545 7070 7071
 
 RUN chmod 777 api/start.sh
 ENV PYTHONPATH "${PYTHONPATH}:/"
 ENV PYTHONPATH "${PYTHONPATH}:/api"
-RUN mkdir -p /home/model-server/model-store
+
+RUN useradd -m model-server \
+    && mkdir -p /home/model-server/tmp
+RUN chown -R model-server /home/model-server
+
+RUN mkdir -p /home/model-server/model-store && chown -R model-server /home/model-server/model-store 
+
 CMD api/start.sh

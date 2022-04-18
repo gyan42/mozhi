@@ -2,6 +2,8 @@
 
 https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469
 
+https://v0-2.kubeflow.org/docs/started/getting-started-minikube/
+
 ## Mac
 ```
 brew install hyperkit

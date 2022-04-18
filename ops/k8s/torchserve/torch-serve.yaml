@@ -26,9 +26,7 @@ spec:
     name: metriccs-port
     targetPort: 6545
   type: LoadBalancer
-
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -58,11 +56,11 @@ spec:
         - name: mozhi-api-torchserve
           imagePullPolicy: Always
           volumeMounts:
-            - mountPath: /home/model-server/shared/
+            - mountPath: /home/model-server/model-store
               name: persistent-storage
           image: mageswaran1989/mozhi-api-cpu:latest
           command: [ "/bin/bash" ]
-          args: [ "-c", "torchserve --start --model-store /home/model-server/shared/model-store --models all --ts-config configs/torch_serve_config.properties --foreground" ]
+          args: [ "-c", "torchserve --start --model-store /home/model-server/model-store --models all --ts-config configs/torch_serve_config.properties --foreground" ]
           ports:
             - name: infer-port
               containerPort: 6543
@@ -76,7 +74,7 @@ spec:
             limits:
               cpu: "1"
               memory: 4Gi
-              nvidia.com/gpu: "1"
+              nvidia.com/gpu: "0"
             requests:
               cpu: "1"
               memory: 1Gi
